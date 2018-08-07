@@ -1,28 +1,49 @@
-.App {
+*{
+  /* background-color: rgba(129, 103, 99, 0.815); */
+}
+
+.AppBody {
   text-align: center;
+  margin-top: 50px;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+h1{
+  text-align: center;
+  color: rgb(109, 59, 59);
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+/* tab styling */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
 }
 
-.App-title {
-  font-size: 1.5em;
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
 }
 
-.App-intro {
-  font-size: large;
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
 }

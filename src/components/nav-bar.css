@@ -1,0 +1,23 @@
+nav {
+	position: relative;
+	height: 10%;
+	padding: 1em;
+}
+
+nav ul li {
+  font-weight: 700;
+	font-size: 1.2em;
+}
+
+nav ul li:first-child {
+	float: left;
+}
+
+nav ul li:last-child {
+	float: right;
+}
+
+nav a {
+
+	color: rgb(24, 31, 54);
+}
