@@ -33,7 +33,6 @@ export const postFoodsSuccess = (name, ingredient) => ({
 export const fetchFoods = food => dispatch => {
   dispatch(fetchFoodsRequest());
   console.log('I\'m making a get request to the back-end');
-  console.log(API_BASE_URL);
   return fetch(`${API_BASE_URL}/api/foods?searchTerm=${food}`)
     .then(res => {
       console.log(res, 'test console');
@@ -50,7 +49,6 @@ export const fetchFoods = food => dispatch => {
 };export const postNewFood = (nme1, ing2) => dispatch => {
   dispatch(fetchFoodsRequest());
   console.log('I\'m making a post request to the back-end');
-  console.log(API_BASE_URL);
   console.log(JSON.stringify({
     'name': nme1,
     'ingredients': ing2,

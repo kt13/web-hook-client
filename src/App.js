@@ -41,15 +41,20 @@ class App extends React.Component {
         <NavBar/>
         <h1>Food for You</h1>
         <div className="tab">
-          <button id='defaultOpen' className="tablinks" onClick={e => this.openTab(e, 'AllergySearch')}>Search a Food</button>
-          <button className="tablinks" onClick={e => this.openTab(e, 'PharmaSearch')}>Search Local Pharmacy</button>
-          <button className="tablinks" onClick={e => this.openTab(e, 'PostFood')}>Add a Listing</button>
+          <button id='defaultOpen' className="tablinks" 
+            onClick={e => this.openTab(e, 'AllergySearch')}>Search a Food</button>
+          <button className="tablinks" 
+            onClick={e => this.openTab(e, 'PharmaSearch')}>Search Local Pharmacy</button>
+          <button className="tablinks" 
+            onClick={e => this.openTab(e, 'PostFood')}>Add a Listing</button>
         </div>
         <div className='AppBody'>
-          <AllergyForm handleSubmit={e => this.props.dispatch(fetchFoods(e))}/>
+          <AllergyForm handleSubmit={e => 
+            this.props.dispatch(fetchFoods(e))}/>
           <SearchResults foods={this.props.foods}/>
           <PharmaSearch />
-          <PostFood handleSubmit={(nme1, ing2) => this.props.dispatch(postNewFood(nme1, ing2))}/>
+          <PostFood handleSubmit={(nme1, ing2) => 
+            this.props.dispatch(postNewFood(nme1, ing2))}/>
         </div>
       </div>
     );

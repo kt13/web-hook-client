@@ -10,8 +10,6 @@ class PharmaSearch extends React.Component{
 
 //   return(
 //     <div id='PharmaSearch' className='tabcontent'>
-//       <script async defer type="text/javascript" 
-//         src={srcLink}></script>
 //       <p>Enter in your zipcode</p>
 //       <form /* onSubmit={e =>  
 //       { e.preventDefault(), /* console.log(this.input.value, '============')
@@ -64,6 +62,20 @@ class PharmaSearch extends React.Component{
     };
     return (
       <div id='PharmaSearch' className='tabcontent'>
+        <div className='pharma-form'>
+          <p>Enter in a Zipcode</p>
+          <form /* onSubmit={e =>  
+            { e.preventDefault(), /* console.log(this.input.value, '============')
+            this.props.handleSubmit(this.input.value); }} */>
+            <input type="number" name="userSearch" id="userSearch"
+              className="text" autoComplete="off"
+              placeholder="Eg. 10001" required 
+            /* ref={ele => (this.input = ele)} required */
+            />
+            <input type="submit" id="searchButton" className="button" 
+              name="submit" value="Search" /* onClick={() => this.props.dispatch(toggleFoodsList(false))} */ />
+          </form>
+        </div>
         <Map
           item
           xs = { 12 }
