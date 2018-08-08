@@ -20,6 +20,7 @@ class AllergyForm extends React.Component {
   render(){
     return (
       <div id='AllergySearch' className='tabcontent'>
+        <p>Enter in the food in question</p>
         <form onSubmit={e =>  
         { e.preventDefault(), console.log(this.input.value, '============'), this.props.handleSubmit(this.input.value); }}>
           <input type="text" name="userSearch" id="userSearch"

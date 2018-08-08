@@ -1,17 +1,20 @@
 import React from 'react';
 import './App.css';
-import {fetchFoods} from '../src/actions/foods';
+import {fetchFoods, postNewFood} from '../src/actions/foods';
 import {connect} from 'react-redux';
 import AllergyForm from './components/aller-search-form';
 import SearchResults from './components/search-results';
 import NavBar from './components/nav-bar';
+import PharmaSearch from './components/pharma-search-form';
+import PostFood from './components/post-food';
+
 class App extends React.Component {
   componentDidMount(){
     // this.props.dispatch(fetchFoods());
     document.getElementById('defaultOpen').click();
   }
 
-  openSearch(e, cityName) {
+  openTab(e, chooseTab) {
     // Declare all variables
     var i, tabcontent, tablinks;
 
@@ -28,7 +31,7 @@ class App extends React.Component {
     }
 
     // Show the current tab, and add an "active" class to the button that opened the tab
-    document.getElementById(cityName).style.display = 'block';
+    document.getElementById(chooseTab).style.display = 'block';
     e.currentTarget.className += 'active';
   }
 
@@ -38,13 +41,15 @@ class App extends React.Component {
         <NavBar/>
         <h1>Food for You</h1>
         <div className="tab">
-          <button id='defaultOpen' className="tablinks" onClick={e => this.openSearch(e, 'AllergySearch')}>Search a Food</button>
-          <button className="tablinks" /* onClick={e => openSearch(e, 'PharmaSearch')} */>Search Local Pharmacy</button>
-          <button className="tablinks" /* onClick={e => openSearch(e, 'PostFood')} */>Add a Listing</button>
+          <button id='defaultOpen' className="tablinks" onClick={e => this.openTab(e, 'AllergySearch')}>Search a Food</button>
+          <button className="tablinks" onClick={e => this.openTab(e, 'PharmaSearch')}>Search Local Pharmacy</button>
+          <button className="tablinks" onClick={e => this.openTab(e, 'PostFood')}>Add a Listing</button>
         </div>
         <div className='AppBody'>
           <AllergyForm handleSubmit={e => this.props.dispatch(fetchFoods(e))}/>
           <SearchResults foods={this.props.foods}/>
+          <PharmaSearch />
+          <PostFood handleSubmit={(nme1, ing2) => this.props.dispatch(postNewFood(nme1, ing2))}/>
         </div>
       </div>
     );

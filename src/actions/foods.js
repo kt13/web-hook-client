@@ -22,6 +22,14 @@ export const toggleFoodsList = listHide => ({
   listHide
 });
 
+export const NEW_POST_SUCCESS = 'NEW_POST_SUCCESS';
+export const postFoodsSuccess = (name, ingredient) => ({
+  type: NEW_POST_SUCCESS,
+  name,
+  ingredient
+});
+
+
 export const fetchFoods = food => dispatch => {
   dispatch(fetchFoodsRequest());
   console.log('I\'m making a get request to the back-end');
@@ -34,6 +42,36 @@ export const fetchFoods = food => dispatch => {
       console.log(res);
       dispatch(fetchFoodsSuccess(res));
       
+    })
+    .catch(err => {
+      dispatch(fetchFoodsError(err));
+    });
+
+};export const postNewFood = (nme1, ing2) => dispatch => {
+  dispatch(fetchFoodsRequest());
+  console.log('I\'m making a post request to the back-end');
+  console.log(API_BASE_URL);
+  console.log(JSON.stringify({
+    'name': nme1,
+    'ingredients': ing2,
+  }), nme1, ing2);
+  return fetch(`${API_BASE_URL}/api/foods`,
+    {
+      method: 'POST',
+      headers:{
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify({
+        'name': nme1,
+        'ingredients': ing2,
+      })
+    })
+    .then(res => {
+      console.log(res, 'test console posting');
+      return res.json();
+    }).then(res => {
+      console.log(res);
+      dispatch(postFoodsSuccess(res));
     })
     .catch(err => {
       dispatch(fetchFoodsError(err));
