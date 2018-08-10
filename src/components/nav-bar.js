@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {Link} from 'react-router-dom';
 import './nav-bar.css';
 
 export default function NavBar(props) {
@@ -7,14 +7,22 @@ export default function NavBar(props) {
     <nav>
       <ul className="clearfix">
         <li /* onClick={e => props.onClick(e)} */>
-          <a className="register" href='#'>
+          <Link 
+            to="/register" 
+            className="register"
+            style={{ textDecoration: 'none' }}
+          >
                         Register
-          </a>
+          </Link>
         </li>
         <li /* onClick={e => props.newGame(e)} */>
-          <a className="login" href='#'>
+          <Link 
+            to="/login" 
+            className="login"
+            style={{ textDecoration: 'none' }}
+          >
                         Login
-          </a>
+          </Link>
         </li>
       </ul>
     </nav>

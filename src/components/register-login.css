@@ -6,16 +6,16 @@ label {
 
 .input {
   padding: 5px;
-  text-align:left;
+  text-align:center;
 }
 
 p{
   padding-bottom: 10px;
 }
 
-.button3 {
+.button4, .button5 {
+  display: inline-block;
   margin: auto;
-  margin: 20px;
 }
 
 .name {

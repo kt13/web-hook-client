@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import Dashboard from './Dashboard';
 import registerServiceWorker from './registerServiceWorker';
 import {rootReducer as comboReducer} from './reducers/comboReducer';
 import {applyMiddleware, createStore} from 'redux';
@@ -12,7 +12,7 @@ const store = createStore(comboReducer, applyMiddleware(thunk));
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <Dashboard />
   </Provider>,
   document.getElementById('root'));
 registerServiceWorker();

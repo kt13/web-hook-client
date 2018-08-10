@@ -2,7 +2,7 @@
   /* background-color: rgba(129, 103, 99, 0.815); */
 }
 
-/* .AppBody {
+.AppBody {
   text-align: center;
   margin-top: 50px;
 }
@@ -12,12 +12,14 @@ h1{
   color: rgb(109, 59, 59);
 }
 
+/* tab styling */
 .tab {
   overflow: hidden;
   border: 1px solid #ccc;
   background-color: #f1f1f1;
 }
 
+/* Style the buttons that are used to open the tab content */
 .tab button {
   background-color: inherit;
   float: left;
@@ -28,17 +30,20 @@ h1{
   transition: 0.3s;
 }
 
+/* Change background color of buttons on hover */
 .tab button:hover {
   background-color: #ddd;
 }
 
+/* Create an active/current tablink class */
 .tab button.active {
   background-color: #ccc;
 }
 
+/* Style the tab content */
 .tabcontent {
   display: none;
   padding: 6px 12px;
   border: 1px solid #ccc;
   border-top: none;
-} */
+}

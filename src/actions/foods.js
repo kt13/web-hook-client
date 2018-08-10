@@ -45,8 +45,9 @@ export const fetchFoods = food => dispatch => {
     .catch(err => {
       dispatch(fetchFoodsError(err));
     });
+};
 
-};export const postNewFood = (nme1, ing2) => dispatch => {
+export const postNewFood = (nme1, ing2) => dispatch => {
   dispatch(fetchFoodsRequest());
   console.log('I\'m making a post request to the back-end');
   console.log(JSON.stringify({
@@ -63,14 +64,14 @@ export const fetchFoods = food => dispatch => {
         'name': nme1,
         'ingredients': ing2,
       })
-    })
-    .then(res => {
-      console.log(res, 'test console posting');
-      return res.json();
+    // })
+    // .then(res => {
+    //   console.log(res, 'test console posting');
+    //   return res.json();
     }).then(res => {
-      console.log(res);
-      dispatch(postFoodsSuccess(res));
-    })
+    console.log(res);
+    dispatch(postFoodsSuccess(res));
+  })
     .catch(err => {
       dispatch(fetchFoodsError(err));
     });

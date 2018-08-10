@@ -1,6 +1,7 @@
 import React from 'react';
 import {toggleFoodsList} from '../actions/foods';
 import {connect} from 'react-redux';
+import SearchResults from './search-results';
 // import './guess-form.css';
 
 class AllergyForm extends React.Component {
@@ -20,24 +21,27 @@ class AllergyForm extends React.Component {
   render(){
     return (
       <div id='AllergySearch' className='tabcontent'>
-        <p>Enter in the food in question</p>
+        <h2>Enter in a food</h2>
         <form onSubmit={e =>  
         { e.preventDefault(), console.log(this.input.value, '============'), this.props.handleSubmit(this.input.value); }}>
           <input type="text" name="userSearch" id="userSearch"
             className="text" autoComplete="off"
-            placeholder="Enter the Food" required 
+            placeholder="E.g. panini" required 
             ref={ele => (this.input = ele)} required
           />
           <input type="submit" id="searchButton" className="button" 
             name="submit" value="Search" onClick={() => this.props.dispatch(toggleFoodsList(false))} />
         </form>
+        <SearchResults foods={this.props.foods}/>
       </div>
     );
   }
 }
 
 const mapStateToProps = (state, props) => ({
-  listHide: state.searchR.listHide
+  listHide: state.searchR.listHide,
+  foods: state.foodsR.foods,
+
 });
 
 export default connect(mapStateToProps)(AllergyForm);
