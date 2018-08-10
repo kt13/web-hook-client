@@ -95,11 +95,11 @@ class PharmaSearch extends React.Component{
   render() {
     const googleURL =`https://maps.googleapis.com/maps/api/js?key=${API_KEY}&libraries=geometry,drawing,places`;
     return (
-      <div>
+      <div id='PharmaSearch' className='tabcontent'>
         <MyMapComponent
           googleMapURL={googleURL}
           loadingElement= {<div style={{ height: '100%' }} />}
-          containerElement= {<div style={{ height: '400px' }} />}
+          containerElement= {<div style={{ height: '400px', width: '600px' }} />}
           mapElement= {<div style={{ height: '100%' }} />}
           markers={this.props.markers}
           dispatch={this.props.dispatch}
