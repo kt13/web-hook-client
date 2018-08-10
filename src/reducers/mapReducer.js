@@ -24,14 +24,17 @@ export const mapReducer = (state=initialState, action) => {
   else if(action.type === MARKER_INFO){
     console.log(action, '------------');
     return Object.assign({}, state, 
-      state.markers.map(item => {
-        if(item.photo_id===action.marker.photo_id){
-          return Object.assign({}, item, {isMarkOpen: action.toggle});
-        }
-        else{
-          return item;
-        }
-      })
+      {
+        markers: state.markers.map(item => {
+          if(item.photo_id===action.marker.photo_id){
+            console.log(item);
+            return Object.assign({}, item, {isMarkOpen: action.toggle});
+          }
+          else{
+            return item;
+          }
+        })
+      }
     );
   }
   else if(action.type === NEW_ZIP_SEARCH){

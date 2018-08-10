@@ -6,8 +6,9 @@ export default function Login (props){
     <div>
       <form onSubmit={e =>  
       { e.preventDefault(); 
-        console.log(this.input.value, '============'); 
-        this.props.handleSubmit(this.input.value); }}>
+        const creds = e.target.elements;
+        console.log(creds, '============');
+        this.props.handleSubmit(creds.username.value, creds.password.value); }}>
         <div className='input'>
           <label>Username</label>
           <input type="text" name="username" id="username"

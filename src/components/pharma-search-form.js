@@ -61,10 +61,10 @@ const MyMapComponent = compose(
     {props.markers.map(marker => (
       <Marker
         key={marker.photo_id}
-        isMarkOpen={false}
         position={{ lat: marker.latitude, lng: marker.longitude }}
         onClick={() => props.dispatch(toggleMarkerInfo(true,marker))}>
-        {marker.isMarkOpen && <InfoWindow onCloseClick={() => props.dispatch(toggleMarkerInfo(false, marker))}>
+        {marker.isMarkOpen && <InfoWindow 
+          onCloseClick={() => props.dispatch(toggleMarkerInfo(false, marker))}>
           <FaAnchor />
         </InfoWindow>}
       </Marker>))}
@@ -95,23 +95,28 @@ class PharmaSearch extends React.Component{
   render() {
     const googleURL =`https://maps.googleapis.com/maps/api/js?key=${API_KEY}&libraries=geometry,drawing,places`;
     return (
-      <MyMapComponent
-        googleMapURL={googleURL}
-        loadingElement= {<div style={{ height: '100%' }} />}
-        containerElement= {<div style={{ height: '400px' }} />}
-        mapElement= {<div style={{ height: '100%' }} />}
-        markers={this.props.markers}
-        dispatch={this.props.dispatch}
-        isOpen={this.props.isOpen}
-
-      />
+      <div>
+        <MyMapComponent
+          googleMapURL={googleURL}
+          loadingElement= {<div style={{ height: '100%' }} />}
+          containerElement= {<div style={{ height: '400px' }} />}
+          mapElement= {<div style={{ height: '100%' }} />}
+          markers={this.props.markers}
+          dispatch={this.props.dispatch}
+        />
+      </div>
     );
   }
 }
 
-const mapStateToProps = (state, props) => ({
-  markers: state.mapR.markers
-});
+const mapStateToProps = (state, props) => 
+{
+  console.log(state.mapR.markers);
+  return {
+    markers: state.mapR.markers,
+
+  };
+};
 
 export default connect(mapStateToProps)(PharmaSearch);
 //   searchNearby(map, center){

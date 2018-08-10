@@ -47,7 +47,8 @@ export const toggleMarkerInfo = (toggle, marker) => ({
 //       dispatch(fetchMapError(err));
 //     });
 // };
-
+// https://developers.google.com/places/web-service/search
+// https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=YOUR_API_KEY&location=latitude,longitude&radius=5000&keyword=pharmacies
 const url = [
   // Length issue
   'https://gist.githubusercontent.com',
