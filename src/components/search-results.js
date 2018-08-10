@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import './search-results.css';
 function SearchResults (props){
-  console.log(props.listHide);
+  // console.log(props.listHide);
   if(!props.listHide){
     const foods = props.foods.map((item, index) =>(
       <div id='SearchResults'>
