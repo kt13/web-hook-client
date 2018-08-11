@@ -34,7 +34,9 @@ export const toggleMarkerInfo = (toggle, marker) => ({
 // export const fetchingPlaces = places => dispatch => {
 //   dispatch(fetchMapRequest());
 //   console.log('I\'m making a get request to the back-end');
-//   return fetch(`https://maps.googleapis.com/maps/api/js?key=${API_KEY}&libraries=geometry,drawing,places`)
+//   return fetch(`https://maps.googleapis.com/maps/api/place/nearbysearch/
+//   json?key=${API_KEY}&location=${places.lat},${places.lng}&radius=5000&keyword=pharmacies
+//   `)
 //     .then(res => {
 //       console.log(res, 'test console');
 //       return res.json();

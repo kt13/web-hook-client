@@ -5,12 +5,13 @@ const initialState = {
   loading: false,
   error: null,
 };
-
+console.log(initialState.foods,'sadfasdfasfdsf');
 export const foodsReducer = (state=initialState, action) => {
   if(action.type === NEW_REQUEST){
     return Object.assign({}, state, {loading: true});
   }
   else if(action.type === NEW_SUCCESS){
+    console.log(action.data);
     return Object.assign({}, state, 
       {loading: false, error: null, listHide: false,
         foods: [...state.foods, ...action.data]

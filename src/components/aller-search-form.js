@@ -16,9 +16,10 @@ class AllergyForm extends React.Component {
   //   }
   //   this.input.value = '';
   //   this.input.focus();
- 
+
 
   render(){
+    console.log('qrawefwedfasdfs', this.props.foods);
     return (
       <div id='AllergySearch' className='tabcontent'>
         <h2>Enter in a food</h2>
@@ -29,7 +30,7 @@ class AllergyForm extends React.Component {
             placeholder="E.g. panini" required 
             ref={ele => (this.input = ele)} required
           />
-          <input type="submit" id="searchButton" className="button" 
+          <input type="submit" id="searchButton" className="button2" 
             name="submit" value="Search" onClick={() => this.props.dispatch(toggleFoodsList(false))} />
         </form>
         <SearchResults foods={this.props.foods}/>

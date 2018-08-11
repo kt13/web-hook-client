@@ -1,11 +1,11 @@
 import {
-  SET_AUTH_TOKEN,
-  CLEAR_AUTH,
+  AUTH_SET,
+  // CLEAR_AUTH,
   AUTH_REQUEST,
   AUTH_SUCCESS,
   AUTH_ERROR,
-  AUTH_WARNING
-} from '../actions/auth';
+  // AUTH_WARNING
+} from '../actions/jwtauth';
 
 const initialState = {
   warning: false,
@@ -15,16 +15,16 @@ const initialState = {
   error: null
 };
 
-export default function reducer(state = initialState, action) {
-  if (action.type === SET_AUTH_TOKEN) {
+export const  jwtReducer = (state = initialState, action) => {
+  if (action.type === AUTH_SET) {
     return Object.assign({}, state, {
       authToken: action.authToken
     });
-  } else if (action.type === CLEAR_AUTH) {
-    return Object.assign({}, state, {
-      authToken: null,
-      currentUser: null
-    });
+  // } else if (action.type === CLEAR_AUTH) {
+  //   return Object.assign({}, state, {
+  //     authToken: null,
+  //     currentUser: null
+  //   });
   } else if (action.type === AUTH_REQUEST) {
     return Object.assign({}, state, {
       loading: true,
@@ -40,10 +40,10 @@ export default function reducer(state = initialState, action) {
       loading: false,
       error: action.error
     });
-  } else if (action.type === AUTH_WARNING) {
-    return Object.assign({}, state, {
-      warning: true
-    });
+  // } else if (action.type === AUTH_WARNING) {
+  //   return Object.assign({}, state, {
+  //     warning: true
+  //   });
   }
   return state;
-}
+};

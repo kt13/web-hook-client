@@ -55,8 +55,8 @@ const MyMapComponent = compose(
   withGoogleMap
 )(props =>
   <GoogleMap
-    defaultZoom={3}
-    defaultCenter={{lat: 25.0391667, lng: 121.525  }}
+    defaultZoom={8}
+    defaultCenter={{lat: 39.648209, lng: -75.711185   }}
   >
     {props.markers.map(marker => (
       <Marker
@@ -109,14 +109,9 @@ class PharmaSearch extends React.Component{
   }
 }
 
-const mapStateToProps = (state, props) => 
-{
-  console.log(state.mapR.markers);
-  return {
-    markers: state.mapR.markers,
-
-  };
-};
+const mapStateToProps = (state, props) => ({
+  markers: state.mapR.markers,
+});
 
 export default connect(mapStateToProps)(PharmaSearch);
 //   searchNearby(map, center){
