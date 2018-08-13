@@ -5,9 +5,9 @@ export const fetchFoodsRequest = () => ({
 });
 
 export const NEW_SUCCESS = 'NEW_SUCCESS';
-export const fetchFoodsSuccess = data => ({
+export const fetchFoodsSuccess = foods => ({
   type: NEW_SUCCESS,
-  data
+  foods
 });
 
 export const NEW_ERROR = 'NEW_ERROR';

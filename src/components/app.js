@@ -3,7 +3,7 @@ import './app.css';
 import {fetchFoods, postNewFood} from '../actions/foods';
 import {connect} from 'react-redux';
 import AllergyForm from './aller-search-form';
-// import SearchResults from './components/search-results';
+// import SearchResults from './search-results';
 import PharmaSearch from './pharma-search-form';
 import PostFood from './post-food';
 
@@ -46,8 +46,8 @@ class App extends React.Component {
             onClick={e => this.openTab(e, 'PostFood')}>Add a Listing</button>
         </div>
         <div className='AppBody'>
-          <AllergyForm handleSubmit={e => 
-            this.props.dispatch(fetchFoods(e))}/>
+          <AllergyForm /* handleSubmit={e => 
+            this.props.dispatch(fetchFoods(e)) }*//>
           {/* <SearchResults foods={this.props.foods}/> */}
           <PharmaSearch />
           <PostFood handleSubmit={(nme1, ing2) => 

@@ -1,9 +1,16 @@
 import React from 'react';
 import './register-login.css';
-import { createUser } from '../actions/jwtauth';
+import { createUser, loginUser } from '../actions/jwtauth';
 import { connect } from 'react-redux';
 
 class Register extends React.Component {
+
+  onSubmit(val){
+    return this.props
+      .dispatch(createUser(val.email.value, val.newUser.value, val.newPass.value))
+      .then(() => this.props.dispatch(loginUser(val.newUser, val.newPass)));
+  }
+
   render(){
     return(
       <div>
@@ -11,8 +18,7 @@ class Register extends React.Component {
         { e.preventDefault();
           const newCred = e.target.elements;
           console.log(newCred, '=====new======');
-          this.props.dispatch(
-            createUser(newCred.email.value, newCred.newUser.value, newCred.newPass.value));}}>
+          this.onSubmit(newCred);}}>
           <div className='input'>
             <label>Email</label>
             <input type="text" name="email" id="email"

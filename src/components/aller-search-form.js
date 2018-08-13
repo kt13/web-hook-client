@@ -2,6 +2,7 @@ import React from 'react';
 import {toggleFoodsList} from '../actions/foods';
 import {connect} from 'react-redux';
 import SearchResults from './search-results';
+import {fetchFoods} from '../actions/foods';
 // import './guess-form.css';
 
 class AllergyForm extends React.Component {
@@ -17,14 +18,17 @@ class AllergyForm extends React.Component {
   //   this.input.value = '';
   //   this.input.focus();
 
-
+  // console.log('qrawefwedfasdfs', this.props);
   render(){
     console.log('qrawefwedfasdfs', this.props.foods);
     return (
       <div id='AllergySearch' className='tabcontent'>
         <h2>Enter in a food</h2>
+
         <form onSubmit={e =>  
-        { e.preventDefault(), console.log(this.input.value, '============'), this.props.handleSubmit(this.input.value); }}>
+        { e.preventDefault();
+          console.log(this.input.value, '============');
+          this.props.dispatch(fetchFoods(this.input.value)); }}>
           <input type="text" name="userSearch" id="userSearch"
             className="text" autoComplete="off"
             placeholder="E.g. panini" required 
@@ -33,7 +37,9 @@ class AllergyForm extends React.Component {
           <input type="submit" id="searchButton" className="button2" 
             name="submit" value="Search" onClick={() => this.props.dispatch(toggleFoodsList(false))} />
         </form>
+
         <SearchResults foods={this.props.foods}/>
+
       </div>
     );
   }

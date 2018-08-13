@@ -1,14 +1,16 @@
 import React from 'react';
 import './register-login.css';
+import {loginUser} from '../actions/jwtauth';
+import {connect} from 'react-redux';
 
-export default function Login (props){
+function Login (props){
   return(
     <div>
       <form onSubmit={e =>  
       { e.preventDefault(); 
         const creds = e.target.elements;
-        console.log(creds, '============');
-        this.props.handleSubmit(creds.username.value, creds.password.value); }}>
+        console.log(creds.username.value, creds.password.value, '============');
+        props.dispatch(loginUser(creds.username.value, creds.password.value)); }}>
         <div className='input'>
           <label>Username</label>
           <input type="text" name="username" id="username"
@@ -31,3 +33,5 @@ export default function Login (props){
     </div>
   );
 }
+
+export default connect()(Login);

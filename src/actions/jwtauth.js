@@ -34,13 +34,14 @@ const storeAuthInfo = (authToken, dispatch) => {
 
 export const createUser = (email, username, password) => dispatch => {
   dispatch(authRequest());
-  console.log('I\'m making a get request to the back-end');
+  console.log('I\'m making a post request to the back-end to create a user');
   return fetch(`${API_BASE_URL}/api/users`, {
     method: 'POST',
     headers:{
       'content-type': 'application/json'
     },
     body: JSON.stringify({
+
       email,
       username,
       password,
@@ -68,10 +69,8 @@ export const loginUser = (username, password) => dispatch => {
       password,
     })
   })
-    .then(res => {
-      console.log(res, 'test login user');
-      return res.json();
-    }).then(({token}) => {
+    .then(res => res.json())
+    .then(({token}) => {
       console.log(token);
       storeAuthInfo(token, dispatch);
     })

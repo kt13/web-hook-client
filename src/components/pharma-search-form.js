@@ -50,6 +50,16 @@ import {toggleMarkerInfo, fetchingPlaces} from '../actions/maps';
 // this.onMapClick = this.onMapClick.bind(this);
 // this.onMapReady = this.onMapReady.bind(this);  
 
+
+
+
+
+
+
+
+
+
+
 const MyMapComponent = compose(
   withScriptjs,
   withGoogleMap
@@ -72,13 +82,26 @@ const MyMapComponent = compose(
 );
 
 class PharmaSearch extends React.Component{
+
+
+
+
+
   // componentWillMount() {
   //   this.setState({ markers: [] });
   // }
 
+
+
+
+
   componentDidMount() {
+
+
+
+
     // const url = [
-    //   // Length issue
+    // Length issue
     //   'https://gist.githubusercontent.com',
     //   '/farrrr/dfda7dd7fccfec5474d3',
     //   '/raw/758852bbc1979f6c4522ab4e92d1c92cba8fb0dc/data.json'
@@ -89,6 +112,10 @@ class PharmaSearch extends React.Component{
     //   .then(data => {
     //     this.setState({ markers: data.photos });
     //   });
+
+
+
+
     this.props.dispatch(fetchingPlaces());
   }
 
@@ -114,6 +141,17 @@ const mapStateToProps = (state, props) => ({
 });
 
 export default connect(mapStateToProps)(PharmaSearch);
+
+
+
+
+
+
+
+
+
+
+
 //   searchNearby(map, center){
 //     const { google } = this.props;
 
