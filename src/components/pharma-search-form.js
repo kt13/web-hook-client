@@ -64,14 +64,15 @@ const MyMapComponent = compose(
   withScriptjs,
   withGoogleMap
 )(props =>
+  
   <GoogleMap
-    defaultZoom={8}
+    defaultZoom={10}
     defaultCenter={{lat: 39.648209, lng: -75.711185   }}
   >
     {props.markers.map(marker => (
       <Marker
-        key={marker.photo_id}
-        position={{ lat: marker.latitude, lng: marker.longitude }}
+        key={marker.id}
+        position={{ lat: marker.geometry.location.lat, lng: marker.geometry.location.lng }}
         onClick={() => props.dispatch(toggleMarkerInfo(true,marker))}>
         {marker.isMarkOpen && <InfoWindow 
           onCloseClick={() => props.dispatch(toggleMarkerInfo(false, marker))}>
@@ -82,54 +83,56 @@ const MyMapComponent = compose(
 );
 
 class PharmaSearch extends React.Component{
-
-
-
-
-
   // componentWillMount() {
   //   this.setState({ markers: [] });
   // }
 
+  // componentDidMount() {
+  // const url = [
+  // Length issue
+  //   'https://gist.githubusercontent.com',
+  //   '/farrrr/dfda7dd7fccfec5474d3',
+  //   '/raw/758852bbc1979f6c4522ab4e92d1c92cba8fb0dc/data.json'
+  // ].join('');
 
-
-
-
-  componentDidMount() {
-
-
-
-
-    // const url = [
-    // Length issue
-    //   'https://gist.githubusercontent.com',
-    //   '/farrrr/dfda7dd7fccfec5474d3',
-    //   '/raw/758852bbc1979f6c4522ab4e92d1c92cba8fb0dc/data.json'
-    // ].join('');
-
-    // fetch(url)
-    //   .then(res => res.json())
-    //   .then(data => {
-    //     this.setState({ markers: data.photos });
-    //   });
-
-
-
-
-    this.props.dispatch(fetchingPlaces());
-  }
+  // fetch(url)
+  //   .then(res => res.json())
+  //   .then(data => {
+  //     this.setState({ markers: data.photos });
+  //   });
+  // this.props.dispatch(fetchingPlaces());
+  // }
 
   render() {
+    let latLng;
     const googleURL =`https://maps.googleapis.com/maps/api/js?key=${API_KEY}&libraries=geometry,drawing,places`;
     return (
       <div id='PharmaSearch' className='tabcontent'>
+        <h2>Enter in a Zipcode to Search for a Pharmacy</h2>
+        <form onSubmit={e =>  
+        { e.preventDefault(); 
+          console.log(parseInt(e.target.elements.zipSearch.value, 10));
+          latLng = 
+          {lat: zipcodes.lookup(parseInt(e.target.elements.zipSearch.value, 10)).latitude, 
+            lng: zipcodes.lookup(parseInt(e.target.elements.zipSearch.value, 10)).longitude };
+          this.props.dispatch(fetchingPlaces(latLng)); }}>
+          <input type="text" name="zipSearch" id="userSearch"
+            className="text" autoComplete="off"
+            placeholder="E.g. 10001" required 
+            /* ref={ele => (this.input = ele)} required */
+          />
+          <input type="submit" id="searchButton" className="button" 
+            name="submit" value="Search"/*  onClick={() => this.props.dispatch((false))} */ />
+        </form>
         <MyMapComponent
           googleMapURL={googleURL}
           loadingElement= {<div style={{ height: '100%' }} />}
-          containerElement= {<div style={{ height: '400px', width: '600px' }} />}
+          containerElement= {<div style={{ height: '400px', width: '600px', 
+            marginLeft: 'auto', marginRight: 'auto'}} />}
           mapElement= {<div style={{ height: '100%' }} />}
           markers={this.props.markers}
           dispatch={this.props.dispatch}
+          defaultCenter={/* {lat: latLng.lat, lng: latLng.lng}|| */{lat: 39.648209, lng: -75.711185   }}
         />
       </div>
     );
@@ -141,15 +144,6 @@ const mapStateToProps = (state, props) => ({
 });
 
 export default connect(mapStateToProps)(PharmaSearch);
-
-
-
-
-
-
-
-
-
 
 
 //   searchNearby(map, center){

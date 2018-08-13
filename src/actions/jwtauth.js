@@ -69,10 +69,14 @@ export const loginUser = (username, password) => dispatch => {
       password,
     })
   })
-    .then(res => res.json())
-    .then(({token}) => {
-      console.log(token);
-      storeAuthInfo(token, dispatch);
+    .then(res => {
+      console.log(res, 'test login user');
+      return res.json();
+    }).then(data => {
+      console.log(data);
+      const {authToken} = data;
+      console.log(authToken);
+      storeAuthInfo(authToken, dispatch);
     })
     .catch(err => {
       dispatch(authError(err));

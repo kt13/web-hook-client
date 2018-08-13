@@ -12,9 +12,10 @@ export const mapReducer = (state=initialState, action) => {
     return Object.assign({}, state, {loading: true});
   }
   else if(action.type === NEW_MAP_SUCCESS){
+    console.log(action.data);
     return Object.assign({}, state, 
-      {loading: false, error: null, listHide: false,
-        foods: [...state.foods, ...action.data]
+      {
+        markers: [...action.data]
       });
   }
   else if(action.type === NEW_MAP_ERROR){
