@@ -1,4 +1,4 @@
-import {NEW_REQUEST, NEW_SUCCESS, NEW_ERROR, MARKER_INFO, NEW_ZIP_SEARCH} from '../actions/maps';
+import {NEW_MAP_REQUEST, NEW_MAP_SUCCESS, NEW_MAP_ERROR, MARKER_INFO, NEW_ZIP_SEARCH} from '../actions/maps';
 
 const initialState = {
   places: [],
@@ -8,16 +8,16 @@ const initialState = {
 };
 
 export const mapReducer = (state=initialState, action) => {
-  if(action.type === NEW_REQUEST){
+  if(action.type === NEW_MAP_REQUEST){
     return Object.assign({}, state, {loading: true});
   }
-  else if(action.type === NEW_SUCCESS){
+  else if(action.type === NEW_MAP_SUCCESS){
     return Object.assign({}, state, 
       {loading: false, error: null, listHide: false,
         foods: [...state.foods, ...action.data]
       });
   }
-  else if(action.type === NEW_ERROR){
+  else if(action.type === NEW_MAP_ERROR){
     return Object.assign({}, state, 
       {loading: false, error: action.error});
   }
@@ -46,25 +46,25 @@ export const mapReducer = (state=initialState, action) => {
   }
   return state;
 };
-  // switch(action.type) {
-  //   case(MAKE_GUESS):
-  //     return Object.assign({}, state, {
-  //       guessList: [...state.guessList, action.guess],
-  //       feedback: generateFeedback(action.guess)
-  //     });
-  //   case(START_NEW_GAME):
-  //     return Object.assign({}, state, {
-  //       targetNumber: generateNewTarget(),
-  //       feedback: 'Make your Guess!',
-  //       guessList: [],
-  //       showInfo: false
-  //     });
-  //   case(TOGGLE_MODAL):
-  //     return Object.assign({}, state, {
-  //       showInfo: !state.showInfo
-  //     });
-  //   default:
-  //     return state;
-  //   }
-  // };
+// switch(action.type) {
+//   case(MAKE_GUESS):
+//     return Object.assign({}, state, {
+//       guessList: [...state.guessList, action.guess],
+//       feedback: generateFeedback(action.guess)
+//     });
+//   case(START_NEW_GAME):
+//     return Object.assign({}, state, {
+//       targetNumber: generateNewTarget(),
+//       feedback: 'Make your Guess!',
+//       guessList: [],
+//       showInfo: false
+//     });
+//   case(TOGGLE_MODAL):
+//     return Object.assign({}, state, {
+//       showInfo: !state.showInfo
+//     });
+//   default:
+//     return state;
+//   }
+// };
 

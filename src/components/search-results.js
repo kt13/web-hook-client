@@ -9,7 +9,7 @@ function SearchResults (props){
       <div id='SearchResults'>
         <li key={index}>
           {item.name}
-          <p>{item.ingredients}</p> 
+          <p>{item.ingredients.join(', ')}</p> 
         </li>
       </div>
     )

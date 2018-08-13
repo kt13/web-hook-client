@@ -1,18 +1,18 @@
 import {API_KEY} from '../config';
-export const NEW_REQUEST = 'NEW_REQUEST';
+export const NEW_MAP_REQUEST = 'NEW_MAP_REQUEST';
 export const fetchMapRequest = () => ({
-  type: NEW_REQUEST
+  type: NEW_MAP_REQUEST
 });
 
-export const NEW_SUCCESS = 'NEW_SUCCESS';
+export const NEW_MAP_SUCCESS = 'NEW_MAP_SUCCESS';
 export const fetchMapSuccess = data => ({
-  type: NEW_SUCCESS,
+  type: NEW_MAP_SUCCESS,
   data
 });
 
-export const NEW_ERROR = 'NEW_ERROR';
+export const NEW_MAP_ERROR = 'NEW_MAP_ERROR';
 export const fetchMapError = error => ({
-  type: NEW_ERROR,
+  type: NEW_MAP_ERROR,
   error
 });
 

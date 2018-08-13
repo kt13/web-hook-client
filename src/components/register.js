@@ -7,8 +7,8 @@ class Register extends React.Component {
 
   onSubmit(val){
     return this.props
-      .dispatch(createUser(val.email.value, val.newUser.value, val.newPass.value))
-      .then(() => this.props.dispatch(loginUser(val.newUser, val.newPass)));
+      .dispatch(createUser(val.email.value, val.newUser.value, val.newPass.value));
+    // .then(() => this.props.dispatch(loginUser(val.newUser, val.newPass)));
   }
 
   render(){
