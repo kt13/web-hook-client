@@ -108,32 +108,34 @@ class PharmaSearch extends React.Component{
     const googleURL =`https://maps.googleapis.com/maps/api/js?key=${API_KEY}&libraries=geometry,drawing,places`;
     return (
       <div id='PharmaSearch' className='tabcontent'>
-        <h2>Enter in a Zipcode to Search for a Pharmacy</h2>
-        <form onSubmit={e =>  
-        { e.preventDefault(); 
-          console.log(parseInt(e.target.elements.zipSearch.value, 10));
-          latLng = 
+        <div className='psearch'>
+          <h2>Enter in a Zipcode to Search for a Pharmacy</h2>
+          <form onSubmit={e =>  
+          { e.preventDefault(); 
+            console.log(parseInt(e.target.elements.zipSearch.value, 10));
+            latLng = 
           {lat: zipcodes.lookup(parseInt(e.target.elements.zipSearch.value, 10)).latitude, 
             lng: zipcodes.lookup(parseInt(e.target.elements.zipSearch.value, 10)).longitude };
-          this.props.dispatch(fetchingPlaces(latLng)); }}>
-          <input type="text" name="zipSearch" id="userSearch"
-            className="text" autoComplete="off"
-            placeholder="E.g. 10001" required 
+            this.props.dispatch(fetchingPlaces(latLng)); }}>
+            <input type="text" name="zipSearch" id="userSearch"
+              className="text" autoComplete="off"
+              placeholder="E.g. 10001" required 
             /* ref={ele => (this.input = ele)} required */
+            />
+            <input type="submit" id="searchButton" className="button" 
+              name="submit" value="Search"/*  onClick={() => this.props.dispatch((false))} */ />
+          </form>
+          <MyMapComponent
+            googleMapURL={googleURL}
+            loadingElement= {<div style={{ height: '100%' }} />}
+            containerElement= {<div style={{ height: '400px', width: '600px', 
+              marginLeft: 'auto', marginRight: 'auto'}} />}
+            mapElement= {<div style={{ height: '100%' }} />}
+            markers={this.props.markers}
+            dispatch={this.props.dispatch}
+            defaultCenter={/* {lat: latLng.lat, lng: latLng.lng}|| */{lat: 39.648209, lng: -75.711185   }}
           />
-          <input type="submit" id="searchButton" className="button" 
-            name="submit" value="Search"/*  onClick={() => this.props.dispatch((false))} */ />
-        </form>
-        <MyMapComponent
-          googleMapURL={googleURL}
-          loadingElement= {<div style={{ height: '100%' }} />}
-          containerElement= {<div style={{ height: '400px', width: '600px', 
-            marginLeft: 'auto', marginRight: 'auto'}} />}
-          mapElement= {<div style={{ height: '100%' }} />}
-          markers={this.props.markers}
-          dispatch={this.props.dispatch}
-          defaultCenter={/* {lat: latLng.lat, lng: latLng.lng}|| */{lat: 39.648209, lng: -75.711185   }}
-        />
+        </div>
       </div>
     );
   }

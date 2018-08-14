@@ -3,7 +3,7 @@ import {toggleFoodsList} from '../actions/foods';
 import {connect} from 'react-redux';
 import SearchResults from './search-results';
 import {fetchFoods} from '../actions/foods';
-// import './guess-form.css';
+import './aller-search.css';
 
 class AllergyForm extends React.Component {
  
@@ -23,23 +23,24 @@ class AllergyForm extends React.Component {
     // console.log('qrawefwedfasdfs', this.props.foods);
     return (
       <div id='AllergySearch' className='tabcontent' id='defaultOpen'>
-        <h2>Enter in a food</h2>
+        <div className='fsearch'>
+          <h2>Enter in a food</h2>
 
-        <form onSubmit={e =>  
-        { e.preventDefault();
-          console.log(this.input.value, '============');
-          this.props.dispatch(fetchFoods(this.input.value)); }}>
-          <input type="text" name="userSearch" id="userSearch"
-            className="text" autoComplete="off"
-            placeholder="E.g. panini" required 
-            ref={ele => (this.input = ele)} required
-          />
-          <input type="submit" id="searchButton" className="button2" 
-            name="submit" value="Search" onClick={() => this.props.dispatch(toggleFoodsList(false))} />
-        </form>
+          <form onSubmit={e =>  
+          { e.preventDefault();
+            console.log(this.input.value, '============');
+            this.props.dispatch(fetchFoods(this.input.value)); }}>
+            <input type="text" name="userSearch" id="userSearch"
+              className="text" autoComplete="off"
+              placeholder="E.g. panini" required 
+              ref={ele => (this.input = ele)} required
+            />
+            <input type="submit" id="searchButton" className="button2" 
+              name="submit" value="Search" onClick={() => this.props.dispatch(toggleFoodsList(false))} />
+          </form>
 
-        <SearchResults foods={this.props.foods}/>
-
+          <SearchResults foods={this.props.foods}/>
+        </div>
       </div>
     );
   }

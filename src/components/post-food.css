@@ -1,12 +1,16 @@
+.postfood{
+  text-align: center;
+}
+
 label {
-  width: 140px;
   text-align: right;
   padding: 10px;
+  vertical-align: middle;
+  display: inline-block;
 }
 
 .input {
-  padding: 5px;
-  text-align:left;
+  padding: 10px;
 }
 
 p{
@@ -20,4 +24,10 @@ p{
 
 .name {
   width: 195.50px;
+}
+
+textarea {
+  height: 60px;
+  display: inline-block;
+  vertical-align: middle;
 }

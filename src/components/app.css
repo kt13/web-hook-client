@@ -48,6 +48,8 @@ h1{
 
 /* Style the tab content */
 .tabcontent {
+  margin-left: auto;
+  margin-right: auto;
   font-size: 20px;
   padding: 6px 12px;
   border: 1px solid #ccc;
