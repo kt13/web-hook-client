@@ -1,5 +1,9 @@
 *{
   /* background-color: rgba(129, 103, 99, 0.815); */
+  font-family: 'Lora', serif;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .AppBody {
@@ -22,6 +26,7 @@ h1{
 
 /* Style the buttons that are used to open the tab content */
 .tab button {
+  font-size: 15px;
   background-color: inherit;
   float: left;
   border: none;
@@ -43,7 +48,7 @@ h1{
 
 /* Style the tab content */
 .tabcontent {
-  /* display: none; */
+  font-size: 20px;
   padding: 6px 12px;
   border: 1px solid #ccc;
   border-top: none;
