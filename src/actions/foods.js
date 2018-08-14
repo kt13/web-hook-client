@@ -1,4 +1,6 @@
 import {API_BASE_URL} from '../config';
+import {loadAuthToken} from '../local-storage';
+
 export const NEW_REQUEST = 'NEW_REQUEST';
 export const fetchFoodsRequest = () => ({
   type: NEW_REQUEST
@@ -58,7 +60,8 @@ export const postNewFood = (nme1, ing2) => dispatch => {
     {
       method: 'POST',
       headers:{
-        'content-type': 'application/json'
+        'content-type': 'application/json',
+        'Authorization': `Bearer ${loadAuthToken()}`
       },
       body: JSON.stringify({
         'name': nme1,
