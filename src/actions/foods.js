@@ -31,6 +31,12 @@ export const postFoodsSuccess = (name, ingredient) => ({
   ingredient
 });
 
+export const EXPAND_RESULT = 'EXPAND_RESULT';
+export const expandResult = name => ({
+  type: EXPAND_RESULT,
+  name
+});
+
 
 export const fetchFoods = food => dispatch => {
   dispatch(fetchFoodsRequest());

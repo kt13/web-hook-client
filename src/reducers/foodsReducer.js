@@ -1,9 +1,10 @@
-import { NEW_REQUEST, NEW_SUCCESS, NEW_ERROR} from '../actions/foods';
+import { NEW_REQUEST, NEW_SUCCESS, NEW_ERROR, EXPAND_RESULT} from '../actions/foods';
 
 const initialState = {
   foods: [],
   loading: false,
   error: null,
+  singleFood: []
 };
 // console.log(initialState.foods,'sadfasdfasfdsf');
 
@@ -20,10 +21,17 @@ export const foodsReducer = (state=initialState, action) => {
           
     // action.data.map(item => state.foods[item])]});
   }
+  else if(action.type === EXPAND_RESULT){
+    return Object.assign({}, state, 
+      {
+        singleFood: [state.foods.map(item => item === action.name)]
+      }
+    );
+  }
   else if(action.type === NEW_ERROR){
     return Object.assign({}, state, 
       {loading: false, error: action.error});
-  }
+  } 
   return state;
   // switch(action.type) {
   //   case(MAKE_GUESS):
