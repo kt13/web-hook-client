@@ -15,7 +15,7 @@ export const foodsReducer = (state=initialState, action) => {
     console.log(action.foods);
     return Object.assign({}, state, 
       {
-        foods: [...state.foods, ...action.foods]
+        foods: [...action.foods]
       });
           
     // action.data.map(item => state.foods[item])]});
