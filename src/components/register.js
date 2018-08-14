@@ -1,6 +1,6 @@
 import React from 'react';
 import './register-login.css';
-import { createUser, loginUser } from '../actions/jwtauth';
+import { createUser } from '../actions/jwtauth';
 import { connect } from 'react-redux';
 import {Redirect} from 'react-router-dom';
 
@@ -16,7 +16,7 @@ class Register extends React.Component {
 
     if(this.props.registered === false){
       return(
-        <div>
+        <div className='register'>
 
           <form onSubmit={e =>
           { e.preventDefault();
@@ -51,7 +51,7 @@ class Register extends React.Component {
               />
             </div>
 
-            <input type="submit" id="registerButton" className="button1" 
+            <input type="submit" id="registerButton" className="button5" 
               name="submit" value="Register" />
 
           </form>

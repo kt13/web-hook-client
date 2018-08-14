@@ -15,9 +15,17 @@ p{
 
 .button4, .button5 {
   display: inline-block;
-  margin: auto;
 }
 
 .name {
   width: 195.50px;
 }
+
+.register {
+  text-align: center;
+}
+
+.login {
+  text-align: center;
+}
+
