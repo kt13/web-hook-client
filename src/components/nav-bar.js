@@ -7,13 +7,17 @@ export default function NavBar(props) {
     <nav>
       <ul className="clearfix">
         <li /* onClick={e => props.onClick(e)} */>
-          <Link to="/register" className="register">
-                        Register
+          <Link to="/register" 
+            className="register"  
+            style={{ textDecoration: 'none' }}>
+          Register
           </Link>
         </li>
         <li /* onClick={e => props.newGame(e)} */>
-          <Link to="/login" className="login">
-                        Login
+          <Link to="/login" 
+            className="login"  
+            style={{ textDecoration: 'none' }}>
+          Login
           </Link>
         </li>
       </ul>
