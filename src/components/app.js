@@ -5,6 +5,8 @@ import {Link} from 'react-router-dom';
 
 export default function App (props) {
 
+//add in superuser access to delete and update listings
+
   return (
     <div className='App'>
       <div className="tab">

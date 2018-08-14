@@ -7,8 +7,9 @@ import {rootReducer as comboReducer} from './reducers/comboReducer';
 import {applyMiddleware, createStore} from 'redux';
 import thunk from 'redux-thunk'; 
 import {Provider} from 'react-redux';
+import logger from 'redux-logger';
 
-const store = createStore(comboReducer, applyMiddleware(thunk));
+const store = createStore(comboReducer, applyMiddleware(thunk, logger));
 
 ReactDOM.render(
   <Provider store={store}>

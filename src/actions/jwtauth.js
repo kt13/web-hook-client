@@ -3,9 +3,14 @@ import jwtDecode from 'jwt-decode';
 import {saveAuthToken, clearAuthToken} from '../local-storage';
 
 export const AUTH_SET = 'AUTH_SET';
-export const setAuthToken = auth => ({
+export const setAuthToken = token => ({
   type: AUTH_SET,
-  auth
+  token
+});
+
+export const CLEAR_AUTH = 'CLEAR_AUTH';
+export const clearAuth = () => ({
+  type: CLEAR_AUTH
 });
 
 export const AUTH_REQUEST = 'AUTH_REQUEST';
@@ -14,9 +19,9 @@ export const authRequest = () => ({
 });
 
 export const AUTH_SUCCESS = 'AUTH_SUCCESS';
-export const authSuccess = data => ({
+export const authSuccess = user => ({
   type: AUTH_SUCCESS,
-  data
+  user
 });
 
 export const AUTH_ERROR = 'AUTH_ERROR';
@@ -24,11 +29,18 @@ export const authError = error => ({
   type: AUTH_ERROR,
   error
 });
+export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
+export const registerSuccess = status => ({
+  type: REGISTER_SUCCESS,
+  status
+});
 
 const storeAuthInfo = (authToken, dispatch) => {
+  // console.log(authToken);
   const decodedToken = jwtDecode(authToken);
+  // console.log(decodedToken, decodedToken.user.username);
   dispatch(setAuthToken(authToken));
-  dispatch(authSuccess(decodedToken.user));
+  dispatch(authSuccess(decodedToken.user.username));
   saveAuthToken(authToken);
 };
 
@@ -49,7 +61,8 @@ export const createUser = (email, username, password) => dispatch => {
   })
     .then(res => {
       console.log(res, 'test create user');
-      return res.json();
+      // return res.json();
+      dispatch(registerSuccess(true));
     })
     .catch(err => {
       dispatch(authError(err));
@@ -70,15 +83,20 @@ export const loginUser = (username, password) => dispatch => {
     })
   })
     .then(res => {
-      console.log(res, 'test login user');
+      // console.log(res, 'test login user');
       return res.json();
     }).then(data => {
-      console.log(data);
+      // console.log(data);
       const {authToken} = data;
-      console.log(authToken);
+      // console.log(authToken);
       storeAuthInfo(authToken, dispatch);
     })
     .catch(err => {
       dispatch(authError(err));
     });
+};
+
+export const logoutUser = () => dispatch => {
+  dispatch(clearAuth());
+  clearAuthToken();
 };
