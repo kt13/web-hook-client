@@ -8,7 +8,7 @@ function SearchResults (props){
     const foods = props.foods.map((item, index) =>(
       <div id='SearchResults'>
         <li key={index}>
-          {item.name}
+          <a href='#'>{item.name}</a>
           <p>{item.ingredients.join(', ')}</p> 
         </li>
       </div>

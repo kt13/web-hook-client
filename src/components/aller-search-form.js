@@ -6,7 +6,7 @@ import {fetchFoods} from '../actions/foods';
 // import './guess-form.css';
 
 class AllergyForm extends React.Component {
-
+ 
   // onSubmit (event){
   //   event.preventDefault();
 
@@ -20,9 +20,9 @@ class AllergyForm extends React.Component {
 
   // console.log('qrawefwedfasdfs', this.props);
   render(){
-    console.log('qrawefwedfasdfs', this.props.foods);
+    // console.log('qrawefwedfasdfs', this.props.foods);
     return (
-      <div id='AllergySearch' className='tabcontent'>
+      <div id='AllergySearch' className='tabcontent' id='defaultOpen'>
         <h2>Enter in a food</h2>
 
         <form onSubmit={e =>  

@@ -1,10 +1,11 @@
 import React from 'react';
 import './post-food.css';
+import { connect } from 'react-redux';
+import {postNewFood} from '../actions/foods';
 
-export default function PostFood (props){
+function PostFood (props){
   return(
     <div id='PostFood' className='tabcontent'>
-    
       <h2>Contribute a New Food to the Database for Public Use!</h2>
       <p>Please note that duplicate items can not be created.</p>
 
@@ -12,7 +13,7 @@ export default function PostFood (props){
         e.preventDefault();
         // console.log(e.target.elements.foodName.value, '---');
         const el = e.target.elements;
-        props.handleSubmit(el.foodName.value, el.ingredients.value);}}>
+        props.dispatch(postNewFood(el.foodName.value, el.ingredients.value));}}>
         <div className='input'>
           <label>Name</label>
           <input type='text' className='name' name='foodName'></input>
@@ -28,3 +29,5 @@ export default function PostFood (props){
     </div>
   );
 }
+
+export default connect()(PostFood);

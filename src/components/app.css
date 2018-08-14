@@ -17,6 +17,7 @@ h1{
   overflow: hidden;
   border: 1px solid #ccc;
   background-color: #f1f1f1;
+  float: center;
 }
 
 /* Style the buttons that are used to open the tab content */
@@ -42,7 +43,7 @@ h1{
 
 /* Style the tab content */
 .tabcontent {
-  display: none;
+  /* display: none; */
   padding: 6px 12px;
   border: 1px solid #ccc;
   border-top: none;
