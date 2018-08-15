@@ -28,16 +28,28 @@ import {toggleMarkerInfo, fetchingPlaces} from '../actions/maps';
 // this.onMapClick = this.onMapClick.bind(this);
 // this.onMapReady = this.onMapReady.bind(this);  
 
+// let newCenter = {};
+// console.log(newCenter);
+// function reAlign(){
+//   if(this.props.centerLat && this.props.centerLng){
+//   // newCenter = {lat: this.props.center[0], lng: this.props.center[1]};
+//     console.log(this.props.centerLat);
+//     newCenter = {lat: parseInt(this.props.centerLat, 10), lng: parseInt(this.props.centerLng, 10)};
+//     console.log(newCenter);
+//     return newCenter;
+//   }
+// }
 
 const MyMapComponent = compose(
   withScriptjs,
   withGoogleMap
-)(props =>
-  
-  <GoogleMap
-    defaultZoom={10}
-    defaultCenter={{lat: 39.648209, lng: -75.711185   }}
+)(props =>{
+  console.log(props);
+  return (<GoogleMap
+    defaultZoom={13}
+    center={{lat: props.centerLat, lng: props.centerLng}/* {lat: 39.648209, lng: -75.711185} */}
   >
+    
     {props.markers.map(marker => (
       <Marker
         key={marker.id}
@@ -48,18 +60,17 @@ const MyMapComponent = compose(
           <FaAnchor />
         </InfoWindow>}
       </Marker>))}
-  </GoogleMap>
+
+  </GoogleMap>);
+}
 );
 
+
 class PharmaSearch extends React.Component{
-  // componentWillMount() {
-  //   this.setState({ markers: [] });
-  // }
 
   render() {
-    let latLng;
+    console.log(this.props, '------------------------');
     const googleURL =`https://maps.googleapis.com/maps/api/js?key=${API_KEY}&libraries=geometry,drawing,places`;
-    
     return (
       <div id='PharmaSearch' className='tabcontent'>
         <div className='psearch'>
@@ -69,7 +80,7 @@ class PharmaSearch extends React.Component{
           <form onSubmit={e =>  
           { e.preventDefault(); 
             console.log(parseInt(e.target.elements.zipSearch.value, 10));
-            latLng = 
+            const latLng = 
           {lat: zipcodes.lookup(parseInt(e.target.elements.zipSearch.value, 10)).latitude, 
             lng: zipcodes.lookup(parseInt(e.target.elements.zipSearch.value, 10)).longitude };
             this.props.dispatch(fetchingPlaces(latLng)); }}>
@@ -89,8 +100,9 @@ class PharmaSearch extends React.Component{
               marginLeft: 'auto', marginRight: 'auto'}} />}
             mapElement= {<div style={{ height: '100%' }} />}
             markers={this.props.markers}
+            centerLat={this.props.centerLat}
+            centerLng={this.props.centerLng}
             dispatch={this.props.dispatch}
-            defaultCenter={/* {lat: latLng.lat, lng: latLng.lng}|| */{lat: 39.648209, lng: -75.711185   }}
           />
           {/* empty object gives true value */}
         </div>
@@ -101,6 +113,8 @@ class PharmaSearch extends React.Component{
 
 const mapStateToProps = (state, props) => ({
   markers: state.mapR.markers,
+  centerLat: state.mapR.centerLat,
+  centerLng: state.mapR.centerLng
 });
 
 export default connect(mapStateToProps)(PharmaSearch);

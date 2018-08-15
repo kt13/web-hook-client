@@ -1,11 +1,18 @@
-import {NEW_MAP_REQUEST, NEW_MAP_SUCCESS, NEW_MAP_ERROR, MARKER_INFO, NEW_ZIP_SEARCH} from '../actions/maps';
+import {
+  NEW_MAP_REQUEST, 
+  NEW_MAP_SUCCESS, 
+  NEW_MAP_ERROR, 
+  MARKER_INFO, 
+  NEW_ZIP_SEARCH, 
+  CENTER_REALIGN} from '../actions/maps';
 
 const initialState = {
   places: [],
   loading: false,
   error: null,
   markers: [],
-  center: null
+  centerLat: 39.648209,
+  centerLng: -75.711185
 };
 
 export const mapReducer = (state=initialState, action) => {
@@ -15,8 +22,14 @@ export const mapReducer = (state=initialState, action) => {
   else if(action.type === NEW_MAP_SUCCESS){
     // console.log(action.data);
     return Object.assign({}, state, 
-      {
+      {loading: false,
         markers: [...action.data]
+      });
+  }
+  else if(action.type === CENTER_REALIGN){
+    return Object.assign({}, state, 
+      {loading: false,
+        centerLat: action.lat, centerLng: action.lng
       });
   }
   else if(action.type === NEW_MAP_ERROR){

@@ -28,7 +28,7 @@ class AllergyForm extends React.Component {
 
           <form onSubmit={e =>  
           { e.preventDefault();
-            console.log(this.input.value, '============');
+            // console.log(this.input.value, '============');
             this.props.dispatch(fetchFoods(this.input.value)); }}>
             <input type="text" name="userSearch" id="userSearch"
               className="text" autoComplete="off"

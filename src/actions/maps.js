@@ -30,18 +30,18 @@ export const toggleMarkerInfo = (toggle, marker) => ({
   marker
 });
 
-
+export const CENTER_REALIGN = 'CENTER_REALIGN ';
+export const mapRealign = (lat, lng) => ({
+  type: CENTER_REALIGN ,
+  lat,
+  lng
+});
 
 export const fetchingPlaces = places => dispatch => {
   dispatch(fetchMapRequest());
   console.log(places.lat, places.lng);
+  dispatch(mapRealign(places.lat, places.lng));
   console.log('I\'m making a get request to the back-end');
-  // return fetch(
-  //   `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${places.lat},${places.lng}&radius=5000&keyword=pharmacies&key=${API_KEY}`,
-  //   {
-  //     mode: 'no-cors',
-  //     method: 'GET' 
-  //   })
   return fetch(`${API_BASE_URL}/api/markers/${places.lat}/${places.lng}/${API_KEY}`)
     .then(res => {
       // console.log(res, 'test console');
@@ -49,24 +49,8 @@ export const fetchingPlaces = places => dispatch => {
     }).then(res => {
       console.log(res.results);
       const markerData = res.results;
-      console.log(...markerData);
-      console.log(markerData[0].geometry.location.lat, markerData[0].id);
-      // let newMarkerData=[];
-      // markerData.map(item => {
-      //   if(item.geometry && item.id && item.name){
-      //     newMarkerData = [item.id, item.geometry, item.name];
-      //     console.log(newMarkerData);
-      //     return newMarkerData;
-      //   }
-
-      // });
-      // // const {results} = res;
-      // console.log(res.results);
-     
-      // for(const results in res){
-      //   console.log(results);
-      //   dispatch(fetchMapSuccess(results));
-      // }
+      // console.log(...markerData);
+      // console.log(markerData[0].geometry.location.lat, markerData[0].id);
       dispatch(fetchMapSuccess(markerData));
     })
     .catch(err => {
@@ -82,11 +66,6 @@ export const fetchingPlaces = places => dispatch => {
 //   '/farrrr/dfda7dd7fccfec5474d3',
 //   '/raw/758852bbc1979f6c4522ab4e92d1c92cba8fb0dc/data.json'
 // ].join('');
-
-
-
-
-
 
 // export const fetchingPlaces1 = () => dispatch => {
 //   dispatch(fetchMapRequest());
