@@ -92,7 +92,7 @@ class PharmaSearch extends React.Component{
             dispatch={this.props.dispatch}
             defaultCenter={/* {lat: latLng.lat, lng: latLng.lng}|| */{lat: 39.648209, lng: -75.711185   }}
           />
-
+          {/* empty object gives true value */}
         </div>
       </div>
     );

@@ -4,7 +4,8 @@ const initialState = {
   places: [],
   loading: false,
   error: null,
-  markers: []
+  markers: [],
+  center: null
 };
 
 export const mapReducer = (state=initialState, action) => {
