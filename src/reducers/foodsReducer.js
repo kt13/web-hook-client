@@ -3,14 +3,16 @@ import {
   NEW_SUCCESS, 
   NEW_ERROR, 
   EXPAND_RESULT, 
-  NEW_FOOD_SEARCH} from '../actions/foods';
+  NEW_FOOD_SEARCH,
+  NEW_ALLERGEN_SUCCESS} from '../actions/foods';
 
 const initialState = {
   foods: [],
   loading: false,
   error: null,
   expandFood: false,
-  searchListHide: true
+  searchListHide: true,
+  allergens: []
 };  
 
 // console.log(initialState.foods,'sadfasdfasfdsf');
@@ -41,6 +43,11 @@ export const foodsReducer = (state=initialState, action) => {
   } else if(action.type === NEW_ERROR){
     return Object.assign({}, state, {
       loading: false, error: action.error
+    });
+
+  } else if(action.type === NEW_ALLERGEN_SUCCESS){
+    return Object.assign({}, state, {
+      allergens: [...action.allergy]
     });
   } 
   return state;

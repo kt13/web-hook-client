@@ -37,6 +37,11 @@ export const expandResult = torf => ({
   torf
 });
 
+export const NEW_ALLERGEN_SUCCESS = 'NEW_ALLERGEN_SUCCESS';
+export const fetchAllergenSuccess = allergy => ({
+  type: NEW_ALLERGEN_SUCCESS,
+  allergy
+});
 
 export const fetchFoods = food => dispatch => {
   dispatch(fetchFoodsRequest());
@@ -51,6 +56,26 @@ export const fetchFoods = food => dispatch => {
     }).then(res => {
       console.log(res);
       dispatch(fetchFoodsSuccess(res));
+      
+    })
+    .catch(err => {
+      dispatch(fetchFoodsError(err));
+    });
+};
+
+export const fetchAllergens = foodId => dispatch => {
+  dispatch(fetchFoodsRequest());
+  console.log('I\'m making a get request to the back-end to find allergens of that food');
+  return fetch(`${API_BASE_URL}/api/foods/${foodId}/allergens`)
+    .then(res => {
+      console.log(res, 'test console');
+      if (!res.ok) {
+        return Promise.reject(res.statusText);
+      }
+      return res.json();
+    }).then(res => {
+      console.log(res);
+      dispatch(fetchAllergenSuccess(res));
       
     })
     .catch(err => {

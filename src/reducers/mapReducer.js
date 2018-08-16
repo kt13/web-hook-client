@@ -7,10 +7,9 @@ import {
   CENTER_REALIGN} from '../actions/maps';
 
 const initialState = {
-  places: [],
+  markers: [],
   loading: false,
   error: null,
-  markers: [],
   centerLat: 39.648209,
   centerLng: -75.711185
 };
@@ -38,7 +37,7 @@ export const mapReducer = (state=initialState, action) => {
     return Object.assign({}, state, {
       loading: false, error: action.error
     });
-    
+
   } else if(action.type === MARKER_INFO){
     // console.log(action, '------------');
     return Object.assign({}, state, 

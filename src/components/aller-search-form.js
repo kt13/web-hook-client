@@ -41,7 +41,7 @@ export class AllergyForm extends React.Component {
               name="submit" value="Search" onClick={() => this.props.dispatch(toggleFoodsList(false))} />
           </form>
 
-          {/* <SearchResults/> */}
+          <SearchResults/>
 
         </div>
       </div>

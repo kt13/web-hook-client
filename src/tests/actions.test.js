@@ -1,3 +1,4 @@
+/* global $ expect jest */
 import { 
   NEW_REQUEST, 
   NEW_SUCCESS, 
