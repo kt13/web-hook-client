@@ -25,21 +25,23 @@ export class AllergyForm extends React.Component {
     // console.log('qrawefwedfasdfs', this.props.foods);
     return (
       <div id='AllergySearch' className='tabcontent' id='defaultOpen'>
-        <div className='fsearch'>
+        <div className='foodSearch'>
           <h2>Enter in a food</h2>
 
-          <form onSubmit={e =>  
-          { e.preventDefault();
+          <div className='allergyForm'>
+            <form onSubmit={e =>  
+            { e.preventDefault();
             // console.log(this.input.value, '============');
-            this.props.dispatch(fetchFoods(this.input.value)); }}>
-            <input type="text" name="foodSearch" id="foodSearch"
-              className="text" autoComplete="off"
-              placeholder="E.g. panini" required 
-              ref={ele => (this.input = ele)} required
-            />
-            <input type="submit" id="getButton" className="button2" 
-              name="submit" value="Search" onClick={() => this.props.dispatch(toggleFoodsList(false))} />
-          </form>
+              this.props.dispatch(fetchFoods(this.input.value)); }}>
+              <input type="text" name="foodSearch" id="foodSearch"
+                className="text" autoComplete="off"
+                placeholder="E.g. panini" required 
+                ref={ele => (this.input = ele)} required
+              />
+              <input type="submit" id="allergyButton" className="allergyButton" 
+                name="submit" value="Search" onClick={() => this.props.dispatch(toggleFoodsList(false))} />
+            </form>
+          </div>
 
           <SearchResults/>
 

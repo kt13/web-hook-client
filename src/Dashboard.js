@@ -13,6 +13,7 @@ import Login from './components/login';
 import SearchFood from './components/aller-search-form';
 import SearchPharma from './components/pharma-search-form';
 import AddListing from './components/post-food';
+import './Dashboard.css';
 
 export default function Dashboard() {
   // const h1Style = {
@@ -20,11 +21,11 @@ export default function Dashboard() {
   // };
   return (
     <Router>
-      <div className="dashboard">
+      <div className="dashboard" /* style={{ 'background-color': '#2B2C28'}} */>
         <NavBar />
         <h1><Link 
           to='/'
-          style={{ textDecoration: 'none' }}
+          style={{ textDecoration: 'none', /* color: 'black' */}}
         >Food for You</Link>
         </h1>
         <App/>

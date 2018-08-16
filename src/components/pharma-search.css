@@ -16,11 +16,15 @@ html, body {
   padding: 0;
 }  */
 
-.psearch{
+.pharmaSearch{
   padding: 10px;
   text-align: center;
 }
 
-/* .button {
+.map{
+  padding: 20px;
+}
+
+/* .pharmaButton {
   margin: 5px;
 } */

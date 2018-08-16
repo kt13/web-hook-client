@@ -53,7 +53,8 @@ const MyMapComponent = compose(
       <Marker
         key={marker.id}
         position={{ lat: marker.geometry.location.lat, lng: marker.geometry.location.lng }}
-        onClick={() => props.dispatch(toggleMarkerInfo(true,marker))}>
+        onClick={() => 
+          props.dispatch(toggleMarkerInfo(true, marker))}>
         {marker.isMarkOpen && <InfoWindow 
           onCloseClick={() => props.dispatch(toggleMarkerInfo(false, marker))}>
           <FaAnchor />
@@ -72,7 +73,7 @@ class PharmaSearch extends React.Component{
     const googleURL =`https://maps.googleapis.com/maps/api/js?key=${API_KEY}&libraries=geometry,drawing,places`;
     return (
       <div id='PharmaSearch' className='tabcontent'>
-        <div className='psearch'>
+        <div className='pharmaSearch'>
 
           <h2>Enter in a Zipcode to Search for a Pharmacy</h2>
 
@@ -88,21 +89,22 @@ class PharmaSearch extends React.Component{
               placeholder="E.g. 10001" required 
             /* ref={ele => (this.input = ele)} required */
             />
-            <input type="submit" id="searchButton" className="button" 
+            <input type="submit" id="searchButton" className="pharmaButton" 
               name="submit" value="Search"/*  onClick={() => this.props.dispatch((false))} */ />
           </form>
-
-          <MyMapComponent
-            googleMapURL={googleURL}
-            loadingElement= {<div style={{ height: '100%' }} />}
-            containerElement= {<div style={{ height: '400px', width: '600px', 
-              marginLeft: 'auto', marginRight: 'auto'}} />}
-            mapElement= {<div style={{ height: '100%' }} />}
-            markers={this.props.markers}
-            centerLat={this.props.centerLat}
-            centerLng={this.props.centerLng}
-            dispatch={this.props.dispatch}
-          />
+          <div className='map'>
+            <MyMapComponent
+              googleMapURL={googleURL}
+              loadingElement= {<div style={{ height: '100%' }} />}
+              containerElement= {<div style={{ height: '400px', width: '600px', 
+                marginLeft: 'auto', marginRight: 'auto'}} />}
+              mapElement= {<div style={{ height: '100%' }} />}
+              markers={this.props.markers}
+              centerLat={this.props.centerLat}
+              centerLng={this.props.centerLng}
+              dispatch={this.props.dispatch}
+            />
+          </div>
           {/* empty object gives true value */}
         </div>
       </div>

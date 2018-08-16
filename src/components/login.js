@@ -33,7 +33,7 @@ export function Login (props){
             />
           </div>
 
-          <input type="submit" id="loginButton" className="button4" 
+          <input type="submit" id="loginButton" className="loginButton" 
             name="submit" value="Login"/>
         </form>
 

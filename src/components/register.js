@@ -60,7 +60,7 @@ export class Register extends React.Component {
               />
             </div>
 
-            <input type="submit" id="registerButton" className="button5" 
+            <input type="submit" id="registerButton" className="registerButton" 
               name="submit" value="Register" />
 
           </form>

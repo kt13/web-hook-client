@@ -19,27 +19,6 @@ export class ExpandedInfo extends React.Component {
     // }, 500);
   }
 
-  // allergenInfo1(){
-  //   console.log(this.props.ingredients);
-  //   const allergy = this.state.allergenList1;
-  //   console.log(Object.keys(allergy));
-
-  // for(const key in this.state.allergenList1){
-  //   const val = this.state.allergenList1[key];
-  //   return Object.keys(this.state.allergenList, this.props.ingredients.map(item => item === val));
-  // console.log(Object.keys(allergy).forEach(function(key){
-  //   this.props.ingredients.match(allergy[key]);
-  // })
-  //   .map(key => allergy[key] === 
-  //   this.props.ingredients.includes(function(){
-  //     for(const key in allergy){
-  //       return allergy[key];
-  //     }
-  //   })
-  //   ));
-    
-  // }
-
   render(){
     const expandedDisplay = this.state.expanded ? 'expanded' : 'hidden'; 
     return(
@@ -54,7 +33,23 @@ export class ExpandedInfo extends React.Component {
               this.props.ingredients.slice(0,4).join(', ').concat('...')}</span>
           <div id='ExpandedInformation' className={`${expandedDisplay}`}>
             {(this.props.ingredients.join(', ')/*, item.etc */)}
-            <p><b>Allergy Warning</b>: Contains {this.props.allergens.map(item => item.name).join(', ')}</p>
+            <p><b>Allergy Warning</b>: <b>Contains {this.props.allergens.map(item => item.category).join(', ')}</b></p>
+            
+            <div className='comments'>
+              <form onSubmit={e =>  
+              { e.preventDefault();
+                // console.log(this.input.value, '============');
+                /* this.props.dispatch(fetchFoods(this.input.value)); */ }}>
+                <textarea type="text" name="foodSearch" id="foodSearch"
+                  className="commentText" autoComplete="off"
+                  placeholder="E.g. panini" required 
+                  ref={comm => (this.input = comm)} required
+                />
+                <input type="submit" id="addCommButton" className="commentButton" 
+                  name="submit" value="Add Comment"/>
+              </form>
+            </div>
+          
           </div>
         </li>
 

@@ -21,9 +21,9 @@ export function PostFood (props){
           </div>
           <div className='input'>
             <label>Ingredients</label>
-            <textarea type='text' name='ingredients'></textarea>
+            <textarea type='text' name='ingredients' className='postText'></textarea>
           </div>
-          <input type="submit" id="postButton" className="button3" 
+          <input type="submit" id="postButton" className="postButton" 
             name="submit" value="Create"/>
         </form>
       </div>
