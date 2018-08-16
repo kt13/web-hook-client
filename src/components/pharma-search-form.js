@@ -3,7 +3,7 @@ import {API_KEY} from '../config';
 import zipcodes from 'zipcodes';
 import { compose } from 'recompose';
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps';
-import './pharma-map.css';
+import './pharma-search.css';
 import { FaAnchor } from 'react-icons/fa';
 import {connect} from 'react-redux';
 import {toggleMarkerInfo, fetchingPlaces} from '../actions/maps';
@@ -47,8 +47,7 @@ const MyMapComponent = compose(
   console.log(props);
   return (<GoogleMap
     defaultZoom={13}
-    center={{lat: props.centerLat, lng: props.centerLng}/* {lat: 39.648209, lng: -75.711185} */}
-  >
+    center={{lat: props.centerLat, lng: props.centerLng}/* {lat: 39.648209, lng: -75.711185} */}>
     
     {props.markers.map(marker => (
       <Marker

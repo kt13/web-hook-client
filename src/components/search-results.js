@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import './search-results.css';
-import {expandResult} from '../actions/foods';
 import ExpandedInfo from './expandedInfo';
 
 class SearchResults extends React.Component{

@@ -5,3 +5,7 @@
 .expanded {
   display: block;
 }
+
+#ExpandedInformation {
+  text-align: left;
+}
