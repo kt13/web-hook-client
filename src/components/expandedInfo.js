@@ -7,33 +7,6 @@ export default class expandedInfo extends React.Component {
     super(props);
     this.state = {
       expanded: false,
-      allergenList1: {
-        eggs: ['egg'],
-        milk: ['milk', 'yogurt'],
-        peanuts: ['peanut'],
-        rice: ['rice'],
-        sesame: ['sesame'],
-        soy: ['soy'],
-        sulfite: ['sulfite'],
-        garlic: ['garlic'],
-        oats: ['oat'],
-        wheat: ['wheat'],
-        fish: ['fish'],
-        meat: ['beef', 'pork', 'lamb'],
-
-        shellfish: ['shrimp', 'crab','lobster','clam','mussel','oyster','scallop'],
-  
-        fruit: ['mango', 'strawberry', 'apple', 'avocado', 'banana', 
-          'cherry', 'orange', 'grapefruit', 'clementine', 'kiwi', 'melon', 
-          'nectarine', 'peach', 'pear', 'pineapple', 'plum', 'tomato'],
-  
-        'hot peppers': ['jalapeno', 'habanero', 'serrano pepper', 'tabasco pepper', 
-          'chili pepper', 'carolina reaper', 'pimiento'],
-  
-        'tree nuts': ['almond', 'brazil nut', 'cashew', 'chestnut', 
-          'cobnut', 'filbert nut', 'hazelnut', 'filbert', 'macadamia nut', 
-          'pecan', 'pistachio', 'pine nut', 'shea nut', 'walnut']
-      }
     };
   
   }
@@ -70,18 +43,19 @@ export default class expandedInfo extends React.Component {
     const expandedTern = this.state.expanded ? 'expanded' : 'hidden'; 
     return(
       <div id='SearchResult'>
-        {this.allergenInfo1()}
+
         <li
           onClick={() => 
             this.expandFood()}>
-          <h2>{this.props.name}</h2> <span className={`${!(this.state.expanded)}`}>{
+          <h2>{this.props.name}</h2> <div className={`${!(this.state.expanded)}`}><span>{
             this.props.ingredients.length <= 4 ? this.props.ingredients.join(', ') : 
-              this.props.ingredients.slice(0,4).join(', ').concat('...')}</span>
+              this.props.ingredients.slice(0,4).join(', ').concat('...')}</span></div>
           <div id='ExpandedInformation' className={`${expandedTern}`}>
             {(this.props.ingredients.join(', ')/*, item.etc */)}
             {/*  <p><b>Allergy Warning</b>: Contains {}</p> */}
           </div>
         </li>
+
       </div>
     );
   }
