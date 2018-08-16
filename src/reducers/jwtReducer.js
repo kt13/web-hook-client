@@ -4,7 +4,7 @@ import {
   AUTH_REQUEST,
   AUTH_SUCCESS,
   AUTH_ERROR,
-  REGISTER_SUCCESS,
+  // REGISTER_SUCCESS,
   // AUTH_WARNING
 } from '../actions/jwtauth';
 
@@ -14,7 +14,7 @@ const initialState = {
   currentUser: null,
   loading: false,
   error: null,
-  registered: false
+  /*  registered: false */
 };
 
 export const  jwtReducer = (state = initialState, action) => {
@@ -24,38 +24,39 @@ export const  jwtReducer = (state = initialState, action) => {
     return Object.assign({}, state, {
       authToken: action.token
     });
-  // } else if (action.type === CLEAR_AUTH) {
-  //   return Object.assign({}, state, {
-  //     authToken: null,
-  //     currentUser: null
-  //   });
+
   } else if (action.type === CLEAR_AUTH) {
     return Object.assign({}, state, {
       authToken: null,
       currentUser: null
     });
+
   } else if (action.type === AUTH_REQUEST) {
     return Object.assign({}, state, {
       loading: true,
       error: null
     });
+
   } else if (action.type === AUTH_SUCCESS) {
     // console.log(action.user, 'jwt');
     return Object.assign({}, state, {
       loading: false,
       currentUser: action.user
     });
+
   } else if (action.type === AUTH_ERROR) {
     return Object.assign({}, state, {
       loading: false,
       error: action.error
     });
-  } else if(action.type === REGISTER_SUCCESS){
-    return Object.assign({}, state, {
-      loading: false,
-      error: null,
-      registered: action.status
-    });
+
+  // } else if(action.type === REGISTER_SUCCESS){
+  //   return Object.assign({}, state, {
+  //     loading: false,
+  //     error: null,
+  //     registered: action.status
+  //   });
+
   // } else if (action.type === AUTH_WARNING) {
   //   return Object.assign({}, state, {
   //     warning: true

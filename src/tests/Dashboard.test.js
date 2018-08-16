@@ -5,6 +5,6 @@ import {shallow} from 'enzyme';
 describe('<Dashboard/>', () => {
   it('should render without crashing', () => {
     const wrapper = shallow(<Dashboard />);
-    console.log(wrapper.debug());
+    // console.log(wrapper.debug());
   });
 });

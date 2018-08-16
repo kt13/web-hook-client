@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import './search-results.css';
 import ExpandedInfo from './expandedInfo';
 
-class SearchResults extends React.Component{
+export class SearchResults extends React.Component{
 
   // console.log(props.listHide);
 
@@ -27,7 +27,7 @@ class SearchResults extends React.Component{
 }
 
 const mapStateToProps = (state, props) => ({
-  listHide: state.searchR.listHide,
+  listHide: state.foodsR.searchListHide,
   foods: state.foodsR.foods
 });
 

@@ -3,7 +3,7 @@ import './post-food.css';
 import { connect } from 'react-redux';
 import {postNewFood} from '../actions/foods';
 
-function PostFood (props){
+export function PostFood (props){
   return(
     <div id='PostFood' className='tabcontent'>
       <div className='postfood'>

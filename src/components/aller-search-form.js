@@ -1,11 +1,13 @@
 import React from 'react';
-import {toggleFoodsList} from '../actions/foods';
 import {connect} from 'react-redux';
 import SearchResults from './search-results';
-import {fetchFoods} from '../actions/foods';
 import './aller-search.css';
 
-class AllergyForm extends React.Component {
+import {toggleFoodsList} from '../actions/foods';
+import {fetchFoods} from '../actions/foods';
+
+
+export class AllergyForm extends React.Component {
  
   // onSubmit (event){
   //   event.preventDefault();
@@ -30,29 +32,24 @@ class AllergyForm extends React.Component {
           { e.preventDefault();
             // console.log(this.input.value, '============');
             this.props.dispatch(fetchFoods(this.input.value)); }}>
-            <input type="text" name="userSearch" id="userSearch"
+            <input type="text" name="foodSearch" id="foodSearch"
               className="text" autoComplete="off"
               placeholder="E.g. panini" required 
               ref={ele => (this.input = ele)} required
             />
-            <input type="submit" id="searchButton" className="button2" 
+            <input type="submit" id="getButton" className="button2" 
               name="submit" value="Search" onClick={() => this.props.dispatch(toggleFoodsList(false))} />
           </form>
 
-          <SearchResults foods={this.props.foods}/>
+          {/* <SearchResults/> */}
+
         </div>
       </div>
     );
   }
 }
 
-const mapStateToProps = (state, props) => ({
-  listHide: state.searchR.listHide,
-  foods: state.foodsR.foods,
-
-});
-
-export default connect(mapStateToProps)(AllergyForm);
+export default connect()(AllergyForm);
 
 
 

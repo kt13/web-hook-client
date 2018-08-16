@@ -2,9 +2,9 @@ import React from 'react';
 import './register-login.css';
 import {loginUser} from '../actions/jwtauth';
 import {connect} from 'react-redux';
-import {Redirect} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 
-function Login (props){
+export function Login (props){
   if(props.currentUser === null){
     return(
       <div className='login'>
@@ -13,7 +13,7 @@ function Login (props){
         { e.preventDefault(); 
           const creds = e.target.elements;
           console.log(creds.username.value, creds.password.value, '============');
-          props.dispatch(loginUser(creds.username.value, creds.password.value)); }}>
+          props.dispatch(loginUser(creds.username.value, creds.password.value, props.history)); }}>
 
           <div className='input'>
             <label>Username</label>
@@ -39,8 +39,6 @@ function Login (props){
 
       </div>
     );
-  } else if(props.currentUser){
-    return (<Redirect to='/' />);
   } else {
     return <div></div>;
   }
@@ -51,4 +49,4 @@ const mapStateToProps = (state, props) => ({
   currentUser: state.jwtR.currentUser
 });
 
-export default connect(mapStateToProps)(Login);
+export default withRouter(connect(mapStateToProps)(Login));

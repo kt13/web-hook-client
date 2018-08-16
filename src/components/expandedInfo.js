@@ -8,7 +8,6 @@ export default class expandedInfo extends React.Component {
     this.state = {
       expanded: false,
     };
-  
   }
 
   expandFood(){
@@ -47,9 +46,9 @@ export default class expandedInfo extends React.Component {
         <li
           onClick={() => 
             this.expandFood()}>
-          <h2>{this.props.name}</h2> <div className={`${!(this.state.expanded)}`}><span>{
-            this.props.ingredients.length <= 4 ? this.props.ingredients.join(', ') : 
-              this.props.ingredients.slice(0,4).join(', ').concat('...')}</span></div>
+          <h2>{this.props.name}</h2> <span className={`${!(this.state.expanded)}`}>
+            {this.props.ingredients.length <= 4 ? this.props.ingredients.join(', ') : 
+              this.props.ingredients.slice(0,4).join(', ').concat('...')}</span>
           <div id='ExpandedInformation' className={`${expandedTern}`}>
             {(this.props.ingredients.join(', ')/*, item.etc */)}
             {/*  <p><b>Allergy Warning</b>: Contains {}</p> */}

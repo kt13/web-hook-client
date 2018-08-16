@@ -1,32 +1,47 @@
-import { NEW_REQUEST, NEW_SUCCESS, NEW_ERROR, EXPAND_RESULT} from '../actions/foods';
+import { 
+  NEW_REQUEST, 
+  NEW_SUCCESS, 
+  NEW_ERROR, 
+  EXPAND_RESULT, 
+  NEW_FOOD_SEARCH} from '../actions/foods';
 
 const initialState = {
   foods: [],
   loading: false,
   error: null,
-  expandFood: false
-};
+  expandFood: false,
+  searchListHide: true
+};  
+
 // console.log(initialState.foods,'sadfasdfasfdsf');
 
 export const foodsReducer = (state=initialState, action) => {
   if(action.type === NEW_REQUEST){
-    return Object.assign({}, state, {loading: true});
-  }
-  else if(action.type === NEW_SUCCESS){
+    return Object.assign({}, state, {
+      loading: true
+    });
+
+  } else if(action.type === NEW_SUCCESS){
     // console.log(action.foods);
-    return Object.assign({}, state, 
-      {
-        foods: [...action.foods]
-      });
+    return Object.assign({}, state, {
+      foods: [...action.foods]
+    });
           
     // action.data.map(item => state.foods[item])]});
-  }
-  else if(action.type === EXPAND_RESULT){
-    return Object.assign({}, state, {expandFood: action.torf});
-  }
-  else if(action.type === NEW_ERROR){
-    return Object.assign({}, state, 
-      {loading: false, error: action.error});
+  } else if(action.type === NEW_FOOD_SEARCH){
+    return Object.assign({}, state, {
+      searchListHide: action.listHide
+    });
+
+  } else if(action.type === EXPAND_RESULT){
+    return Object.assign({}, state, {
+      expandFood: action.torf
+    });
+
+  } else if(action.type === NEW_ERROR){
+    return Object.assign({}, state, {
+      loading: false, error: action.error
+    });
   } 
   return state;
   // switch(action.type) {

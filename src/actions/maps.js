@@ -1,5 +1,6 @@
 import {API_KEY} from '../config';
 import {API_BASE_URL} from '../config';
+
 export const NEW_MAP_REQUEST = 'NEW_MAP_REQUEST';
 export const fetchMapRequest = () => ({
   type: NEW_MAP_REQUEST

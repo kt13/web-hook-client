@@ -2,19 +2,28 @@ import React from 'react';
 import './register-login.css';
 import { createUser } from '../actions/jwtauth';
 import { connect } from 'react-redux';
-import {Redirect} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 
-class Register extends React.Component {
+export class Register extends React.Component {
 
+  constructor(props){
+    super(props);
+    this.state = {
+      registered: false
+    };
+  }
   onSubmit(val){
-    return this.props
-      .dispatch(createUser(val.email.value, val.newUser.value, val.newPass.value));
+    this.props
+      .dispatch(createUser(val.email.value, val.newUser.value, val.newPass.value, this.props.history));
+
+    this.setState({registered: !this.state.registered});
+
   }
   
   render(){
-    console.log(this.props.registered);
-
-    if(this.props.registered === false){
+    console.log(this.state.registered, 'react');
+    // console.log(this.props.registered, 'redux');
+    if(this.state.registered === false){
       return(
         <div className='register'>
 
@@ -58,16 +67,14 @@ class Register extends React.Component {
 
         </div>
       );
-    } else if(this.props.registered === true){
-      return (<Redirect to='/login' />);
     } else {
       return <div></div>;
     }
   }
 }
 
-const mapStateToProps = (state, props) => ({
-  registered: state.jwtR.registered
-});
+// const mapStateToProps = (state, props) => ({
+//   registered: state.jwtR.registered
+// });
 
-export default connect(mapStateToProps)(Register);
+export default withRouter(connect(/* mapStateToProps */)(Register));

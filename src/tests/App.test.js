@@ -2,9 +2,9 @@ import React from 'react';
 import App from '../components/app';
 import {shallow} from 'enzyme';
 
-describe('<Dashboard/>', () => {
+describe('<App/>', () => {
   it('should render without crashing', () => {
     const wrapper = shallow(<App />);
-    console.log(wrapper.debug());
+    // console.log(wrapper.debug());
   });
 });

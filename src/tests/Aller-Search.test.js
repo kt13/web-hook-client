@@ -1,10 +1,28 @@
 import React from 'react';
-import AllergyForm from '../components/aller-search-form';
-import {shallow} from 'enzyme';
+import {mount} from 'enzyme';
+import {Provider} from 'react-redux';
 
-describe('<Dashboard/>', () => {
-  it('should render without crashing', () => {
-    const wrapper = shallow(<AllergyForm />);
+import {AllergyForm} from '../components/aller-search-form';
+import {SearchResults} from '../components/search-results';
+import {fetchFoods, toggleFoodsList} from '../actions/foods';
+
+
+describe('<AllergyForm/>', () => {
+  it('dispatches a get request', () => {
+    //get input
+    const str = 'masala';
+    const dispatch = jest.fn();
+    // const store = jest.fn();
+    const wrapper = mount(<AllergyForm dispatch={dispatch}/>);
+    const input = wrapper.find('#foodSearch');
+    input.instance().value = str;
+
+    //simulate onClick
+
+    const button = wrapper.find('#getButton');
+    button.simulate('submit');
+    expect(dispatch).toHaveBeenCalledWith(fetchFoods(str));
+
     console.log(wrapper.debug());
   });
 });

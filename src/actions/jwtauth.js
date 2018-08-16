@@ -29,11 +29,13 @@ export const authError = error => ({
   type: AUTH_ERROR,
   error
 });
-export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
-export const registerSuccess = status => ({
-  type: REGISTER_SUCCESS,
-  status
-});
+
+// export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
+// export const registerSuccess = status => ({
+//   type: REGISTER_SUCCESS,
+//   status
+// });
+
 
 const storeAuthInfo = (authToken, dispatch) => {
   // console.log(authToken);
@@ -44,7 +46,7 @@ const storeAuthInfo = (authToken, dispatch) => {
   saveAuthToken(authToken);
 };
 
-export const createUser = (email, username, password) => dispatch => {
+export const createUser = (email, username, password, history) => dispatch => {
   dispatch(authRequest());
   console.log('I\'m making a post request to the back-end to create a user');
   return fetch(`${API_BASE_URL}/api/users`, {
@@ -61,15 +63,20 @@ export const createUser = (email, username, password) => dispatch => {
   })
     .then(res => {
       console.log(res, 'test create user');
+      if (!res.ok) {
+        return Promise.reject(res.statusText);
+      }
+      /* dispatch(registerSuccess(true)); */
+      history.push('/login');
+      return res.json();
       // return res.json();
-      dispatch(registerSuccess(true));
     })
     .catch(err => {
       dispatch(authError(err));
     });
 };
 
-export const loginUser = (username, password) => dispatch => {
+export const loginUser = (username, password, history) => dispatch => {
   dispatch(authRequest());
   console.log('I\'m making a get request to the back-end');
   return fetch(`${API_BASE_URL}/api/login`, {
@@ -83,6 +90,9 @@ export const loginUser = (username, password) => dispatch => {
     })
   })
     .then(res => {
+      if(!res.ok){
+        return Promise.reject({messsage: 'Unsuccessful Login'});
+      }
       // console.log(res, 'test login user');
       return res.json();
     }).then(data => {
@@ -90,6 +100,7 @@ export const loginUser = (username, password) => dispatch => {
       const {authToken} = data;
       // console.log(authToken);
       storeAuthInfo(authToken, dispatch);
+      history.push('/');
     })
     .catch(err => {
       dispatch(authError(err));

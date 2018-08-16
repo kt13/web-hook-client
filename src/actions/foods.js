@@ -44,6 +44,9 @@ export const fetchFoods = food => dispatch => {
   return fetch(`${API_BASE_URL}/api/foods?searchTerm=${food}`)
     .then(res => {
       console.log(res, 'test console');
+      if (!res.ok) {
+        return Promise.reject(res.statusText);
+      }
       return res.json();
     }).then(res => {
       console.log(res);
