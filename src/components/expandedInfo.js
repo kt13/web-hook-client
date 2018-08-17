@@ -26,8 +26,8 @@ export class ExpandedInfo extends React.Component {
   }
 
   comments(){
-    return this.props.comments.map(item => (
-      <li className='commentLi'>
+    return this.props.comments.map((item, index) => (
+      <li key={index} className='commentLi'>
         {item}
       </li>
     ));
