@@ -110,6 +110,7 @@ class PharmaSearch extends React.Component{
               centerLng={this.props.centerLng}
               dispatch={this.props.dispatch}
             />
+            <p className='footnote'>This is supported by the Google Maps API. For more information, <a href="https://developers.google.com/places/web-service/search">go here</a>.</p>
           </div>
           {/* empty object gives true value */}
         </div>

@@ -3,14 +3,11 @@
 }
 
 label {
-  text-align: right;
-  padding: 10px;
+  text-align: center;
+  padding-bottom: 3px;
+  padding-top: 0px;
   vertical-align: middle;
   display: inline-block;
-}
-
-.input {
-  padding: 10px;
 }
 
 p{
@@ -28,6 +25,7 @@ p{
 
 .postText {
   height: 60px;
+  width: 193.5px;
   display: inline-block;
   vertical-align: middle;
 }

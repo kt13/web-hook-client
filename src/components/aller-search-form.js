@@ -31,19 +31,18 @@ export class AllergyForm extends React.Component {
           <h2>Enter in a Food</h2>
           <p>This database is open-source and is maintained by the public.</p>
 
-
-          <p>Please note that this database is not perfect. If you are experiencing 
+          <p>Please note that this website is not a substitute for medical advice. If you are experiencing 
             symptoms of an allergic reaction such as hives, vomiting, wheezing, 
             swelling of the tongue, or trouble breathing due to possible anaphylaxis, 
-            please seek emergency care immediately.</p>
-            
+            please seek emergency care immediately. For more information on food allergies, <a href="https://acaai.org/allergies/types/food-allergy">go here</a>.</p>
+
           <div className='allergyForm'>
             <form onSubmit={e =>  
             { e.preventDefault();
             // console.log(this.input.value, '============');
               this.props.dispatch(fetchFoods(this.input.value)); }}>
               <input type="text" name="foodSearch" id="foodSearch"
-                className="text" autoComplete="off"
+                className="allerText" autoComplete="off"
                 placeholder="E.g. panini" required 
                 ref={ele => (this.input = ele)} required
               />

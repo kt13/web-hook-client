@@ -17,11 +17,11 @@ export function PostFood (props){
           const el = e.target.elements;
           props.dispatch(postNewFood(el.foodName.value, el.ingredients.value));}}>
           <div className='input'>
-            <label>Name</label>
+            <label>Name</label><br />
             <input type='text' className='name' name='foodName'></input>
           </div>
           <div className='input'>
-            <label>Ingredients</label>
+            <label>Ingredients</label> <br/>
             <textarea type='text' name='ingredients' className='postText'></textarea>
           </div>
           <input type="submit" id="postButton" className="postButton" 
