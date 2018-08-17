@@ -1,3 +1,23 @@
+## Full Stack Capstone -- Allergen Search Website
+
+Users can query the open-source database and search a food item. Upon clicking on the listing,ingredients will be shown and a warning will be shown that contains possible allergens in that food item.
+
+Users can also post comments in each listing to add information like other possible allergens that could comtaminate the food item.
+
+Users can enter in a zipcode to search for nearby pharmacies if they find a possible allergen in the food item that they search that they are allergic to. Markers will be rendered and it will show an information window that shows the address and name of the marker.
+
+Users can also sign up to post a new listing to the database by registering. Posting to the database is a protected endpoint as is updating and deleting, which have yet to be implemented but is seen to be used by admins in the future. 
+
+A link to a deployed version
+
+Screenshots of your app
+
+A description of your tech stack
+
+A brief description of where each of the key parts of the project live in your codebase
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>

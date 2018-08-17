@@ -24,7 +24,7 @@ export class AllergyForm extends React.Component {
     return (
       <div id="AllergySearch" className="tabcontent" id="defaultOpen">
         <div className='foodSearch'>
-        
+
           <h2>Enter in a Food</h2>
           <img 
             className="allergyImg" 
@@ -46,13 +46,22 @@ export class AllergyForm extends React.Component {
             { e.preventDefault();
             // console.log(this.input.value, '============');
               this.props.dispatch(fetchFoods(e.target.elements.foodSearch.value));
-              this.props.dispatch(newSearchTerm(e.target.elements.foodSearch.value)); }}>
-              <input type="text" name="foodSearch" id="foodSearch"
-                className="allerText" autoComplete="off"
+              /*  this.props.dispatch(newSearchTerm(e.target.elements.foodSearch.value)); */ }}>
+              <input 
+                type="text" 
+                name="foodSearch" 
+                id="foodSearch"
+                className="foodTerm" 
+                autoComplete="off"
+                aria-labelledby="Food Search"
                 placeholder="E.g. panini" required 
               />
-              <input type="submit" id="allergyButton" className="allergyButton" 
-                name="submit" value="Search" onClick={() => 
+              <input 
+                type="submit" 
+                id="allergyButton" 
+                className="allergyButton" 
+                name="submit" 
+                value="Search" onClick={() => 
                   this.props.dispatch(toggleFoodsList(false))} />
             </form>
           </div>

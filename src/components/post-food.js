@@ -18,14 +18,25 @@ export function PostFood (props){
           props.dispatch(postNewFood(el.foodName.value, el.ingredients.value));}}>
           <div className='input'>
             <label>Name</label><br />
-            <input type='text' className='name' name='foodName'></input>
+            <input type='text' 
+              className='name' 
+              name='foodName'
+              aria-labelledby="Add Food Name"></input>
           </div>
           <div className='input'>
             <label>Ingredients</label> <br/>
-            <textarea type='text' name='ingredients' className='postText'></textarea>
+            <textarea 
+              type='text' 
+              name='ingredients' 
+              className='postText' 
+              aria-labelledby="Add Ingredients"></textarea>
           </div>
-          <input type="submit" id="postButton" className="postButton" 
-            name="submit" value="Create"/>
+          <input 
+            type="submit" 
+            id="postButton" 
+            className="postButton" 
+            name="submit" 
+            value="Create"/>
         </form>
       </div>
     </div>

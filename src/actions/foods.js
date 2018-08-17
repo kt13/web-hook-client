@@ -57,6 +57,7 @@ export const newSearchTerm = search => ({
 
 export const fetchFoods = food => dispatch => {
   dispatch(fetchFoodsRequest());
+  dispatch(newSearchTerm(food));
   console.log('I\'m making a get request to the back-end');
   return fetch(`${API_BASE_URL}/api/foods?searchTerm=${food}`)
     .then(res => {
@@ -95,11 +96,12 @@ export const fetchAllergens = foodId => dispatch => {
     });
 };
 
-export const postComment = (content, foodId) => dispatch => {
+export const postComment = (content, foodId) => (dispatch, /* getState */) => {
   dispatch(fetchFoodsRequest());
+  /* const searchWord = getState().foodsR.searchTerm; */
   console.log('I\'m making a post comment request to the back-end');
   console.log(JSON.stringify({
-    'comments': content
+    'comments': content,
   }));
   return fetch(`${API_BASE_URL}/api/foods/${foodId}/comments`,
     {
@@ -108,7 +110,8 @@ export const postComment = (content, foodId) => dispatch => {
         'content-type': 'application/json'
       },
       body: JSON.stringify({
-        'comments': content
+        comments: content,
+        /* searchTerm: searchWord */
       })
     // })
     // .then(res => {
@@ -121,7 +124,7 @@ export const postComment = (content, foodId) => dispatch => {
     console.log(res);
     return res.json();
   })/* .then( res => {
-    dispatch(postCommentSuccess(res));
+    dispatch(fetchFoodsSuccess(res));
   }) */
     .catch(err => {
       dispatch(fetchFoodsError(err));

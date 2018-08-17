@@ -17,8 +17,13 @@ export function Login (props){
 
           <div className='input'>
             <label>Username</label>
-            <input type="text" name="username" id="username"
-              className="text" autoComplete="off"
+            <input 
+              type="text" 
+              name="username" 
+              id="username"
+              className="userLC" 
+              autoComplete="off"
+              aria-labelledby="Username"
               required 
               /*  ref={ele => (this.input = ele)} required */
             />
@@ -26,15 +31,24 @@ export function Login (props){
 
           <div className='input'>
             <label>Password</label>
-            <input type="password" name="password" id="password"
-              className="text" autoComplete="off"
+            <input 
+              type="password" 
+              name="password" 
+              id="password"
+              className="passLC" 
+              autoComplete="off"
+              aria-labelledby="Password"
               required 
               /*  ref={ele => (this.input = ele)} required */
             />
           </div>
 
-          <input type="submit" id="loginButton" className="loginButton" 
-            name="submit" value="Login"/>
+          <input 
+            type="submit" 
+            id="loginButton" 
+            className="loginButton" 
+            name="submit" 
+            value="Login"/>
         </form>
 
       </div>

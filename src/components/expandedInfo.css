@@ -24,6 +24,7 @@ h2{
 
 #ExpandedInformation {
   text-align: left;
+  padding: 20px;
 }
 
 .oneFood{
@@ -69,8 +70,9 @@ h2{
 .commentUl{
   display:block;
   padding: 0px;
+  list-style: none;
 }
-.commentLi{
+.commentLi {
   display: block;
   padding: 5px;
   border: 2px black;

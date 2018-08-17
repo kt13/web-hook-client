@@ -13,6 +13,14 @@ export class ExpandedInfo extends React.Component {
     };
   }
 
+  // shouldComponentUpdate(){
+  //   return false;
+  // }
+
+  // componentWillReceiveProps(){
+
+  // }
+
   expandFood(){
     this.setState({expanded: !this.state.expanded});
   }
@@ -66,19 +74,28 @@ export class ExpandedInfo extends React.Component {
               <form className='commentForm' onSubmit={e =>  
               { e.preventDefault();
                 this.props.dispatch(postComment(
-                  e.target.elements.foodSearch.value, 
+                  e.target.commentArea.value, 
                   this.props.id));
                 this.props.dispatch(fetchFoods(this.props.searchTerm));
                 // console.log(this.input.value, '============');
               }}>
 
-                <textarea type="text" name="foodSearch" id="foodSearch"
-                  className="commentText" autoComplete="off"
+                <textarea 
+                  type="text" 
+                  name="commentArea"
+                  id="addComment"
+                  className="commentText" 
+                  autoComplete="off"
+                  aria-labelledby="Comment Textbox"
                   placeholder={`Add a comment for ${this.props.name}.`} required 
                 />
                 <br/>
-                <input type="submit" id="addCommButton" className="commentButton" 
-                  name="submit" value="Add Comment"/>
+                <input 
+                  type="submit"
+                  id="addCommButton" 
+                  className="commentButton" 
+                  name="submit" 
+                  value="Add Comment"/>
               </form>
 
               <br/>

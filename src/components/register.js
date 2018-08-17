@@ -35,8 +35,12 @@ export class Register extends React.Component {
 
             <div className='input'>
               <label>Email</label>
-              <input type="text" name="email" id="email"
-                className="text" autoComplete="off"
+              <input 
+                type="text" 
+                name="email" id="email"
+                className="emailRC" 
+                autoComplete="off" 
+                aria-labelledby="Add E-mail"
                 required 
               /*  ref={ele => (this.input = ele)} required */
               />
@@ -44,8 +48,13 @@ export class Register extends React.Component {
 
             <div className='input'>
               <label>Username</label>
-              <input type="text" name="newUser" id="newUser"
-                className="text" autoComplete="off"
+              <input 
+                type="text" 
+                name="newUser" 
+                id="newUser"
+                className="userRC" 
+                autoComplete="off" 
+                aria-labelledby="Add Username"
                 required 
               /*  ref={ele => (this.input = ele)} required */
               />
@@ -53,15 +62,24 @@ export class Register extends React.Component {
 
             <div className='input'>
               <label>Password</label>
-              <input type="password" name="newPass" id="newPass"
-                className="text" autoComplete="off"
+              <input 
+                type="password" 
+                name="newPass" 
+                id="newPass"
+                className="passRC" 
+                autoComplete="off" 
+                aria-labelledby="Add Password"
                 required 
               /*  ref={ele => (this.input = ele)} required */
               />
             </div>
 
-            <input type="submit" id="registerButton" className="registerButton" 
-              name="submit" value="Register" />
+            <input 
+              type="submit" 
+              id="registerButton" 
+              className="registerButton" 
+              name="submit" 
+              value="Register" />
 
           </form>
 
