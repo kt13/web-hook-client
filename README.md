@@ -14,7 +14,9 @@ A link to a deployed version
 
 React is used on the front-end (with Create React-App) and Node and MongoDB is used on the backend.
 
-A brief description of where each of the key parts of the project live in your codebase
+NPM Modules used included Zipcodes, React, React-Google-Maps, Mongoose, Request, Redux-Logger, and React-Redux.
+
+The Google Maps API call is being buffered through to my backend because Google does not allow native front-end calling without their Vanilla API. Every time my search is being called, it updates the redux state. Every time I click to expand, a React state is set. Every time I expand a listing as well, it updates the listing immediately via a call to my back-end to do two database calls, one after another, to compare the ingredients to a seeded allergen collection. When I post a comment, it also updates it on the backend where it attempts to re-render on the front-end. 
 
 
 
