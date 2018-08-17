@@ -4,7 +4,8 @@ import {
   NEW_ERROR, 
   EXPAND_RESULT, 
   NEW_FOOD_SEARCH,
-  NEW_ALLERGEN_SUCCESS} from '../actions/foods';
+  NEW_ALLERGEN_SUCCESS,
+  POST_COMMENT_SUCCESS} from '../actions/foods';
 
 const initialState = {
   foods: [],
@@ -48,6 +49,18 @@ export const foodsReducer = (state=initialState, action) => {
   } else if(action.type === NEW_ALLERGEN_SUCCESS){
     return Object.assign({}, state, {
       allergens: [...action.allergy]
+    });
+
+  } else if(action.type === POST_COMMENT_SUCCESS){
+    
+    return Object.assign({}, state, {
+      foods: [...state.foods, ...action.foods]
+      // foods: state.foods.map(item => {
+      //   (item.id === action.content.id) ? 
+      //     [...state.foods.slice(0,state.foods.findIndex(item.id===action.content.id)),
+      //       ...state.foods.slice(state.foods.findIndex(item.id===action.content.id) + 1, state.foods.length), 
+      //       action.content ] : state.foods; 
+      // })
     });
   } 
   return state;

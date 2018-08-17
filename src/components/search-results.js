@@ -15,7 +15,7 @@ export class SearchResults extends React.Component{
       ));
     
       return(
-        <ul>
+        <ul className='newList'>
           {foods}
         </ul>
       );

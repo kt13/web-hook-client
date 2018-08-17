@@ -43,6 +43,12 @@ export const fetchAllergenSuccess = allergy => ({
   allergy
 });
 
+export const POST_COMMENT_SUCCESS = 'POST_COMMENT_SUCCESS ';
+export const postCommentSuccess = content => ({
+  type: POST_COMMENT_SUCCESS,
+  content
+});
+
 export const fetchFoods = food => dispatch => {
   dispatch(fetchFoodsRequest());
   console.log('I\'m making a get request to the back-end');
@@ -78,6 +84,38 @@ export const fetchAllergens = foodId => dispatch => {
       dispatch(fetchAllergenSuccess(res));
       
     })
+    .catch(err => {
+      dispatch(fetchFoodsError(err));
+    });
+};
+
+export const postComment = (content, foodId) => dispatch => {
+  dispatch(fetchFoodsRequest());
+  console.log('I\'m making a post comment request to the back-end');
+  console.log(JSON.stringify({
+    'comments': content
+  }));
+  return fetch(`${API_BASE_URL}/api/foods/${foodId}/comments`,
+    {
+      method: 'PUT',
+      headers:{
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify({
+        'comments': content
+      })
+    // })
+    // .then(res => {
+    //   console.log(res, 'test console posting');
+    //   return res.json();
+    }).then(res => {
+    if (!res.ok) {
+      return Promise.reject(res.statusText);
+    }
+    dispatch(postCommentSuccess(res));
+    console.log(res);
+    // return res.json();
+  })
     .catch(err => {
       dispatch(fetchFoodsError(err));
     });

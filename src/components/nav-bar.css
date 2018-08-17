@@ -3,10 +3,14 @@ nav {
 	height: 10%;
   padding: 1em;
 }
+.clearfix {
+  display: inline;
+}
 
 nav ul li {
   font-weight: 700;
   font-size: 1.2em;
+  list-style: none;
 }
 
 nav ul li:first-child {

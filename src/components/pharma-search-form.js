@@ -53,11 +53,16 @@ const MyMapComponent = compose(
       <Marker
         key={marker.id}
         position={{ lat: marker.geometry.location.lat, lng: marker.geometry.location.lng }}
-        onClick={() => 
-          props.dispatch(toggleMarkerInfo(true, marker))}>
+        onClick={() => {
+          console.log(marker);
+          props.dispatch(toggleMarkerInfo(true, marker));}}>
         {marker.isMarkOpen && <InfoWindow 
           onCloseClick={() => props.dispatch(toggleMarkerInfo(false, marker))}>
-          <FaAnchor />
+          <div>{marker.name}
+            <br/>
+            {/* {`${(marker.opening_hours === true) ? 'Open now': 'Closed'}`} */}
+            {marker.vicinity}
+          </div>
         </InfoWindow>}
       </Marker>))}
 
