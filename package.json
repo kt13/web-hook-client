@@ -22,8 +22,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "heroku": "node index.js",
-    "travis": "npm run enzyme"
+    "heroku": "node index.js"
   },
   "devDependencies": {
     "enzyme": "^3.4.1",
