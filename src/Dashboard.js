@@ -31,7 +31,7 @@ export default function Dashboard() {
           </h1>
         </div>
         <App/>
-        <main>
+        <main role="main">
           <Switch>
             {/* <Redirect exact from="/" to="/inbox" /> */}
             <Route
