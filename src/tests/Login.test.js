@@ -1,10 +1,10 @@
 import React from 'react';
 import Login from '../components/login';
-import {mount} from 'enzyme';
+import {shallow} from 'enzyme';
 
 describe('<Login/>', () => {
   it('should render without crashing', () => {
-    const wrapper = mount(<Login />);
+    const wrapper = shallow(<Login />);
     // console.log(wrapper.debug());
   });
 });

@@ -24,16 +24,22 @@ export class AllergyForm extends React.Component {
     return (
       <div id="AllergySearch" className="tabcontent" id="defaultOpen">
         <div className='foodSearch'>
+        
           <h2>Enter in a Food</h2>
-          <img className="allergyImg" src="https://foodsafetytrainingcertification.com/wp-content/uploads/2017/05/foodallergies.png" 
+          <img 
+            className="allergyImg" 
+            src="https://foodsafetytrainingcertification.com/wp-content/uploads/2017/05/foodallergies.png" 
             alt="Various Food Categories of Food Allergies"/>
+
           <p>This database is open-source and is maintained by the public.</p>
 
-          <p>Please note that this website is not a substitute for medical advice. If you are experiencing 
-            symptoms of an allergic reaction such as hives, vomiting, wheezing, 
-            swelling of the tongue, or trouble breathing due to possible anaphylaxis, 
-            please seek emergency care immediately.</p>
-          <span>For more information on food allergies, <a href="https://acaai.org/allergies/types/food-allergy">go here</a>.</span>
+          <p>Please note that this website is not a substitute 
+            for medical advice. If you are experiencing symptoms of
+             an allergic reaction such as hives, vomiting, wheezing, 
+            swelling of the tongue, or trouble breathing due to possible 
+            anaphylaxis, please seek emergency care immediately.</p>
+          <span>For more information on food allergies, <a href=
+            "https://acaai.org/allergies/types/food-allergy">go here</a>.</span>
 
           <div className='allergyForm'>
             <form onSubmit={e =>  
@@ -46,7 +52,8 @@ export class AllergyForm extends React.Component {
                 placeholder="E.g. panini" required 
               />
               <input type="submit" id="allergyButton" className="allergyButton" 
-                name="submit" value="Search" onClick={() => this.props.dispatch(toggleFoodsList(false))} />
+                name="submit" value="Search" onClick={() => 
+                  this.props.dispatch(toggleFoodsList(false))} />
             </form>
           </div>
 

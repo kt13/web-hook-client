@@ -1,10 +1,10 @@
 import React from 'react';
-import PostFood from '../components/post-food';
-import {mount} from 'enzyme';
+import {PostFood} from '../components/post-food';
+import {shallow} from 'enzyme';
 
 describe('<PostFood/>', () => {
   it('should render without crashing', () => {
-    const wrapper = mount(<PostFood />);
+    const wrapper = shallow(<PostFood />);
     // console.log(wrapper.debug());
   });
 });

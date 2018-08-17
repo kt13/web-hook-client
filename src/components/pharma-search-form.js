@@ -66,9 +66,7 @@ const MyMapComponent = compose(
       </Marker>))}
 
   </GoogleMap>);
-}
-);
-
+});
 
 class PharmaSearch extends React.Component{
 

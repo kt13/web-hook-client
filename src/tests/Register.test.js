@@ -1,10 +1,10 @@
 import React from 'react';
 import  Register from '../components/register';
-import {mount} from 'enzyme';
+import {shallow} from 'enzyme';
 
 describe('<Register/>', () => {
   it('should render without crashing', () => {
-    const wrapper = mount(<Register />);
+    const wrapper = shallow(<Register />);
     // console.log(wrapper.debug());
   });
 });

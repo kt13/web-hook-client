@@ -2,6 +2,7 @@ nav {
 	position: relative;
 	height: 10%;
   padding: 1em;
+  font-family: 'Lora', serif;
 }
 .clearfix {
   display: inline;
