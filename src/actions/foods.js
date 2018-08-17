@@ -112,10 +112,11 @@ export const postComment = (content, foodId) => dispatch => {
     if (!res.ok) {
       return Promise.reject(res.statusText);
     }
-    dispatch(postCommentSuccess(res));
     console.log(res);
-    // return res.json();
-  })
+    return res.json();
+  })/* .then( res => {
+    dispatch(postCommentSuccess(res));
+  }) */
     .catch(err => {
       dispatch(fetchFoodsError(err));
     });

@@ -40,11 +40,10 @@ export class AllergyForm extends React.Component {
             <form onSubmit={e =>  
             { e.preventDefault();
             // console.log(this.input.value, '============');
-              this.props.dispatch(fetchFoods(this.input.value)); }}>
+              this.props.dispatch(fetchFoods(e.target.elements.foodSearch.value)); }}>
               <input type="text" name="foodSearch" id="foodSearch"
                 className="allerText" autoComplete="off"
                 placeholder="E.g. panini" required 
-                ref={ele => (this.input = ele)} required
               />
               <input type="submit" id="allergyButton" className="allergyButton" 
                 name="submit" value="Search" onClick={() => this.props.dispatch(toggleFoodsList(false))} />

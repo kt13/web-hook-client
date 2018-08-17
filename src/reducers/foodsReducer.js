@@ -52,9 +52,9 @@ export const foodsReducer = (state=initialState, action) => {
     });
 
   } else if(action.type === POST_COMMENT_SUCCESS){
-    
+
     return Object.assign({}, state, {
-      foods: [...state.foods, ...action.foods]
+      foods:  action.newFoods
       // foods: state.foods.map(item => {
       //   (item.id === action.content.id) ? 
       //     [...state.foods.slice(0,state.foods.findIndex(item.id===action.content.id)),

@@ -9,11 +9,12 @@ export class SearchResults extends React.Component{
 
   render(){
     if(!this.props.listHide){
-  
-      const foods = this.props.foods.map((item, index) =>(
-        <ExpandedInfo key={index} {...item}/>
-      ));
-    
+      let foods = [];
+      if(this.props.foods.length > 0 ){
+        foods = this.props.foods.map((item, index) =>(
+          <ExpandedInfo key={index} {...item}/>
+        ));
+      }
       return(
         <ul className='newList'>
           {foods}
