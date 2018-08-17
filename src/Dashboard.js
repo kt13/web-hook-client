@@ -23,11 +23,13 @@ export default function Dashboard() {
     <Router>
       <div className="dashboard" /* style={{ 'background-color': '#2B2C28'}} */>
         <NavBar />
-        <h1 className='headerTitle'><Link 
-          to='/'
-          style={{ textDecoration: 'none', color: 'black'}}
-        >Food for You</Link>
-        </h1>
+        <div>
+          <h1 className='headerTitle'><Link 
+            to='/'
+            style={{ textDecoration: 'none', color: 'black'}}
+          >Food for You</Link>
+          </h1>
+        </div>
         <App/>
         <main>
           <Switch>

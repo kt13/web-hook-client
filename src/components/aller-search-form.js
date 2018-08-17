@@ -28,8 +28,15 @@ export class AllergyForm extends React.Component {
     return (
       <div id="AllergySearch" className="tabcontent" id="defaultOpen">
         <div className='foodSearch'>
-          <h2>Enter in a food</h2>
+          <h2>Enter in a Food</h2>
+          <p>This database is open-source and is maintained by the public.</p>
 
+
+          <p>Please note that this database is not perfect. If you are experiencing 
+            symptoms of an allergic reaction such as hives, vomiting, wheezing, 
+            swelling of the tongue, or trouble breathing due to possible anaphylaxis, 
+            please seek emergency care immediately.</p>
+            
           <div className='allergyForm'>
             <form onSubmit={e =>  
             { e.preventDefault();
@@ -46,7 +53,7 @@ export class AllergyForm extends React.Component {
           </div>
 
           <SearchResults/>
-
+          
         </div>
       </div>
     );

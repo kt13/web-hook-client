@@ -8,7 +8,8 @@ export function PostFood (props){
     <div id='PostFood' className='tabcontent'>
       <div className='postfood'>
         <h2>Contribute a New Food to the Database for Public Use!</h2>
-        <p>Please note that duplicate items can not be created.</p>
+        <p>To contribute a new listing into our open-source database, please sign up, if you haven't already.</p>
+        <p className='italic'>Please note that duplicate items can not be created.</p>
 
         <form onSubmit={e => {
           e.preventDefault();

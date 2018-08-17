@@ -80,7 +80,8 @@ class PharmaSearch extends React.Component{
       <div id='PharmaSearch' className='tabcontent'>
         <div className='pharmaSearch'>
 
-          <h2>Enter in a Zipcode to Search for a Pharmacy</h2>
+          <h2>Enter in a Zipcode to Search for a Pharmacy!</h2>
+          <p>Click on any marker to view the address and the name.</p>
 
           <form onSubmit={e =>  
           { e.preventDefault(); 

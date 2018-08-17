@@ -31,3 +31,7 @@ p{
   display: inline-block;
   vertical-align: middle;
 }
+
+.italic {
+  font-style: italic;
+}
