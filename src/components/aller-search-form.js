@@ -6,7 +6,9 @@ import './aller-search.css';
 import {toggleFoodsList} from '../actions/foods';
 import {fetchFoods} from '../actions/foods';
 
-
+//2 errors/bugs: adding a comment displays an error but it still adds it to the db
+// 2. map data array is showing different values sometimes. cant access marker.opening_hours.open_now 
+// cuz it doesn't exist sometimes
 export class AllergyForm extends React.Component {
  
   // onSubmit (event){
@@ -24,7 +26,7 @@ export class AllergyForm extends React.Component {
   render(){
     // console.log('qrawefwedfasdfs', this.props.foods);
     return (
-      <div id='AllergySearch' className='tabcontent' id='defaultOpen'>
+      <div id="AllergySearch" className="tabcontent" id="defaultOpen">
         <div className='foodSearch'>
           <h2>Enter in a food</h2>
 

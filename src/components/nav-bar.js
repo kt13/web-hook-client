@@ -35,7 +35,7 @@ class NavBar extends React.Component {
 
   render(){
     return (
-      <nav>
+      <nav role="navigation">
         <ul className="clearfix">
           <li /* onClick={e => props.onClick(e)} */>
             <Link to="/register" 

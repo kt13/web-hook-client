@@ -20,10 +20,6 @@ export class ExpandedInfo extends React.Component {
     // }, 500);
   }
 
-  // removeDups(){
-    
-  // }
-
   render(){
     const newSet = Array.from(new Set(this.props.allergens.map(item => item.category)));
     console.log(newSet, '-----');
