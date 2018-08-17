@@ -3,8 +3,7 @@ import {connect} from 'react-redux';
 import SearchResults from './search-results';
 import './aller-search.css';
 
-import {toggleFoodsList} from '../actions/foods';
-import {fetchFoods} from '../actions/foods';
+import {toggleFoodsList, fetchFoods, newSearchTerm} from '../actions/foods';
 
 export class AllergyForm extends React.Component {
  
@@ -40,7 +39,8 @@ export class AllergyForm extends React.Component {
             <form onSubmit={e =>  
             { e.preventDefault();
             // console.log(this.input.value, '============');
-              this.props.dispatch(fetchFoods(e.target.elements.foodSearch.value)); }}>
+              this.props.dispatch(fetchFoods(e.target.elements.foodSearch.value));
+              this.props.dispatch(newSearchTerm(e.target.elements.foodSearch.value)); }}>
               <input type="text" name="foodSearch" id="foodSearch"
                 className="allerText" autoComplete="off"
                 placeholder="E.g. panini" required 

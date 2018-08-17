@@ -4,7 +4,6 @@ import zipcodes from 'zipcodes';
 import { compose } from 'recompose';
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps';
 import './pharma-search.css';
-import { FaAnchor } from 'react-icons/fa';
 import {connect} from 'react-redux';
 import {toggleMarkerInfo, fetchingPlaces} from '../actions/maps';
 

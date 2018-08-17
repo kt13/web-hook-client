@@ -43,10 +43,16 @@ export const fetchAllergenSuccess = allergy => ({
   allergy
 });
 
-export const POST_COMMENT_SUCCESS = 'POST_COMMENT_SUCCESS ';
+export const POST_COMMENT_SUCCESS = 'POST_COMMENT_SUCCESS';
 export const postCommentSuccess = content => ({
   type: POST_COMMENT_SUCCESS,
   content
+});
+
+export const NEW_SEARCH_TERM = 'NEW_SEARCH_TERM';
+export const newSearchTerm = search => ({
+  type: NEW_SEARCH_TERM,
+  search
 });
 
 export const fetchFoods = food => dispatch => {

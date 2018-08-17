@@ -5,7 +5,8 @@ import {
   EXPAND_RESULT, 
   NEW_FOOD_SEARCH,
   NEW_ALLERGEN_SUCCESS,
-  POST_COMMENT_SUCCESS} from '../actions/foods';
+  POST_COMMENT_SUCCESS,
+  NEW_SEARCH_TERM} from '../actions/foods';
 
 const initialState = {
   foods: [],
@@ -13,7 +14,8 @@ const initialState = {
   error: null,
   expandFood: false,
   searchListHide: true,
-  allergens: []
+  allergens: [],
+  searchTerm: null
 };  
 
 // console.log(initialState.foods,'sadfasdfasfdsf');
@@ -34,6 +36,11 @@ export const foodsReducer = (state=initialState, action) => {
   } else if(action.type === NEW_FOOD_SEARCH){
     return Object.assign({}, state, {
       searchListHide: action.listHide
+    });
+  
+  }else if(action.type === NEW_SEARCH_TERM){
+    return Object.assign({}, state, {
+      searchTerm: action.search
     });
 
   } else if(action.type === EXPAND_RESULT){
@@ -64,25 +71,4 @@ export const foodsReducer = (state=initialState, action) => {
     });
   } 
   return state;
-  // switch(action.type) {
-  //   case(MAKE_GUESS):
-  //     return Object.assign({}, state, {
-  //       guessList: [...state.guessList, action.guess],
-  //       feedback: generateFeedback(action.guess)
-  //     });
-  //   case(START_NEW_GAME):
-  //     return Object.assign({}, state, {
-  //       targetNumber: generateNewTarget(),
-  //       feedback: 'Make your Guess!',
-  //       guessList: [],
-  //       showInfo: false
-  //     });
-  //   case(TOGGLE_MODAL):
-  //     return Object.assign({}, state, {
-  //       showInfo: !state.showInfo
-  //     });
-  //   default:
-  //     return state;
-  //   }
-  // };
 };
