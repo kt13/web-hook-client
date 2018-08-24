@@ -1,5 +1,11 @@
-.foodSearch{
-  text-align: center;
-  background-color: white;
+.frontpage {
+  width: 800px;
+  border: 2px solid black;
+  padding: 20px;
 }
+
+.landing-notes a{
+  text-decoration: none;
+}
+
 

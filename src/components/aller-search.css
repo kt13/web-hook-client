@@ -25,6 +25,16 @@
   font-size: 17px;
 }
 
+.search-notes2{
+  font-size: 17px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.search-notes2 a{
+  text-decoration: none;
+}
+
 @media only screen and (max-width: 640px) {
 
   .allergyImg {

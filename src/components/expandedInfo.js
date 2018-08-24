@@ -100,9 +100,6 @@ export class ExpandedInfo extends React.Component {
 
               <br/>
               
-              
-              
-
             </div>
           
           </div>

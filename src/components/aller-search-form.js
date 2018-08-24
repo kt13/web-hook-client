@@ -53,8 +53,16 @@ export class AllergyForm extends React.Component {
              an allergic reaction such as hives, vomiting, wheezing, 
             swelling of the tongue, or trouble breathing due to possible 
             anaphylaxis, please seek emergency care immediately.</p>
-          <span className='search-notes'>For more information on food allergies, <a href=
-            "https://acaai.org/allergies/types/food-allergy">go here</a>.</span>
+          <p className='search-notes'>For more information on food allergies, 
+          click here: </p>
+          <p className='search-notes2'>
+            <a href=
+              "https://acaai.org/allergies/types/food-allergy"> American College of 
+            Allergy, Asthma, and Immunology (ACAAI)</a>.</p>
+          <p className='search-notes2'>
+            <a 
+              href="https://www.foodallergy.org/life-with-food-allergies/food-allergy-101/facts-and-statistics">
+              Food Allergy Research and Education (FARE)</a> </p>
 
           <SearchResults/>
           

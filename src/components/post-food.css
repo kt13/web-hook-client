@@ -33,3 +33,8 @@ p{
 .italic {
   font-style: italic;
 }
+
+.post-footnote{
+  width: 300px;
+  font-size: 13px;
+}
