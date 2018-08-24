@@ -29,6 +29,6 @@ html, body {
   font-size: 15px;
 }
 
-/* .pharmaButton {
-  margin: 5px;
-} */
+.pharmaButton {
+  margin: 10px;
+}
