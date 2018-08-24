@@ -6,93 +6,107 @@ import {withRouter} from 'react-router-dom';
 
 export class Register extends React.Component {
 
-  constructor(props){
-    super(props);
-    this.state = {
-      registered: false
-    };
-  }
+  // constructor(props){
+  //   super(props);
+  //   this.state = {
+  //     registered: false
+  //   };
+  // }
   onSubmit(val){
     this.props
-      .dispatch(createUser(val.email.value, val.newUser.value, val.newPass.value, this.props.history));
+      .dispatch(createUser(
+        val.email.value, 
+        val.newUser.value, 
+        val.newPass.value, 
+        this.props.history));
 
-    this.setState({registered: !this.state.registered});
+    // this.setState({registered: !this.state.registered});
 
   }
   
-  render(){
-    console.log(this.state.registered, 'react');
-    // console.log(this.props.registered, 'redux');
-    if(this.state.registered === false){
+  errorHandle(){
+    if(this.props.error !== null){
       return(
-        <div className='register'>
-
-          <form onSubmit={e =>
-          { e.preventDefault();
-            const newCred = e.target.elements;
-            console.log(newCred, '=====new======');
-            this.onSubmit(newCred);}}>
-
-            <div className='input'>
-              <label>Email</label>
-              <input 
-                type="text" 
-                name="email" id="email"
-                className="emailRC" 
-                autoComplete="off" 
-                aria-labelledby="Add E-mail"
-                required 
-              /*  ref={ele => (this.input = ele)} required */
-              />
-            </div>
-
-            <div className='input'>
-              <label>Username</label>
-              <input 
-                type="text" 
-                name="newUser" 
-                id="newUser"
-                className="userRC" 
-                autoComplete="off" 
-                aria-labelledby="Add Username"
-                required 
-              /*  ref={ele => (this.input = ele)} required */
-              />
-            </div>
-
-            <div className='input'>
-              <label>Password</label>
-              <input 
-                type="password" 
-                name="newPass" 
-                id="newPass"
-                className="passRC" 
-                autoComplete="off" 
-                aria-labelledby="Add Password"
-                required 
-              /*  ref={ele => (this.input = ele)} required */
-              />
-            </div>
-
-            <input 
-              type="submit" 
-              id="registerButton" 
-              className="registerButton" 
-              name="submit" 
-              value="Register" />
-
-          </form>
-
+        <div>
+          <p className='red'>{this.props.error}</p>
         </div>
       );
-    } else {
-      return <div></div>;
     }
+  }
+  
+  render(){
+    // console.log(this.state.registered, 'react');
+    // console.log(this.props.registered, 'redux');
+    // if(this.state.registered === false){
+    return(
+      <div className='register'>
+
+        <form onSubmit={e =>
+        { e.preventDefault();
+          const newCred = e.target.elements;
+          console.log(newCred, '=====new======');
+          this.onSubmit(newCred);}}>
+
+          <div className='input'>
+            <label>Email</label>
+            <input 
+              type="text" 
+              name="email" id="email"
+              className="emailRC" 
+              autoComplete="off" 
+              aria-labelledby="Add E-mail"
+              required 
+            />
+          </div>
+
+          <div className='input'>
+            <label>Username</label>
+            <input 
+              type="text" 
+              name="newUser" 
+              id="newUser"
+              className="userRC" 
+              autoComplete="off" 
+              aria-labelledby="Add Username"
+              required 
+            />
+          </div>
+
+          <div className='input'>
+            <label>Password</label>
+            <input 
+              type="password" 
+              name="newPass" 
+              id="newPass"
+              className="passRC" 
+              autoComplete="off" 
+              aria-labelledby="Add Password"
+              required 
+              /*  ref={ele => (this.input = ele)} required */
+            />
+          </div>
+
+          {this.errorHandle()}
+
+          <input 
+            type="submit" 
+            id="registerButton" 
+            className="registerButton" 
+            name="submit" 
+            value="Register" />
+
+        </form>
+
+      </div>
+    );
+    // } else {
+    //   return <div></div>;
+    // }
   }
 }
 
-// const mapStateToProps = (state, props) => ({
-//   registered: state.jwtR.registered
-// });
+const mapStateToProps = (state, props) => ({
+  error: state.jwtR.error
+});
 
-export default withRouter(connect(/* mapStateToProps */)(Register));
+export default withRouter(connect(mapStateToProps)(Register));

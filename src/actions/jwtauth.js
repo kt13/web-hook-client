@@ -91,7 +91,7 @@ export const loginUser = (username, password, history) => dispatch => {
   })
     .then(res => {
       if(!res.ok){
-        return Promise.reject({messsage: 'Unsuccessful Login'});
+        return Promise.reject(res.statusText);
       }
       // console.log(res, 'test login user');
       return res.json();
@@ -100,7 +100,7 @@ export const loginUser = (username, password, history) => dispatch => {
       const {authToken} = data;
       // console.log(authToken);
       storeAuthInfo(authToken, dispatch);
-      history.push('/');
+      history.push('/add');
     })
     .catch(err => {
       dispatch(authError(err));

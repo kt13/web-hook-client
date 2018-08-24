@@ -23,12 +23,20 @@ class NavBar extends React.Component {
     // do it
     else if(this.props.currentUser){
       return(
-        <li
-          onClick={() => { 
-            this.props.dispatch(logoutUser());
-            <Redirect to='/'/>;}}>
+        <div>
+
+          <li className='nav-user'>
+            {this.props.currentUser}
+          </li>
+
+          <li className='nav-logout' /* style={{display: 'inline-block'}} */
+            onClick={() => { 
+              this.props.dispatch(logoutUser());
+              <Redirect to='/'/>;}}>
           Logout
-        </li>
+          </li>
+
+        </div>
       );
     }
   }
@@ -36,16 +44,27 @@ class NavBar extends React.Component {
   render(){
     return (
       <nav role="navigation">
+
         <ul className="clearfix">
-          <li /* onClick={e => props.onClick(e)} */>
-            <Link to="/register" 
-              className="register"  
-              style={{ textDecoration: 'none' }}>
+
+          <div className='nav-left'>
+
+            <li className='registerClass'>
+              <Link to="/register" 
+                className="register"  
+                style={{ textDecoration: 'none' }}>
           Register
-            </Link>
-          </li>
-          {this.logout()}
+              </Link>
+            </li>
+
+          </div>
+
+          <div className='nav-right'>
+            {this.logout()}
+          </div>
+
         </ul>
+
       </nav>
     );
   }

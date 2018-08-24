@@ -37,8 +37,8 @@ p{
 
 .register, .login {
   text-align: center;
-  padding-top: 20px;
-  padding-bottom: 30px;
+  /* padding-top: 20px;
+  padding-bottom: 30px; */
   /* vertical-align: 20px; */
 }
 
@@ -48,5 +48,9 @@ p{
 
 .emailRC, .userLC {
   margin-top: 25px;
+}
+
+.red{
+  color: red;
 }
 

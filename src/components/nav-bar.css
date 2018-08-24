@@ -14,11 +14,11 @@ nav ul li {
   list-style: none;
 }
 
-nav ul li:first-child {
+.nav-left {
 	float: left;
 }
 
-nav ul li:last-child {
+.nav-right {
 	float: right;
 }
 
@@ -29,5 +29,18 @@ nav a {
 
 body {
   background-color: white;
+}
+
+.nav-user{
+  padding-right: 15px;
+  display: inline-block;
+}
+
+.nav-logout{
+  display: inline-block;
+}
+
+.nav-logout:hover{
+  cursor: pointer;
 }
 

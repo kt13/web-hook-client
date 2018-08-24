@@ -13,6 +13,7 @@ import Login from './components/login';
 import SearchFood from './components/aller-search-form';
 import SearchPharma from './components/pharma-search-form';
 import AddListing from './components/post-food';
+import LandingPage from './components/landing-page';
 import './Dashboard.css';
 
 export default function Dashboard() {
@@ -25,7 +26,7 @@ export default function Dashboard() {
         <NavBar />
         <div>
           <h1 className='headerTitle'><Link 
-            to='/'
+            to='/search/food'
             style={{ textDecoration: 'none', color: 'black'}}
           >Food for You</Link>
           </h1>
@@ -37,6 +38,12 @@ export default function Dashboard() {
             <Route
               exact
               path="/"
+              component={LandingPage}
+            />
+
+            <Route
+              exact
+              path="/search/food"
               component={SearchFood}
             />
 

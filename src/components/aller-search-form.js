@@ -6,23 +6,12 @@ import './aller-search.css';
 import {toggleFoodsList, fetchFoods, newSearchTerm} from '../actions/foods';
 
 export class AllergyForm extends React.Component {
- 
-  // onSubmit (event){
-  //   event.preventDefault();
-
-  //   if(this.props.onSubmit){
-  //     const currentValue= this.input.value;
-  //     console.log(currentValue, '======');
-  //     this.props.handleSubmit(currentValue);
-  //   }
-  //   this.input.value = '';
-  //   this.input.focus();
 
   // console.log('qrawefwedfasdfs', this.props);
   render(){
     // console.log('qrawefwedfasdfs', this.props.foods);
     return (
-      <div id="AllergySearch" className="tabcontent" id="defaultOpen">
+      <div id="AllergySearch" className="tabcontent">
         <div className='foodSearch'>
 
           <h2>Enter in a Food</h2>
@@ -31,15 +20,8 @@ export class AllergyForm extends React.Component {
             src="https://foodsafetytrainingcertification.com/wp-content/uploads/2017/05/foodallergies.png" 
             alt="Various Food Categories of Food Allergies"/>
 
-          <p>This database is open-source and is maintained by the public.</p>
-
-          <p>Please note that this website is not a substitute 
-            for medical advice. If you are experiencing symptoms of
-             an allergic reaction such as hives, vomiting, wheezing, 
-            swelling of the tongue, or trouble breathing due to possible 
-            anaphylaxis, please seek emergency care immediately.</p>
-          <span>For more information on food allergies, <a href=
-            "https://acaai.org/allergies/types/food-allergy">go here</a>.</span>
+          <p>This database is open-source and is maintained 
+            by the public by users like you.</p>
 
           <div className='allergyForm'>
             <form onSubmit={e =>  
@@ -65,7 +47,15 @@ export class AllergyForm extends React.Component {
                   this.props.dispatch(toggleFoodsList(false))} />
             </form>
           </div>
-          
+
+          <p className='search-notes'>Please note that this website is not a substitute 
+            for medical advice. If you are experiencing symptoms of
+             an allergic reaction such as hives, vomiting, wheezing, 
+            swelling of the tongue, or trouble breathing due to possible 
+            anaphylaxis, please seek emergency care immediately.</p>
+          <span className='search-notes'>For more information on food allergies, <a href=
+            "https://acaai.org/allergies/types/food-allergy">go here</a>.</span>
+
           <SearchResults/>
           
         </div>

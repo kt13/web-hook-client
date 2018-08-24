@@ -7,38 +7,6 @@ import './pharma-search.css';
 import {connect} from 'react-redux';
 import {toggleMarkerInfo, fetchingPlaces} from '../actions/maps';
 
-// const latLong = 
-// {lat: zipcodes.lookup('10001').latitude, 
-//   long: zipcodes.lookup('10001').longitude };
-// console.log(latLong);
-// console.log(zipcodes.lookup('10001'));
-// console.log(API_KEY);
-  
-// constructor(props){
-//   super(props);
-//   this.state={
-//     places: [],
-//     center: {lat: 37.7735248, lng: -122.42122119999999},
-//     showingInfoWindow: false,
-//     activeMarker: {},
-//     selectedPlace: {}
-//   };
-// this.onMarkerClick = this.onMarkerClick.bind(this);
-// this.onMapClick = this.onMapClick.bind(this);
-// this.onMapReady = this.onMapReady.bind(this);  
-
-// let newCenter = {};
-// console.log(newCenter);
-// function reAlign(){
-//   if(this.props.centerLat && this.props.centerLng){
-//   // newCenter = {lat: this.props.center[0], lng: this.props.center[1]};
-//     console.log(this.props.centerLat);
-//     newCenter = {lat: parseInt(this.props.centerLat, 10), lng: parseInt(this.props.centerLng, 10)};
-//     console.log(newCenter);
-//     return newCenter;
-//   }
-// }
-
 const MyMapComponent = compose(
   withScriptjs,
   withGoogleMap

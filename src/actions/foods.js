@@ -96,7 +96,7 @@ export const fetchAllergens = foodId => dispatch => {
     });
 };
 
-export const postComment = (content, foodId) => (dispatch, /* getState */) => {
+export const postComment = (content, foodId) => (dispatch/* getState */) => {
   dispatch(fetchFoodsRequest());
   /* const searchWord = getState().foodsR.searchTerm; */
   console.log('I\'m making a post comment request to the back-end');

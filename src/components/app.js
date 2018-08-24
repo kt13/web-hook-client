@@ -11,7 +11,7 @@ export default function App (props) {
     <div className='App'>
       <div className="tab">
 
-        <Link to='/'>
+        <Link to='/search/food'>
           <button className="tablinks">
            Search a Food</button> </Link>
 
