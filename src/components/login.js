@@ -2,16 +2,27 @@ import React from 'react';
 import './register-login.css';
 import {loginUser} from '../actions/jwtauth';
 import {connect} from 'react-redux';
-import {withRouter} from 'react-router-dom';
+import {withRouter, Link} from 'react-router-dom';
 
 export class Login extends React.Component{
- 
+  
+  notRegistererd(){
+    return(
+      <div>
+        <p>Not Registered? <Link to="/register">Click here.</Link></p>
+      </div>
+    );
+  }
+
   errorHandle(){
     if(this.props.error !== null){
       return(
         <div>
           <p className='red'>{this.props.error}</p>
         </div>);
+    }
+    else{
+      return (<div></div>);
     }
   }
 
@@ -51,6 +62,7 @@ export class Login extends React.Component{
                 required 
               />
             </div>
+            {this.notRegistererd()}
             {this.errorHandle()}
             <input 
               type="submit" 

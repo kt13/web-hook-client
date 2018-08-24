@@ -36,11 +36,11 @@ export const logiError = error => ({
   error
 });
 
-// export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
-// export const registerSuccess = status => ({
-//   type: REGISTER_SUCCESS,
-//   status
-// });
+export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
+export const registerSuccess = status => ({
+  type: REGISTER_SUCCESS,
+  status
+});
 
 
 const storeAuthInfo = (authToken, dispatch) => {
@@ -78,8 +78,8 @@ export const createUser = (email, username, password, history) => dispatch => {
         console.log(res);
         return Promise.reject(res.message);
       }
-      /* dispatch(registerSuccess(true)); */
-      history.push('/login');
+      dispatch(registerSuccess(true));
+      window.setTimeout(() => {history.push('/login');}, 6000);
       // return res.json();
     })
     .catch(err => {

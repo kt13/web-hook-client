@@ -5,7 +5,7 @@ import {
   AUTH_SUCCESS,
   REGISTER_ERROR,
   LOGIN_ERROR,
-  // AUTH_WARNING
+  REGISTER_SUCCESS
 } from '../actions/jwtauth';
 
 const initialState = {
@@ -13,9 +13,9 @@ const initialState = {
   authToken: null, // authToken !== null does not mean it has been validated
   currentUser: null,
   loading: false,
+  registered: false,
   registerError: null,
   loginError: null
-  /*  registered: false */
 };
 
 export const  jwtReducer = (state = initialState, action) => {
@@ -56,12 +56,13 @@ export const  jwtReducer = (state = initialState, action) => {
       loading: false,
       loginError: action.error
     });
-  // } else if(action.type === REGISTER_SUCCESS){
-  //   return Object.assign({}, state, {
-  //     loading: false,
-  //     error: null,
-  //     registered: action.status
-  //   });
+    
+  } else if(action.type === REGISTER_SUCCESS){
+    return Object.assign({}, state, {
+      loading: false,
+      error: null,
+      registered: action.status
+    });
 
   // } else if (action.type === AUTH_WARNING) {
   //   return Object.assign({}, state, {

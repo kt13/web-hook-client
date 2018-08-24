@@ -6,12 +6,6 @@ import {withRouter} from 'react-router-dom';
 
 export class Register extends React.Component {
 
-  // constructor(props){
-  //   super(props);
-  //   this.state = {
-  //     registered: false
-  //   };
-  // }
   onSubmit(val){
     this.props
       .dispatch(createUser(
@@ -19,9 +13,19 @@ export class Register extends React.Component {
         val.newUser.value, 
         val.newPass.value, 
         this.props.history));
+  }
 
-    // this.setState({registered: !this.state.registered});
-
+  onSuccess(){
+    if(this.props.registered){
+      return(
+        <div>
+          <p>Successful registration! Redirecting to Login in 6 seconds...</p>
+        </div>
+      );
+    }
+    else{
+      return(<div></div>);
+    }
   }
   
   errorHandle(){
@@ -32,12 +36,12 @@ export class Register extends React.Component {
         </div>
       );
     }
+    else{
+      return (<div></div>);
+    }
   }
   
   render(){
-    // console.log(this.state.registered, 'react');
-    // console.log(this.props.registered, 'redux');
-    // if(this.state.registered === false){
     return(
       <div className='register'>
 
@@ -89,7 +93,8 @@ export class Register extends React.Component {
           </div>
 
           {this.errorHandle()}
-
+          {this.onSuccess()}
+          
           <input 
             type="submit" 
             id="registerButton" 
@@ -101,13 +106,11 @@ export class Register extends React.Component {
 
       </div>
     );
-    // } else {
-    //   return <div></div>;
-    // }
   }
 }
 
 const mapStateToProps = (state, props) => ({
+  registered: state.jwtR.registered,
   error: state.jwtR.registerError
 });
 

@@ -1,9 +1,26 @@
 import React from 'react';
 import './post-food.css';
 import { connect } from 'react-redux';
+import {withRouter} from 'react-router-dom';
 import {postNewFood} from '../actions/foods';
 
 export class PostFood extends React.Component{
+
+  credentials(){
+    if(this.props.currentUser === null){
+      setTimeout(() => {this.props.history.push('/login');}, 20000);
+      return(
+        <div>
+          <p style={{color: 'rgb(172, 4, 4)'}}>You need to be logged in to contribute a new listing to the database.
+            Redirecting you to login in 20 seconds...
+          </p>
+        </div>);
+    }
+    else{
+      return (<div></div>);
+    }
+  }
+
   render(){
     return(
       <div id='PostFood' className='tabcontent'>
@@ -12,11 +29,10 @@ export class PostFood extends React.Component{
         
           <h2>Contribute a New Food to the Database for Public Use!</h2>
         
-          <p>To contribute a new listing into our open-source 
-          database, please sign up, if you haven't already.</p>
-        
           <p className='italic'>Please note that duplicate items 
           can not be created.</p>
+
+          {this.credentials()}
 
           <form onSubmit={e => {
             e.preventDefault();
@@ -68,4 +84,4 @@ const mapStateToProps = (state, props) => ({
   currentUser: state.jwtR.currentUser
 });
 
-export default connect(mapStateToProps)(PostFood);
+export default withRouter(connect(mapStateToProps)(PostFood));
