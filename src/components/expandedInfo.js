@@ -27,7 +27,7 @@ export class ExpandedInfo extends React.Component {
 
   comments(){
     return this.props.comments.map((item, index) => (
-      <li key={index} className='commentLi'>
+      <li key={index} className='commentLi' aria-live='polite'>
         {item}
       </li>
     ));
@@ -45,7 +45,7 @@ export class ExpandedInfo extends React.Component {
     return(
       <div id='SearchResult'>
 
-        <li className='oneFood'>
+        <li className='oneFood' aria-live='polite'>
 
           <div className='preview' onClick={() => {
             this.expandFood();

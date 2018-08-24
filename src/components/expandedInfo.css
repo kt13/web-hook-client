@@ -74,8 +74,10 @@ h2{
 }
 .commentLi {
   display: block;
-  padding: 5px;
-  border: 2px black;
+  padding: 10px;
+  border: 1px solid black;
+  margin: 10px;
+  border-radius: 10px;
 }
 
 ul li:last-child {

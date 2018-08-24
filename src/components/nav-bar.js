@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import './nav-bar.css';
 import {connect} from 'react-redux';
 import { logoutUser } from '../actions/jwtauth';
-import {Redirect} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 
 class NavBar extends React.Component {
 
@@ -31,8 +31,7 @@ class NavBar extends React.Component {
 
           <li className='nav-logout' /* style={{display: 'inline-block'}} */
             onClick={() => { 
-              this.props.dispatch(logoutUser());
-              <Redirect to='/'/>;}}>
+              this.props.dispatch(logoutUser(this.props.history));}}>
           Logout
           </li>
 
@@ -74,4 +73,4 @@ const mapStateToProps = (state, props) => ({
   currentUser: state.jwtR.currentUser
 });
 
-export default connect(mapStateToProps)(NavBar);
+export default withRouter(connect(mapStateToProps)(NavBar));

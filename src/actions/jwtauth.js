@@ -120,7 +120,8 @@ export const loginUser = (username, password, history) => dispatch => {
     });
 };
 
-export const logoutUser = () => dispatch => {
+export const logoutUser = history => dispatch => {
   dispatch(clearAuth());
   clearAuthToken();
+  history.push('/');
 };
