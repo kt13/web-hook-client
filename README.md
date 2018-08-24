@@ -10,7 +10,7 @@ Users can also sign up to post a new listing to the database by registering. Pos
 
 A link to a deployed version
 
-![Front Page](C:/Downloads/screenshot1.png)
+![Front Page](./screenshots/LandingPage.png)
 
 React is used on the front-end (with Create React-App) and Node and MongoDB is used on the backend.
 
