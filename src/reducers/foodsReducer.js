@@ -18,8 +18,6 @@ const initialState = {
   searchTerm: null
 };  
 
-// console.log(initialState.foods,'sadfasdfasfdsf');
-
 export const foodsReducer = (state=initialState, action) => {
   if(action.type === NEW_REQUEST){
     return Object.assign({}, state, {

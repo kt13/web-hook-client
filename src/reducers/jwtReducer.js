@@ -19,8 +19,6 @@ const initialState = {
 };
 
 export const  jwtReducer = (state = initialState, action) => {
-  // console.log(state.currentUser, 'currentUser');
-  // console.log(state.authToken, 'authToken');
   if (action.type === AUTH_SET) {
     return Object.assign({}, state, {
       authToken: action.token

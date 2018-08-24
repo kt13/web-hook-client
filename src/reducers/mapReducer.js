@@ -20,7 +20,6 @@ export const mapReducer = (state=initialState, action) => {
     return Object.assign({}, state, {loading: true});
   }
   else if(action.type === NEW_MAP_SUCCESS){
-    // console.log(action.data);
     return Object.assign({}, state, 
       {loading: false,
         markers: [...action.data]
@@ -37,8 +36,6 @@ export const mapReducer = (state=initialState, action) => {
       {loading: false, error: action.error});
   }
   else if(action.type === MARKER_INFO){
-    // console.log(action, '------------');
-    // console.log(action.marker, 'target marker in reducer', action.marker.id);
     return Object.assign({}, state, 
       {
         markers: state.markers.map(item => {
@@ -54,7 +51,6 @@ export const mapReducer = (state=initialState, action) => {
     );
   }
   else if(action.type === NEW_ZIP_SEARCH){
-    // console.log(action.newMarks);
     return Object.assign({}, state, 
       {markers: [
         ...state.markers, ...action.newMarks

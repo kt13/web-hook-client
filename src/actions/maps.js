@@ -59,22 +59,3 @@ export const fetchingPlaces = places => dispatch => {
       dispatch(fetchMapError(err));
     });
 };
-// https://developers.google.com/places/web-service/search
-// https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=YOUR_API_KEY&location=latitude,longitude&radius=5000&keyword=pharmacies
-// const url = [
-//   // Length issue
-//   'https://gist.githubusercontent.com',
-//   '/farrrr/dfda7dd7fccfec5474d3',
-//   '/raw/758852bbc1979f6c4522ab4e92d1c92cba8fb0dc/data.json'
-// ].join('');
-
-// export const fetchingPlaces1 = () => dispatch => {
-//   dispatch(fetchMapRequest());
-//   console.log('I\'m making a request to the json file');
-//   return fetch(url)
-//     .then(res => res.json())
-//     .then(data => {
-//       // this.setState({ markers: data.photos });
-//       dispatch(filterByZip(data.photos));
-//     });
-// };
