@@ -1,11 +1,17 @@
 import React from 'react';
-import {API_KEY} from '../config';
 import zipcodes from 'zipcodes';
 import { compose } from 'recompose';
-import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps';
+import { 
+  withScriptjs, 
+  withGoogleMap, 
+  GoogleMap, 
+  Marker, 
+  InfoWindow } from 'react-google-maps';
 import './pharma-search.css';
 import {connect} from 'react-redux';
 import {toggleMarkerInfo, fetchingPlaces} from '../actions/maps';
+import {API_KEY} from '../config';
+
 
 const MyMapComponent = compose(
   withScriptjs,
@@ -14,7 +20,7 @@ const MyMapComponent = compose(
   console.log(props);
   return (<GoogleMap
     defaultZoom={13}
-    center={{lat: props.centerLat, lng: props.centerLng}/* {lat: 39.648209, lng: -75.711185} */}>
+    center={{lat: props.centerLat, lng: props.centerLng}}>
     
     {props.markers.map(marker => (
       <Marker
@@ -39,6 +45,7 @@ const MyMapComponent = compose(
 class PharmaSearch extends React.Component{
 
   render() {
+    
     console.log(this.props, '------------------------');
     const googleURL =`https://maps.googleapis.com/maps/api/js?key=${API_KEY}&libraries=geometry,drawing,places`;
     return (
