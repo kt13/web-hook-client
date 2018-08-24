@@ -17,7 +17,7 @@ const MyMapComponent = compose(
   withScriptjs,
   withGoogleMap
 )(props =>{
-  console.log(props);
+  // console.log(props);
   return (<GoogleMap
     defaultZoom={13}
     center={{lat: props.centerLat, lng: props.centerLng}}>
@@ -27,7 +27,7 @@ const MyMapComponent = compose(
         key={marker.id}
         position={{ lat: marker.geometry.location.lat, lng: marker.geometry.location.lng }}
         onClick={() => {
-          console.log(marker);
+          // console.log(marker);
           props.dispatch(toggleMarkerInfo(true, marker));}}>
         {marker.isMarkOpen && <InfoWindow 
           onCloseClick={() => props.dispatch(toggleMarkerInfo(false, marker))}>
@@ -46,7 +46,7 @@ class PharmaSearch extends React.Component{
 
   render() {
     
-    console.log(this.props, '------------------------');
+    // console.log(this.props, '------------------------');
     const googleURL =`https://maps.googleapis.com/maps/api/js?key=${API_KEY}&libraries=geometry,drawing,places`;
     return (
       <div id='PharmaSearch' className='tabcontent'>
@@ -57,10 +57,15 @@ class PharmaSearch extends React.Component{
 
           <form onSubmit={e =>  
           { e.preventDefault(); 
-            console.log(parseInt(e.target.elements.zipSearch.value, 10));
+            // console.log(parseInt(e.target.elements.zipSearch.value, 10));
             const latLng = 
-          {lat: zipcodes.lookup(parseInt(e.target.elements.zipSearch.value, 10)).latitude, 
-            lng: zipcodes.lookup(parseInt(e.target.elements.zipSearch.value, 10)).longitude };
+          {
+            lat: 
+            zipcodes.lookup(
+              parseInt(e.target.elements.zipSearch.value, 10)).latitude, 
+            lng: 
+            zipcodes.lookup(
+              parseInt(e.target.elements.zipSearch.value, 10)).longitude };
             this.props.dispatch(fetchingPlaces(latLng)); }}>
             <input 
               type="text"

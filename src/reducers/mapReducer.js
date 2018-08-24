@@ -38,12 +38,12 @@ export const mapReducer = (state=initialState, action) => {
   }
   else if(action.type === MARKER_INFO){
     // console.log(action, '------------');
-    console.log(action.marker, 'target marker in reducer', action.marker.id);
+    // console.log(action.marker, 'target marker in reducer', action.marker.id);
     return Object.assign({}, state, 
       {
         markers: state.markers.map(item => {
           if(item.id===action.marker.id){
-            console.log(item);
+            // console.log(item);
             return Object.assign({}, item, {isMarkOpen: action.toggle});
           }
           else{

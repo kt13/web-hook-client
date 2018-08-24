@@ -58,16 +58,16 @@ export const newSearchTerm = search => ({
 export const fetchFoods = food => dispatch => {
   dispatch(fetchFoodsRequest());
   dispatch(newSearchTerm(food));
-  console.log('I\'m making a get request to the back-end');
+  // console.log('I\'m making a get request to the back-end');
   return fetch(`${API_BASE_URL}/api/foods?searchTerm=${food}`)
     .then(res => {
-      console.log(res, 'test console');
+      // console.log(res, 'test console');
       if (!res.ok) {
         return Promise.reject(res.statusText);
       }
       return res.json();
     }).then(res => {
-      console.log(res);
+      // console.log(res);
       dispatch(fetchFoodsSuccess(res));
       
     })
@@ -78,16 +78,16 @@ export const fetchFoods = food => dispatch => {
 
 export const fetchAllergens = foodId => dispatch => {
   dispatch(fetchFoodsRequest());
-  console.log('I\'m making a get request to the back-end to find allergens of that food');
+  // console.log('I\'m making a get request to the back-end to find allergens of that food');
   return fetch(`${API_BASE_URL}/api/foods/${foodId}/allergens`)
     .then(res => {
-      console.log(res, 'test console');
+      // console.log(res, 'test console');
       if (!res.ok) {
         return Promise.reject(res.statusText);
       }
       return res.json();
     }).then(res => {
-      console.log(res);
+      // console.log(res);
       dispatch(fetchAllergenSuccess(res));
       
     })
@@ -99,10 +99,10 @@ export const fetchAllergens = foodId => dispatch => {
 export const postComment = (content, foodId) => (dispatch/* getState */) => {
   dispatch(fetchFoodsRequest());
   /* const searchWord = getState().foodsR.searchTerm; */
-  console.log('I\'m making a post comment request to the back-end');
-  console.log(JSON.stringify({
-    'comments': content,
-  }));
+  // console.log('I\'m making a post comment request to the back-end');
+  // console.log(JSON.stringify({
+  //   'comments': content,
+  // }));
   return fetch(`${API_BASE_URL}/api/foods/${foodId}/comments`,
     {
       method: 'PUT',
@@ -121,7 +121,7 @@ export const postComment = (content, foodId) => (dispatch/* getState */) => {
     if (!res.ok) {
       return Promise.reject(res.statusText);
     }
-    console.log(res);
+    // console.log(res);
     return res.json();
   })/* .then( res => {
     dispatch(fetchFoodsSuccess(res));
@@ -133,11 +133,11 @@ export const postComment = (content, foodId) => (dispatch/* getState */) => {
 
 export const postNewFood = (nme1, ing2) => dispatch => {
   dispatch(fetchFoodsRequest());
-  console.log('I\'m making a post request to the back-end');
-  console.log(JSON.stringify({
-    'name': nme1,
-    'ingredients': ing2,
-  }), nme1, ing2);
+  // console.log('I\'m making a post request to the back-end');
+  // console.log(JSON.stringify({
+  //   'name': nme1,
+  //   'ingredients': ing2,
+  // }), nme1, ing2);
   return fetch(`${API_BASE_URL}/api/foods`,
     {
       method: 'POST',
@@ -154,7 +154,7 @@ export const postNewFood = (nme1, ing2) => dispatch => {
     //   console.log(res, 'test console posting');
     //   return res.json();
     }).then(res => {
-    console.log(res);
+    // console.log(res);
     dispatch(postFoodsSuccess(res));
   })
     .catch(err => {

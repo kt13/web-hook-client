@@ -55,7 +55,7 @@ const storeAuthInfo = (authToken, dispatch) => {
 export const createUser = (email, username, password, history) => dispatch => {
   let resOk;
   dispatch(authRequest());
-  console.log('I\'m making a post request to the back-end to create a user');
+  // console.log('I\'m making a post request to the back-end to create a user');
   return fetch(`${API_BASE_URL}/api/users`, {
     method: 'POST',
     headers:{
@@ -69,13 +69,13 @@ export const createUser = (email, username, password, history) => dispatch => {
     })
   })
     .then(res => {
-      console.log(res, 'test create user');
+      // console.log(res, 'test create user');
       resOk = res.ok;
       return res.json();
     })
     .then(res => {
       if (!resOk) {
-        console.log(res);
+        // console.log(res);
         return Promise.reject(res.message);
       }
       dispatch(registerSuccess(true));
@@ -83,14 +83,14 @@ export const createUser = (email, username, password, history) => dispatch => {
       // return res.json();
     })
     .catch(err => {
-      console.log(err);
+      // console.log(err);
       dispatch(regisError(err));
     });
 };
 
 export const loginUser = (username, password, history) => dispatch => {
   dispatch(authRequest());
-  console.log('I\'m making a get request to the back-end');
+  // console.log('I\'m making a get request to the back-end');
   return fetch(`${API_BASE_URL}/api/login`, {
     method: 'POST',
     headers:{
@@ -103,7 +103,7 @@ export const loginUser = (username, password, history) => dispatch => {
   })
     .then(res => {
       if(!res.ok){
-        console.log(res.statusText);
+        // console.log(res.statusText);
         return Promise.reject({message: 'Invalid username and/or password.'});
       }
       // console.log(res, 'test login user');

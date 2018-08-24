@@ -34,7 +34,7 @@ export class Login extends React.Component{
           <form onSubmit={e =>  
           { e.preventDefault(); 
             const creds = e.target.elements;
-            console.log(creds.username.value, creds.password.value, '============');
+            // console.log(creds.username.value, creds.password.value, '============');
             this.props.dispatch(loginUser(creds.username.value, creds.password.value, this.props.history)); }}>
 
             <div className='input'>

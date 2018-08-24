@@ -48,7 +48,7 @@ export class Register extends React.Component {
         <form onSubmit={e =>
         { e.preventDefault();
           const newCred = e.target.elements;
-          console.log(newCred, '=====new======');
+          // console.log(newCred, '=====new======');
           this.onSubmit(newCred);}}>
 
           <div className='input'>
@@ -94,7 +94,7 @@ export class Register extends React.Component {
 
           {this.errorHandle()}
           {this.onSuccess()}
-          
+
           <input 
             type="submit" 
             id="registerButton" 

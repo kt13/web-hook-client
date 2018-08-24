@@ -7,8 +7,8 @@ export function PostFoodForm (props){
   return(
     <form onSubmit={e => {
       e.preventDefault();
-      console.log(e.target.elements.ingredients.value,
-        e.target.ingredients.value.split(' '),  '---');
+      // console.log(e.target.elements.ingredients.value,
+      //   e.target.ingredients.value.split(' '),  '---');
       const el = e.target.elements;
       this.props.dispatch(postNewFood(
         el.foodName.value, 

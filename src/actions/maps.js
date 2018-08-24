@@ -40,22 +40,22 @@ export const mapRealign = (lat, lng) => ({
 
 export const fetchingPlaces = places => dispatch => {
   dispatch(fetchMapRequest());
-  console.log(places.lat, places.lng);
+  // console.log(places.lat, places.lng);
   dispatch(mapRealign(places.lat, places.lng));
-  console.log('I\'m making a get request to the back-end');
+  // console.log('I\'m making a get request to the back-end');
   return fetch(`${API_BASE_URL}/api/markers/${places.lat}/${places.lng}/${API_KEY}`)
     .then(res => {
       // console.log(res, 'test console');
       return res.json();
     }).then(res => {
-      console.log(res.results);
+      // console.log(res.results);
       const markerData = res.results;
       // console.log(...markerData);
       // console.log(markerData[0].geometry.location.lat, markerData[0].id);
       dispatch(fetchMapSuccess(markerData));
     })
     .catch(err => {
-      console.log(err,'error');
+      // console.log(err,'error');
       dispatch(fetchMapError(err));
     });
 };
