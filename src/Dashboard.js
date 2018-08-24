@@ -2,7 +2,6 @@ import React from 'react';
 import {
   BrowserRouter as Router,
   Route,
-  Redirect,
   Switch,
   Link
 } from 'react-router-dom';
@@ -17,12 +16,9 @@ import LandingPage from './components/landing-page';
 import './Dashboard.css';
 
 export default function Dashboard() {
-  // const h1Style = {
-  //   'text-decoration': 'none'
-  // };
   return (
     <Router>
-      <div className="dashboard" /* style={{ 'background-color': '#2B2C28'}} */>
+      <div className="dashboard">
         <NavBar />
         <div>
           <h1 className='headerTitle'><Link 
@@ -34,7 +30,6 @@ export default function Dashboard() {
         <App/>
         <main role="main" style={{padding: '20px'}}>
           <Switch>
-            {/* <Redirect exact from="/" to="/inbox" /> */}
             <Route
               exact
               path="/"

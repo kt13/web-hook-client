@@ -42,7 +42,7 @@ class NavBar extends React.Component {
 
   render(){
     return (
-      <nav role="navigation">
+      <nav>
 
         <ul className="clearfix">
 

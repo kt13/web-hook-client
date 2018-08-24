@@ -2,7 +2,7 @@ import React from 'react';
 import './expandedInfo.css';
 import {fetchAllergens, postComment, fetchFoods} from '../actions/foods';
 import { connect } from 'react-redux';
-import Comment from './comments';
+// import Comment from './comments';
 
 export class ExpandedInfo extends React.Component {
 
@@ -35,10 +35,7 @@ export class ExpandedInfo extends React.Component {
 
   render(){
 
-    // console.log(this.props, 'this props');
     const newSet = Array.from(new Set(this.props.allergens.map(item => item.category)));
-    // console.log(newSet, '-----');
-
     const expandedDisplay = this.state.expanded ? 'expanded' : 'hidden';
     const hiddenDisplay = this.state.expanded ? 'hidden' : 'expandedSpan'; 
 
@@ -77,7 +74,6 @@ export class ExpandedInfo extends React.Component {
                   e.target.commentArea.value, 
                   this.props.id));
                 this.props.dispatch(fetchFoods(this.props.searchTerm));
-                // console.log(this.input.value, '============');
               }}>
 
                 <textarea 
