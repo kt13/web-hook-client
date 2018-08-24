@@ -32,6 +32,7 @@ body {
 }
 
 .nav-user{
+  color: rgb(0, 128, 255);
   padding-right: 15px;
   display: inline-block;
 }

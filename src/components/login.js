@@ -8,7 +8,6 @@ export class Login extends React.Component{
  
   errorHandle(){
     if(this.props.error !== null){
-      console.log(this.props.error, this.props.error.message);
       return(
         <div>
           <p className='red'>{this.props.error}</p>
@@ -70,7 +69,7 @@ export class Login extends React.Component{
 
 const mapStateToProps = (state, props) => ({
   currentUser: state.jwtR.currentUser,
-  error: state.jwtR.error
+  error: state.jwtR.loginError
 });
 
 export default withRouter(connect(mapStateToProps)(Login));

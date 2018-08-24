@@ -24,9 +24,15 @@ export const authSuccess = user => ({
   user
 });
 
-export const AUTH_ERROR = 'AUTH_ERROR';
-export const authError = error => ({
-  type: AUTH_ERROR,
+export const REGISTER_ERROR = 'REGISTER_ERROR';
+export const regisError = error => ({
+  type: REGISTER_ERROR,
+  error
+});
+
+export const LOGIN_ERROR = 'LOGIN_ERROR';
+export const logiError = error => ({
+  type: LOGIN_ERROR,
   error
 });
 
@@ -47,6 +53,7 @@ const storeAuthInfo = (authToken, dispatch) => {
 };
 
 export const createUser = (email, username, password, history) => dispatch => {
+  let resOk;
   dispatch(authRequest());
   console.log('I\'m making a post request to the back-end to create a user');
   return fetch(`${API_BASE_URL}/api/users`, {
@@ -63,16 +70,21 @@ export const createUser = (email, username, password, history) => dispatch => {
   })
     .then(res => {
       console.log(res, 'test create user');
-      if (!res.ok) {
-        return Promise.reject(res.statusText);
+      resOk = res.ok;
+      return res.json();
+    })
+    .then(res => {
+      if (!resOk) {
+        console.log(res);
+        return Promise.reject(res.message);
       }
       /* dispatch(registerSuccess(true)); */
       history.push('/login');
-      return res.json();
       // return res.json();
     })
     .catch(err => {
-      dispatch(authError(err));
+      console.log(err);
+      dispatch(regisError(err));
     });
 };
 
@@ -91,7 +103,8 @@ export const loginUser = (username, password, history) => dispatch => {
   })
     .then(res => {
       if(!res.ok){
-        return Promise.reject(res.statusText);
+        console.log(res.statusText);
+        return Promise.reject({message: 'Invalid username and/or password.'});
       }
       // console.log(res, 'test login user');
       return res.json();
@@ -103,7 +116,7 @@ export const loginUser = (username, password, history) => dispatch => {
       history.push('/add');
     })
     .catch(err => {
-      dispatch(authError(err));
+      dispatch(logiError(err));
     });
 };
 

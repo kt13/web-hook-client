@@ -55,8 +55,8 @@ export class Register extends React.Component {
               className="emailRC" 
               autoComplete="off" 
               aria-labelledby="Add E-mail"
-              required 
             />
+            <label style={{fontStyle: 'italic'}}>optional</label>
           </div>
 
           <div className='input'>
@@ -70,6 +70,7 @@ export class Register extends React.Component {
               aria-labelledby="Add Username"
               required 
             />
+            <label style={{fontStyle: 'italic'}}>required</label>
           </div>
 
           <div className='input'>
@@ -84,6 +85,7 @@ export class Register extends React.Component {
               required 
               /*  ref={ele => (this.input = ele)} required */
             />
+            <label style={{fontStyle: 'italic'}}>required</label>
           </div>
 
           {this.errorHandle()}
@@ -106,7 +108,7 @@ export class Register extends React.Component {
 }
 
 const mapStateToProps = (state, props) => ({
-  error: state.jwtR.error
+  error: state.jwtR.registerError
 });
 
 export default withRouter(connect(mapStateToProps)(Register));
