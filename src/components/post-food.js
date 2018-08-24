@@ -13,9 +13,12 @@ export function PostFood (props){
 
         <form onSubmit={e => {
           e.preventDefault();
-          // console.log(e.target.elements.foodName.value, '---');
+          console.log(e.target.elements.ingredients.value,
+            e.target.ingredients.value.split(' '),  '---');
           const el = e.target.elements;
-          props.dispatch(postNewFood(el.foodName.value, el.ingredients.value));}}>
+          props.dispatch(postNewFood(
+            el.foodName.value, 
+            el.ingredients.value.split(' ')));}}>
           <div className='input'>
             <label>Name</label><br />
             <input type='text' 
