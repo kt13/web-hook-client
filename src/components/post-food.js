@@ -8,11 +8,11 @@ export class PostFood extends React.Component{
 
   credentials(){
     if(this.props.currentUser === null){
-      setTimeout(() => {this.props.history.push('/login');}, 20000);
+      setTimeout(() => {this.props.history.push('/login');}, 15000);
       return(
         <div>
           <p style={{color: 'rgb(172, 4, 4)'}}>You need to be logged in to contribute a new listing to the database.
-            Redirecting you to login in 20 seconds...
+            Redirecting you to login in 15 seconds...
           </p>
         </div>);
     }
