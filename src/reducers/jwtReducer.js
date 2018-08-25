@@ -5,7 +5,8 @@ import {
   AUTH_SUCCESS,
   REGISTER_ERROR,
   LOGIN_ERROR,
-  REGISTER_SUCCESS
+  REGISTER_SUCCESS,
+  STAY_LOGGED_IN
 } from '../actions/jwtauth';
 
 const initialState = {
@@ -60,6 +61,13 @@ export const  jwtReducer = (state = initialState, action) => {
       loading: false,
       error: null,
       registered: action.status
+    });
+
+  } else if(action.type === STAY_LOGGED_IN){
+    return Object.assign({}, state, {
+      loading: false,
+      error: null,
+      authToken: action.authToken
     });
 
   // } else if (action.type === AUTH_WARNING) {

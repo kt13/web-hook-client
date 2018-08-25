@@ -36,7 +36,7 @@ export const foodsReducer = (state=initialState, action) => {
       searchListHide: action.listHide
     });
   
-  }else if(action.type === NEW_SEARCH_TERM){
+  } else if(action.type === NEW_SEARCH_TERM){
     return Object.assign({}, state, {
       searchTerm: action.search
     });

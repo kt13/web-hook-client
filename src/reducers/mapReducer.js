@@ -17,25 +17,29 @@ const initialState = {
 
 export const mapReducer = (state=initialState, action) => {
   if(action.type === NEW_MAP_REQUEST){
-    return Object.assign({}, state, {loading: true});
-  }
-  else if(action.type === NEW_MAP_SUCCESS){
-    return Object.assign({}, state, 
-      {loading: false,
-        markers: [...action.data]
-      });
-  }
-  else if(action.type === CENTER_REALIGN){
-    return Object.assign({}, state, 
-      {loading: false,
-        centerLat: action.lat, centerLng: action.lng
-      });
-  }
-  else if(action.type === NEW_MAP_ERROR){
-    return Object.assign({}, state, 
-      {loading: false, error: action.error});
-  }
-  else if(action.type === MARKER_INFO){
+    return Object.assign({}, state, {
+      loading: true
+    });
+
+  } else if(action.type === NEW_MAP_SUCCESS){
+    return Object.assign({}, state, {
+      loading: false,
+      markers: [...action.data]
+    });
+
+  } else if(action.type === CENTER_REALIGN){
+    return Object.assign({}, state, {
+      loading: false,
+      centerLat: action.lat, centerLng: action.lng
+    });
+
+  } else if(action.type === NEW_MAP_ERROR){
+    return Object.assign({}, state, {
+      loading: false, 
+      error: action.error
+    });
+
+  } else if(action.type === MARKER_INFO){
     return Object.assign({}, state, 
       {
         markers: state.markers.map(item => {
@@ -47,10 +51,9 @@ export const mapReducer = (state=initialState, action) => {
             return item;
           }
         })
-      }
-    );
-  }
-  else if(action.type === NEW_ZIP_SEARCH){
+      });
+      
+  } else if(action.type === NEW_ZIP_SEARCH){
     return Object.assign({}, state, 
       {markers: [
         ...state.markers, ...action.newMarks
