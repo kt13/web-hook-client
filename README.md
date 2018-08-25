@@ -8,19 +8,64 @@ Users can enter in a zipcode to search for nearby pharmacies if they find a poss
 
 Users can also sign up to post a new listing to the database by registering. Posting to the database is a protected endpoint as is updating and deleting, which have yet to be implemented but is seen to be used by admins in the future. 
 
-A link to a deployed version
+Deployed Website: https://intense-journey-81653.herokuapp.com/
 
 ![Front Page](./screenshots/LandingPage.png)
 
-React is used on the front-end (with Create React-App) and Node and MongoDB is used on the backend.
+This is the Landing Page where all the users initially see. A short description about the website is about and its intentions are stated. 
 
-NPM Modules used included Zipcodes, React, React-Google-Maps, Mongoose, Request, Redux-Logger, and React-Redux.
+![Front Page](./screenshots/SearchFood.png)
+
+This is the main tab where all the queries are done. Here, you can query a food from the mock database, expand each item, and add comments. 
+
+![Front Page](./screenshots/SearchPharma.png)
+
+This tab is specifically designed for those who are food allergy sufferers in the event that someone discovers that they have ingested a food item with an ingredient they are allergic to. A zip code search will bring up nearby markers with address and name.
+
+![Front Page](./screenshots/AddFood.png)
+
+This tab is login protected because I wanted the database to be somewhat secure. I did not want just anyone to be able to contribute such that the database could be easily tampered with by nefarious parties.
+
+![Front Page](./screenshots/LogIn.png)
+
+![Front Page](./screenshots/Register.png)
+
+These two images show the register and login screens where-in you can sign up and contribute to the database.
+
+
+React and Redux are used on the front-end (with Create React-App and Buildpack for Heroku).
+NodeJS and as well as Mongoose and Express are used on the back-end with MongoDB as the database storage. 
+
+NPM Modules used are:
+
+  *Front-end
+    *Compose
+    *Dotenv
+    *Enzyme
+    *Jwt-decode
+    *React
+    *React-dom
+    *React-Google-Maps
+    *React-router-dom
+    *React-Redux
+    *Redux
+    *Redux-Logger
+    *Redux-thunk
+    *Zipcodes
+    
+  *Back-end
+    *Bcryptjs
+    *Cors
+    *Dotenv
+    *Email-validator
+    *Express
+    *Passport
+    *Passport-jwt
+    *Passport-local
+    *Mongoose
+    *Morgan
+    *Request
 
 The Google Maps API call is being buffered through to my backend because Google does not allow native front-end calling without their Vanilla API. Every time my search is being called, it updates the redux state. Every time I click to expand, a React state is set. Every time I expand a listing as well, it updates the listing immediately via a call to my back-end to do two database calls, one after another, to compare the ingredients to a seeded allergen collection. When I post a comment, it also updates it on the backend where it attempts to re-render on the front-end. 
 
-
-
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
-
-Below you will find some information on how to perform common tasks.<br>
-You can find the most recent version of this guide [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
