@@ -137,7 +137,7 @@ export const stayLoggedIn = () => dispatch => {
   if(token){
     dispatch(setReduxTokenFrmLocalStore(token));
     const decodedLocalToken = jwtDecode(token);
-    // console.log(decodedToken, decodedToken.user.username);
+    // console.log(decodedLocalToken, decodedLocalToken.user.username);
     dispatch(authSuccess(decodedLocalToken.user.username));
   }
 };

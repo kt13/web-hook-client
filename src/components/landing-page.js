@@ -15,9 +15,8 @@ export default class LandingPage extends React.Component {
           <h2>Welcome!</h2>
 
           <p>This website is designed for people who are curious about what 
-            is in the food that they consume. Each search queries our user-
-            contributed database and shows ingredients, allergen warnings, 
-            and user-submitted comments. 
+            is in the food that they consume. Each search queries our user-contributed 
+            database and shows ingredients, allergen warnings, and user-submitted comments. 
           </p>
           <p>
             This website is also uniquely designed toward people who deal 

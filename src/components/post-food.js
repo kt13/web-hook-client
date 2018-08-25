@@ -3,10 +3,14 @@ import './post-food.css';
 import { connect } from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import PostFoodForm from './post-food-form';
+// import { loadAuthToken } from '../local-storage';
+// import { setReduxTokenFrmLocalStore } from '../actions/jwtauth';
+// import jwtDecode from 'jwt-decode';
 
 export class PostFood extends React.Component{
 
   credentials(){
+    // console.log(this.props.currentUser === null);
     if(this.props.currentUser === null){
       setTimeout(() => {this.props.history.push('/login');}, 3000);
       return(
