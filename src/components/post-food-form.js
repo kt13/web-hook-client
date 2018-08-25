@@ -10,7 +10,7 @@ export function PostFoodForm (props){
       // console.log(e.target.elements.ingredients.value,
       //   e.target.ingredients.value.split(' '),  '---');
       const el = e.target.elements;
-      this.props.dispatch(postNewFood(
+      props.dispatch(postNewFood(
         el.foodName.value, 
         el.ingredients.value.split(' ')));}}>
 
@@ -19,28 +19,28 @@ export function PostFoodForm (props){
         <input type='text' 
           className='name' 
           name='foodName'
-          aria-labelledby="Add Food Name"></input>
+          aria-labelledby='Add Food Name'></input>
 
       </div>
 
       <div className='input'>
         <label>Ingredients</label> <br/>
         <textarea 
-          type='text' 
-          name='ingredients' 
-          className='postText' 
-          aria-labelledby="Add Ingredients"></textarea>
-        <br />
-        <label className='post-footnote'>Separate ingredients with a space.</label>
+          type='text'
+          name='ingredients'
+          className='postText'
+          aria-labelledby='Add Ingredients'
+          placeholder='Separate ingredients with a space.'
+        ></textarea>
 
       </div>
 
       <input 
-        type="submit" 
-        id="postButton" 
-        className="postButton" 
-        name="submit" 
-        value="Create"/>
+        type='submit' 
+        id='postButton' 
+        className='postButton' 
+        name='submit' 
+        value='Create'/>
 
     </form>
   );

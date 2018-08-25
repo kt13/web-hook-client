@@ -43,8 +43,8 @@ export class AllergyForm extends React.Component {
                 id="allergyButton" 
                 className="allergyButton" 
                 name="submit" 
-                value="Search" onClick={() => 
-                  this.props.dispatch(toggleFoodsList(false))} />
+                value="Search" 
+                onClick={() => this.props.dispatch(toggleFoodsList(false))} />
             </form>
           </div>
 

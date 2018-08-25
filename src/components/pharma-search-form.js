@@ -24,6 +24,7 @@ const MyMapComponent = compose(
     
     {props.markers.map(marker => (
       <Marker
+        aria-live='polite'
         key={marker.id}
         position={{ lat: marker.geometry.location.lat, lng: marker.geometry.location.lng }}
         onClick={() => {
