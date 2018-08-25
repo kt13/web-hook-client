@@ -38,12 +38,12 @@ NodeJS and as well as Mongoose and Express are used on the back-end with MongoDB
 
 NPM Modules used are:
 
-  *Front-end
-    *Compose
-    *Dotenv
-    *Enzyme
-    *Jwt-decode
-    *React
+  1. Front-end
+    1. Compose
+    2. Dotenv
+    3. Enzyme
+    4. Jwt-decode
+    5. React
     *React-dom
     *React-Google-Maps
     *React-router-dom
@@ -53,7 +53,7 @@ NPM Modules used are:
     *Redux-thunk
     *Zipcodes
     
-  *Back-end
+  2. Back-end
     *Bcryptjs
     *Cors
     *Dotenv
