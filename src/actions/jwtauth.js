@@ -1,6 +1,6 @@
 import {API_BASE_URL} from '../config';
 import jwtDecode from 'jwt-decode';
-import {saveAuthToken, clearAuthToken} from '../local-storage';
+import {saveAuthToken, clearAuthToken, loadAuthToken} from '../local-storage';
 
 export const AUTH_SET = 'AUTH_SET';
 export const setAuthToken = token => ({
@@ -40,6 +40,12 @@ export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 export const registerSuccess = status => ({
   type: REGISTER_SUCCESS,
   status
+});
+
+export const STAY_LOGGED_IN = 'STAY_LOGGED_IN';
+export const setReduxTokenFrmLocalStore = authToken => ({
+  type: STAY_LOGGED_IN,
+  authToken
 });
 
 
@@ -124,4 +130,14 @@ export const logoutUser = history => dispatch => {
   dispatch(clearAuth());
   clearAuthToken();
   history.push('/');
+};
+
+export const stayLoggedIn = () => dispatch => {
+  const token = loadAuthToken();
+  if(token){
+    dispatch(setReduxTokenFrmLocalStore(token));
+    const decodedLocalToken = jwtDecode(token);
+    // console.log(decodedToken, decodedToken.user.username);
+    dispatch(authSuccess(decodedLocalToken.user.username));
+  }
 };

@@ -5,6 +5,7 @@ import {
   Switch,
   Link
 } from 'react-router-dom';
+import {connect} from 'react-redux';
 import NavBar from './components/nav-bar';
 import App from './components/app';
 import Register from './components/register';
@@ -14,61 +15,72 @@ import SearchPharma from './components/pharma-search-form';
 import AddListing from './components/post-food';
 import LandingPage from './components/landing-page';
 import './Dashboard.css';
+import { stayLoggedIn } from './actions/jwtauth';
 
-export default function Dashboard() {
-  return (
-    <Router>
-      <div className="dashboard">
-        <NavBar />
-        <div>
-          <h1 className='headerTitle'><Link 
-            to='/search/food'
-            style={{ textDecoration: 'none', color: 'black'}}
-          >Food for You</Link>
-          </h1>
-        </div>
-        <App/>
-        <main role="main" style={{padding: '20px'}}>
-          <Switch>
-            <Route
-              exact
-              path="/"
-              component={LandingPage}
-            />
+export class Dashboard extends React.Component {
 
-            <Route
-              exact
-              path="/search/food"
-              component={SearchFood}
-            />
+  componentDidMount(){
+    this.props.dispatch(stayLoggedIn());
+  }
 
-            <Route
-              exact
-              path="/search/pharmacy"
-              component={SearchPharma}
-            />
+  render(){
+    return (
+      <Router>
+        <div className="dashboard">
+          <NavBar />
+          <div>
+            <h1 className='headerTitle'>
+              <Link 
+                to='/'
+                style={{ textDecoration: 'none', color: 'black'}}
+              >Food for You</Link>
+            </h1>
+          </div>
+          <App/>
+          <main role="main" style={{padding: '20px'}}>
+            <Switch>
+              <Route
+                exact
+                path="/"
+                component={LandingPage}
+              />
 
-            <Route
-              exact
-              path="/add"
-              component={AddListing}
-            />
+              <Route
+                exact
+                path="/search/food"
+                component={SearchFood}
+              />
 
-            <Route
-              exact
-              path="/register"
-              component={Register}
-            />
+              <Route
+                exact
+                path="/search/pharmacy"
+                component={SearchPharma}
+              />
 
-            <Route
-              exact
-              path="/login"
-              component={Login}
-            />
+              <Route
+                exact
+                path="/add"
+                component={AddListing}
+              />
+
+              <Route
+                exact
+                path="/register"
+                component={Register}
+              />
+
+              <Route
+                exact
+                path="/login"
+                component={Login}
+              />
             
-          </Switch>
-        </main>
-      </div>
-    </Router>
-  );
+            </Switch>
+          </main>
+        </div>
+      </Router>
+    );
+  }
 }
+
+export default connect()(Dashboard);
