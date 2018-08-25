@@ -37,7 +37,7 @@ export class Dashboard extends React.Component {
             </h1>
           </div>
           <App/>
-          <main role="main" style={{padding: '20px'}}>
+          <main role="main" style={{padding: '30px'}}>
             <Switch>
               <Route
                 exact

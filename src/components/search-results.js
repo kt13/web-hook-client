@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import './search-results.css';
 import ExpandedInfo from './expandedInfo';
 
 export class SearchResults extends React.Component{
@@ -16,7 +15,8 @@ export class SearchResults extends React.Component{
         ));
       }
       return(
-        <ul className='newList'>
+        <ul className='newList'
+          style={{padding: '10px'}}>
           {foods}
         </ul>
       );
