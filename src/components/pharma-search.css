@@ -14,3 +14,16 @@
 .pharmaButton {
   margin: 10px;
 }
+
+.yesErr{
+  display: block;
+}
+
+.noErr{
+  display: none;
+}
+
+.errDesc {
+  color: red;
+  font-size: 15px;
+}

@@ -38,12 +38,12 @@ export const mapRealign = (lat, lng) => ({
   lng
 });
 
-export const fetchingPlaces = places => dispatch => {
+export const fetchingPlaces = (lat, lng) => dispatch => {
   dispatch(fetchMapRequest());
   // console.log(places.lat, places.lng);
-  dispatch(mapRealign(places.lat, places.lng));
+  dispatch(mapRealign(lat, lng));
   // console.log('I\'m making a get request to the back-end');
-  return fetch(`${API_BASE_URL}/api/markers/${places.lat}/${places.lng}/${API_KEY}`)
+  return fetch(`${API_BASE_URL}/api/markers/${lat}/${lng}/${API_KEY}`)
     .then(res => {
       // console.log(res, 'test console');
       return res.json();

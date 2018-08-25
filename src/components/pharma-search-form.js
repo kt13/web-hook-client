@@ -45,8 +45,31 @@ const MyMapComponent = compose(
 
 class PharmaSearch extends React.Component{
 
+  constructor(props){
+    super(props);
+    this.state = {
+      zipErr: false,
+    };
+  }
+
+  zipCodeLookup(zip){
+    if(zipcodes.lookup(
+      parseInt(zip.target.elements.zipSearch.value, 10))){
+      this.props.dispatch(fetchingPlaces(
+        zipcodes.lookup(
+          parseInt(zip.target.elements.zipSearch.value, 10)).latitude,
+        zipcodes.lookup(
+          parseInt(zip.target.elements.zipSearch.value, 10)).longitude
+      ));
+    } else {
+      this.setState({
+        zipErr: true,
+      });
+    }
+  }
+
   render() {
-    
+    const showErr = this.state.zipErr ? 'yesErr' : 'noErr';
     // console.log(this.props, '------------------------');
     const googleURL =`https://maps.googleapis.com/maps/api/js?key=${API_KEY}&libraries=geometry,drawing,places`;
     return (
@@ -55,19 +78,14 @@ class PharmaSearch extends React.Component{
 
           <h2>Enter in a Zipcode to Search for a Pharmacy!</h2>
           <p>Click on any marker to view the address and the name.</p>
-
+          <div className={`${showErr} errDesc`}>
+            <p>This zipcode does not exist in the ZIP codes npm module as of now. 
+        Note that only US ZIP codes are accepted right now.</p>
+          </div>
           <form onSubmit={e =>  
-          { e.preventDefault(); 
-            // console.log(parseInt(e.target.elements.zipSearch.value, 10));
-            const latLng = 
-          {
-            lat: 
-            zipcodes.lookup(
-              parseInt(e.target.elements.zipSearch.value, 10)).latitude, 
-            lng: 
-            zipcodes.lookup(
-              parseInt(e.target.elements.zipSearch.value, 10)).longitude };
-            this.props.dispatch(fetchingPlaces(latLng)); }}>
+          { e.preventDefault();
+            this.setState({zipErr: false});
+            this.zipCodeLookup(e); }}>
             <input 
               type="text"
               name="zipSearch"
