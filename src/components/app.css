@@ -51,6 +51,7 @@ h1{
   margin-right: auto;
   font-size: 20px;
   padding: 6px 12px;
-  border: 1px solid #ccc;
+  border: 2px solid #ccc;
   border-radius: 10px;
+  box-shadow: 5px 10px #888888;
 }

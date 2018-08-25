@@ -19,7 +19,7 @@ export class Register extends React.Component {
     if(this.props.registered){
       return(
         <div>
-          <p>Successful registration! Redirecting to Login in 6 seconds...</p>
+          <p>Successful registration! Redirecting to Login in 5 seconds...</p>
         </div>
       );
     }
@@ -43,8 +43,8 @@ export class Register extends React.Component {
   
   render(){
     return(
-      <div className='register'>
-
+      <div className='register tabcontent'>
+        <h2>Register</h2>
         <form onSubmit={e =>
         { e.preventDefault();
           const newCred = e.target.elements;

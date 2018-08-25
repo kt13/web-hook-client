@@ -29,8 +29,8 @@ export class Login extends React.Component{
   render(){
     if(this.props.currentUser === null){
       return(
-        <div className='login'>
-
+        <div className='login tabcontent'>
+          <h2>Log In</h2>
           <form onSubmit={e =>  
           { e.preventDefault(); 
             const creds = e.target.elements;

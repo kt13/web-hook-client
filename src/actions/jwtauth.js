@@ -85,7 +85,7 @@ export const createUser = (email, username, password, history) => dispatch => {
         return Promise.reject(res.message);
       }
       dispatch(registerSuccess(true));
-      window.setTimeout(() => {history.push('/login');}, 6000);
+      window.setTimeout(() => {history.push('/login');}, 5000);
       // return res.json();
     })
     .catch(err => {
