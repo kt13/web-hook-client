@@ -38,33 +38,33 @@ NodeJS and as well as Mongoose and Express are used on the back-end with MongoDB
 
 NPM Modules used are:
 
-  1. Front-end
+  * Front-end
     1. Compose
     2. Dotenv
     3. Enzyme
     4. Jwt-decode
     5. React
-    *React-dom
-    *React-Google-Maps
-    *React-router-dom
-    *React-Redux
-    *Redux
-    *Redux-Logger
-    *Redux-thunk
-    *Zipcodes
+    6. React-dom
+    7. React-Google-Maps
+    8. React-router-dom
+    9. React-Redux
+    10. Redux
+    11. Redux-Logger
+    12. Redux-thunk
+    13. Zipcodes
     
-  2. Back-end
-    *Bcryptjs
-    *Cors
-    *Dotenv
-    *Email-validator
-    *Express
-    *Passport
-    *Passport-jwt
-    *Passport-local
-    *Mongoose
-    *Morgan
-    *Request
+  * Back-end
+    1. Bcryptjs
+    2. Cors
+    3. Dotenv
+    4. Email-validator
+    5. Express
+    6. Passport
+    7. Passport-jwt
+    8. Passport-local
+    9. Mongoose
+    10. Morgan
+    11. Request
 
 The Google Maps API call is being buffered through to my backend because Google does not allow native front-end calling without their Vanilla API. Every time my search is being called, it updates the redux state. Every time I click to expand, a React state is set. Every time I expand a listing as well, it updates the listing immediately via a call to my back-end to do two database calls, one after another, to compare the ingredients to a seeded allergen collection. When I post a comment, it also updates it on the backend where it attempts to re-render on the front-end. 
 
