@@ -2,7 +2,7 @@ import React from 'react';
 import './register-login.css';
 import {loginUser} from '../actions/jwtauth';
 import {connect} from 'react-redux';
-import {withRouter, Link} from 'react-router-dom';
+import {withRouter, Link, Redirect} from 'react-router-dom';
 
 export class Login extends React.Component{
   
@@ -74,7 +74,7 @@ export class Login extends React.Component{
         </div>
       );
     } else {
-      return <div></div>;
+      return (<Redirect to='/add' />);
     }
   }
 }
