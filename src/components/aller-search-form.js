@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import SearchResults from './search-results';
-import './aller-search.css';
+import '../css/aller-search.css';
 
 import {toggleFoodsList, fetchFoods,/* newSearchTerm */} from '../actions/foods';
 

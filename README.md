@@ -8,7 +8,16 @@ Users can enter in a zipcode to search for nearby pharmacies if they find a poss
 
 Users can also sign up to post a new listing to the database by registering. Posting to the database is a protected endpoint as is updating and deleting, which have yet to be implemented but is seen to be used by admins in the future. 
 
-Deployed Website: https://intense-journey-81653.herokuapp.com/
+
+## Live App
+
+A live version of the site may be found here: https://food-for-you.herokuapp.com/
+
+```
+Demo Account
+Username: demo
+password: demopassword
+```
 
 ![Front Page](./screenshots/LandingPage.png)
 

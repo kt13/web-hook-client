@@ -1,5 +1,5 @@
 import React from 'react';
-import './register-login.css';
+import '../css/register-login.css';
 import {loginUser} from '../actions/jwtauth';
 import {connect} from 'react-redux';
 import {withRouter, Link, Redirect} from 'react-router-dom';

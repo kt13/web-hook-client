@@ -1,5 +1,5 @@
 import React from 'react';
-import './expandedInfo.css';
+import '../css/expandedInfo.css';
 import {fetchAllergens, postComment, fetchFoods} from '../actions/foods';
 import { connect } from 'react-redux';
 // import Comment from './comments';

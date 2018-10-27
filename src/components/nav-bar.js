@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import './nav-bar.css';
+import '../css/nav-bar.css';
 import {connect} from 'react-redux';
 import { logoutUser } from '../actions/jwtauth';
 import {withRouter} from 'react-router-dom';

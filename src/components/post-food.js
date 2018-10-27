@@ -1,5 +1,5 @@
 import React from 'react';
-import './post-food.css';
+import '../css/post-food.css';
 import { connect } from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import PostFoodForm from './post-food-form';

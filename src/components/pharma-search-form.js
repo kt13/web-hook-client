@@ -7,7 +7,7 @@ import {
   GoogleMap, 
   Marker, 
   InfoWindow } from 'react-google-maps';
-import './pharma-search.css';
+import '../css/pharma-search.css';
 import {connect} from 'react-redux';
 import {toggleMarkerInfo, fetchingPlaces} from '../actions/maps';
 import {API_KEY} from '../config';
@@ -103,7 +103,7 @@ class PharmaSearch extends React.Component{
             <MyMapComponent
               googleMapURL={googleURL}
               loadingElement= {<div style={{ height: '100%' }} />}
-              containerElement= {<div style={{ height: '400px', width: '600px', 
+              containerElement= {<div style={{ height: '46vw', width: '55vw', 
                 marginLeft: 'auto', marginRight: 'auto'}} />}
               mapElement= {<div style={{ height: '100%' }} />}
               markers={this.props.markers}

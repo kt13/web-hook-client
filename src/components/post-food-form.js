@@ -1,5 +1,5 @@
 import React from 'react';
-import './post-food.css';
+import '../css/post-food.css';
 import { connect } from 'react-redux';
 import {postNewFood} from '../actions/foods';
 

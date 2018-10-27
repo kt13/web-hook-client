@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-import './landing-page.css';
+import '../css/landing-page.css';
 
 export default class LandingPage extends React.Component {
 
@@ -14,12 +14,12 @@ export default class LandingPage extends React.Component {
 
           <h2>Welcome!</h2>
 
-          <p>This website is designed for people who are curious about what 
-            is in the food that they consume. Each search queries our user-contributed 
-            database and shows ingredients, allergen warnings, and user-submitted comments. 
+          <p>This website is designed for people who are curious about the ingredients
+            in the foods they consume. Each food-item search queries our user-contributed 
+            database and <b>shows ingredients, allergen warnings, and user-submitted comments</b>. 
           </p>
           <p>
-            This website is also uniquely designed toward people who deal 
+            It is also uniquely designed toward people who deal 
             with the frustrations of the unknown that is day-to-day food 
             consumption at establishments as food allergy sufferers. 
             Those who suffer from food allergies don’t know when another 
@@ -30,7 +30,7 @@ export default class LandingPage extends React.Component {
           </p>
           <p>
             An additional implemented feature is that of a nearby search 
-            functionality for pharmacies via zip code for those who 
+            functionality for <b>pharmacies via zip code</b> for those who 
             discover that they have ingested a food allergen and seek 
             medicinal care.   
           </p>
