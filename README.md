@@ -15,6 +15,7 @@ A live version of the site may be found here: https://food-for-you.herokuapp.com
 
 ```
 Demo Account
+
 Username: demo
 password: demopassword
 ```
