@@ -41,12 +41,16 @@ export default class LandingPage extends React.Component {
           <p className='landing-notes'>For more information on food allergies, 
           click here: </p>
           <p className='landing-notes'>
-            <a href=
-              "https://acaai.org/allergies/types/food-allergy"> American College of 
+            <a 
+              href="https://acaai.org/allergies/types/food-allergy"
+              target='_blank'
+              rel='noopener noreferrer'> American College of 
             Allergy, Asthma, and Immunology (ACAAI)</a>.</p>
           <p className='landing-notes'>
             <a 
-              href="https://www.foodallergy.org/life-with-food-allergies/food-allergy-101/facts-and-statistics">
+              href="https://www.foodallergy.org/life-with-food-allergies/food-allergy-101/facts-and-statistics"
+              target='_blank'
+              rel='noopener noreferrer'>
               Food Allergy Research and Education (FARE)</a> </p>
          
         </div>

@@ -6,7 +6,8 @@ import {
   NEW_FOOD_SEARCH,
   NEW_ALLERGEN_SUCCESS,
   POST_COMMENT_SUCCESS,
-  NEW_SEARCH_TERM} from '../actions/foods';
+  NEW_SEARCH_TERM,
+  FETCH_FOODS_ZERO} from '../actions/foods';
 
 const initialState = {
   foods: [],
@@ -15,7 +16,8 @@ const initialState = {
   expandFood: false,
   searchListHide: true,
   allergens: [],
-  searchTerm: null
+  searchTerm: null,
+  zero: false
 };  
 
 export const foodsReducer = (state=initialState, action) => {
@@ -27,18 +29,21 @@ export const foodsReducer = (state=initialState, action) => {
   } else if(action.type === NEW_SUCCESS){
     // console.log(action.foods);
     return Object.assign({}, state, {
-      foods: [...action.foods]
+      foods: [...action.foods],
+      zero: false
     });
           
     // action.data.map(item => state.foods[item])]});
   } else if(action.type === NEW_FOOD_SEARCH){
     return Object.assign({}, state, {
-      searchListHide: action.listHide
+      searchListHide: action.listHide,
+      zero: false
     });
   
   } else if(action.type === NEW_SEARCH_TERM){
     return Object.assign({}, state, {
-      searchTerm: action.search
+      searchTerm: action.search,
+      zero: false
     });
 
   } else if(action.type === EXPAND_RESULT){
@@ -53,9 +58,15 @@ export const foodsReducer = (state=initialState, action) => {
 
   } else if(action.type === NEW_ALLERGEN_SUCCESS){
     return Object.assign({}, state, {
-      allergens: [...action.allergy]
+      allergens: [...action.allergy],
+      zero: false
     });
-
+  
+  } else if(action.type === FETCH_FOODS_ZERO){
+    return Object.assign({}, state, {
+      zero: true, error: null
+    });
+  
   } else if(action.type === POST_COMMENT_SUCCESS){
 
     return Object.assign({}, state, {

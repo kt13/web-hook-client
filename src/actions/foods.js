@@ -55,6 +55,11 @@ export const newSearchTerm = search => ({
   search
 });
 
+export const FETCH_FOODS_ZERO = 'FETCH_FOODS_ZERO';
+export const fetchFoodsZero = () => ({
+  type: FETCH_FOODS_ZERO,
+});
+
 export const fetchFoods = food => dispatch => {
   dispatch(fetchFoodsRequest());
   dispatch(newSearchTerm(food));
@@ -67,8 +72,12 @@ export const fetchFoods = food => dispatch => {
       }
       return res.json();
     }).then(res => {
-      // console.log(res);
-      dispatch(fetchFoodsSuccess(res));
+      if(res.length > 0){
+        dispatch(fetchFoodsSuccess(res));
+      }
+      else if(!res.length){
+        dispatch(fetchFoodsZero());
+      }
       
     })
     .catch(err => {
