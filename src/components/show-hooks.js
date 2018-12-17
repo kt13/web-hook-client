@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 // import SearchResults from './search-results';
 import '../css/aller-search.css';
+import {Link} from 'react-router-dom';
 
 import {toggleFoodsList, fetchHooks,/* newSearchTerm */} from '../actions/hooks';
 
@@ -19,7 +20,7 @@ export class AllergyForm extends React.Component {
           {this.props.list.map(item => {
             return(
               <div>
-                <li>{item.website}</li>
+                <li><a href={item.website}>{item.website}</a></li>
               </div>
             );  
           })}

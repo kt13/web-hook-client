@@ -6,7 +6,8 @@ import {
   NEW_FOOD_SEARCH,
   NEW_POST_SUCCESS,
   NEW_SEARCH_TERM,
-  FETCH_FOODS_ZERO} from '../actions/hooks';
+  FETCH_FOODS_ZERO,
+  DELETE_HOOK} from '../actions/hooks';
 
 const initialState = {
   websites: [],
@@ -17,7 +18,8 @@ const initialState = {
   searchListHide: true,
   allergens: [],
   searchTerm: null,
-  zero: false
+  zero: false,
+  deletes: []
 };  
 
 export const websitesReducer = (state=initialState, action) => {
@@ -65,6 +67,12 @@ export const websitesReducer = (state=initialState, action) => {
   } else if(action.type === FETCH_FOODS_ZERO){
     return Object.assign({}, state, {
       zero: true, error: null
+    });
+
+  } else if(action.type === DELETE_HOOK){
+    return Object.assign({}, state, {
+      deletes: [...state.deletes, action.deleted], 
+      error: null
     });
 
   } 

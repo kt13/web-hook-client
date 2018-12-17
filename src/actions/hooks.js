@@ -47,6 +47,31 @@ export const fetchFoodsZero = () => ({
   type: FETCH_FOODS_ZERO,
 });
 
+export const DELETE_HOOK = 'DELETE_HOOK';
+export const deleteHookLog = deleted => ({
+  type: DELETE_HOOK,
+  deleted
+});
+
+export const deleteHook = id => dispatch => {
+  return fetch('http://localhost:8080/webhook',
+  {
+    method: 'DELETE',
+    headers:{
+      'content-type': 'application/json',
+    },
+  })
+  .then(res =>{
+    console.log(res);
+    if(res.status=204){
+      dispatch(deleteHook(res));
+    }
+  })
+  .catch(err =>{
+    dispatch(fetchHooksError(err));
+  });
+};
+
 export const fetchHooks = () => dispatch => {
   // dispatch(fetchFoodsRequest());
   // dispatch(newSearchTerm(food));

@@ -37,10 +37,37 @@ export class PostFood extends React.Component{
               el.website.value));}}>
 
             <div className='input'>
-              <label>Name</label><br />
+              <label>Website Name</label><br />
               <input type='text' 
                 className='name' 
                 name='website'
+                aria-labelledby='Add a Website to Track'></input>
+
+            </div>
+
+            <div className='input'>
+              <label>First Name</label><br />
+              <input type='text' 
+                className='name' 
+                name='firname'
+                aria-labelledby='Add a Website to Track'></input>
+
+            </div>
+
+            <div className='input'>
+              <label>Last Name</label><br />
+              <input type='text' 
+                className='name' 
+                name='lasname'
+                aria-labelledby='Add a Website to Track'></input>
+
+            </div>
+
+            <div className='input'>
+              <label>Key</label><br />
+              <input type='text' 
+                className='name' 
+                name='key'
                 aria-labelledby='Add a Website to Track'></input>
 
             </div>
