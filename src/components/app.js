@@ -13,7 +13,7 @@ export default function App (props) {
              Add a Hook</button>
         </Link>
 
-        <Link to='/search/food'>
+        <Link to='/all'>
           <button className="tablinks">
            View all Hooks</button> </Link>
 

@@ -6,10 +6,10 @@ export const fetchFoodsRequest = () => ({
   type: NEW_REQUEST
 });
 
-export const NEW_SUCCESS = 'NEW_SUCCESS';
-export const fetchFoodsSuccess = foods => ({
-  type: NEW_SUCCESS,
-  foods
+export const NEW_FETCH_SUCCESS = 'NEW_FETCH_SUCCESS';
+export const fetchHooksSuccess = list => ({
+  type: NEW_FETCH_SUCCESS,
+  list
 });
 
 export const NEW_ERROR = 'NEW_ERROR';
@@ -47,11 +47,11 @@ export const fetchFoodsZero = () => ({
   type: FETCH_FOODS_ZERO,
 });
 
-export const fetchFoods = food => dispatch => {
-  dispatch(fetchFoodsRequest());
-  dispatch(newSearchTerm(food));
+export const fetchHooks = () => dispatch => {
+  // dispatch(fetchFoodsRequest());
+  // dispatch(newSearchTerm(food));
   // console.log('I\'m making a get request to the back-end');
-  return fetch(`${API_BASE_URL}/api/foods?searchTerm=${food}`)
+  return fetch('http://localhost:8080/webhook')
     .then(res => {
       // console.log(res, 'test console');
       if (!res.ok) {
@@ -59,8 +59,9 @@ export const fetchFoods = food => dispatch => {
       }
       return res.json();
     }).then(res => {
+      console.log(res);
       if(res.length > 0){
-        dispatch(fetchFoodsSuccess(res));
+        dispatch(fetchHooksSuccess(res));
       }
       else if(!res.length){
         dispatch(fetchFoodsZero());
@@ -93,8 +94,8 @@ export const postNewHook = (web) => dispatch => {
     //   console.log(res, 'test console posting');
     //   return res.json();
     }).then(res => {
-    console.log(res);
-    dispatch(postHooksSuccess(res));
+    // console.log(res);
+    dispatch(postHooksSuccess(web));
   })
     .catch(err => {
       console.log(err);

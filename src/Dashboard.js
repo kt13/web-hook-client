@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom';
 import {connect} from 'react-redux';
 import App from './components/app';
-import SearchFood from './components/aller-search-form';
+import DisplayHooks from './components/show-hooks';
 import AddListing from './components/post-hook';
 import './Dashboard.css';
 // import { stayLoggedIn } from './actions/jwtauth';
@@ -36,8 +36,8 @@ export class Dashboard extends React.Component {
 
               <Route
                 exact
-                path="/search/food"
-                component={SearchFood}
+                path="/all"
+                component={DisplayHooks}
               />
 
               {/* <Route

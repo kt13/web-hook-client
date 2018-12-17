@@ -1,6 +1,6 @@
 import { 
   NEW_REQUEST, 
-  NEW_SUCCESS, 
+  NEW_FETCH_SUCCESS, 
   NEW_ERROR, 
   EXPAND_RESULT, 
   NEW_FOOD_SEARCH,
@@ -33,11 +33,10 @@ export const websitesReducer = (state=initialState, action) => {
       newPost: action.website,
     });
 
-  } else if(action.type === NEW_SUCCESS){
+  } else if(action.type === NEW_FETCH_SUCCESS){
     // console.log(action.foods);
     return Object.assign({}, state, {
-      foods: [...action.foods],
-      zero: false
+      websites: [...action.list]
     });
           
     // action.data.map(item => state.foods[item])]});

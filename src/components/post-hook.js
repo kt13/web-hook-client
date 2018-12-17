@@ -10,6 +10,17 @@ import {postNewHook} from '../actions/hooks';
 
 export class PostFood extends React.Component{
 
+  uxText(newH){
+    if(newH){
+      return(
+        <div>
+          <p>{this.props.newHook} is now being tracked on our database.</p>
+        </div>
+      );
+      // console.log(newH);
+    }
+  }
+
   render(){
     return(
       <div id='PostFood' className='tabcontent'>
@@ -17,9 +28,7 @@ export class PostFood extends React.Component{
         <div className='postfood'>
         
           <h2>Add a web hook</h2>
-        
-          <p className='italic'>No duplicate hooks please.</p>
-          <form onSubmit={e => {
+            <form onSubmit={e => {
             e.preventDefault();
             // console.log(e.target.elements.ingredients.value,
             //   e.target.ingredients.value.split(' '),  '---');
@@ -44,7 +53,9 @@ export class PostFood extends React.Component{
               value='Create'/>
 
           </form>
-      
+              
+              {this.uxText(this.props.newHook)}
+
         </div>
     
       </div>
@@ -52,4 +63,8 @@ export class PostFood extends React.Component{
   }
 }
 
-export default withRouter(connect()(PostFood));
+const mapStateToProps = (state, props) => ({
+  newHook: state.websitesR.newPost
+});
+
+export default withRouter(connect(mapStateToProps)(PostFood));
