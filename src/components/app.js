@@ -5,25 +5,24 @@ import {Link} from 'react-router-dom';
 
 export default function App (props) {
 
-//add in superuser access to delete and update listings
-
   return (
     <div className='App'>
       <div className="tab">
+      <Link to='/add'>
+          <button className="tablinks">
+             Add a Hook</button>
+        </Link>
 
         <Link to='/search/food'>
           <button className="tablinks">
-           Search a Food</button> </Link>
+           View all Hooks</button> </Link>
 
         <Link to='/search/pharmacy'>
           <button className="tablinks">
-             Search Local Pharmacy </button>
+             Listeners </button>
         </Link>
 
-        <Link to='/add'>
-          <button className="tablinks">
-             Add a Listing</button>
-        </Link>
+        
 
       </div>
     </div>

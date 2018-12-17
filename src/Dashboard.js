@@ -6,14 +6,9 @@ import {
   Link
 } from 'react-router-dom';
 import {connect} from 'react-redux';
-import NavBar from './components/nav-bar';
 import App from './components/app';
-import Register from './components/register';
-import Login from './components/login';
 import SearchFood from './components/aller-search-form';
-import SearchPharma from './components/pharma-search-form';
-import AddListing from './components/post-food';
-import LandingPage from './components/landing-page';
+import AddListing from './components/post-hook';
 import './Dashboard.css';
 import { stayLoggedIn } from './actions/jwtauth';
 
@@ -33,7 +28,7 @@ export class Dashboard extends React.Component {
               <Link 
                 to='/'
                 style={{ textDecoration: 'none', color: 'black'}}
-              >Food for You</Link>
+              >Web Hooks</Link>
             </h1>
           </div>
           <App/>
@@ -61,18 +56,6 @@ export class Dashboard extends React.Component {
                 exact
                 path="/add"
                 component={AddListing}
-              />
-
-              <Route
-                exact
-                path="/register"
-                component={Register}
-              />
-
-              <Route
-                exact
-                path="/login"
-                component={Login}
               />
             
             </Switch>
