@@ -2,6 +2,7 @@ import React from 'react';
 import '../css/post-food.css';
 import { connect } from 'react-redux';
 import {withRouter} from 'react-router-dom';
+import {postNewHook} from '../actions/hooks';
 // import PostHookForm from './post-hook-form';
 // import { loadAuthToken } from '../local-storage';
 // import { setReduxTokenFrmLocalStore } from '../actions/jwtauth';
@@ -23,7 +24,7 @@ export class PostFood extends React.Component{
             // console.log(e.target.elements.ingredients.value,
             //   e.target.ingredients.value.split(' '),  '---');
             const el = e.target.elements;
-            props.dispatch(postNewHook(
+            this.props.dispatch(postNewHook(
               el.website.value));}}>
 
             <div className='input'>

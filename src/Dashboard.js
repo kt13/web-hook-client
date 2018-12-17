@@ -10,19 +10,18 @@ import App from './components/app';
 import SearchFood from './components/aller-search-form';
 import AddListing from './components/post-hook';
 import './Dashboard.css';
-import { stayLoggedIn } from './actions/jwtauth';
+// import { stayLoggedIn } from './actions/jwtauth';
 
 export class Dashboard extends React.Component {
 
-  componentDidMount(){
-    this.props.dispatch(stayLoggedIn());
-  }
+  // componentDidMount(){
+  //   this.props.dispatch(stayLoggedIn());
+  // }
 
   render(){
     return (
       <Router>
         <div className="dashboard">
-          <NavBar />
           <div>
             <h1 className='headerTitle'>
               <Link 
@@ -34,11 +33,6 @@ export class Dashboard extends React.Component {
           <App/>
           <main role="main" style={{padding: '30px'}}>
             <Switch>
-              <Route
-                exact
-                path="/"
-                component={LandingPage}
-              />
 
               <Route
                 exact
@@ -46,11 +40,11 @@ export class Dashboard extends React.Component {
                 component={SearchFood}
               />
 
-              <Route
+              {/* <Route
                 exact
                 path="/search/pharmacy"
                 component={SearchPharma}
-              />
+              /> */}
 
               <Route
                 exact

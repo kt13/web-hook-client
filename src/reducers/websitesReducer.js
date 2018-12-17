@@ -4,13 +4,13 @@ import {
   NEW_ERROR, 
   EXPAND_RESULT, 
   NEW_FOOD_SEARCH,
-  NEW_ALLERGEN_SUCCESS,
-  POST_COMMENT_SUCCESS,
+  NEW_POST_SUCCESS,
   NEW_SEARCH_TERM,
-  FETCH_FOODS_ZERO} from '../actions/foods';
+  FETCH_FOODS_ZERO} from '../actions/hooks';
 
 const initialState = {
-  foods: [],
+  websites: [],
+  newPost: null,
   loading: false,
   error: null,
   expandFood: false,
@@ -20,10 +20,17 @@ const initialState = {
   zero: false
 };  
 
-export const foodsReducer = (state=initialState, action) => {
+export const websitesReducer = (state=initialState, action) => {
   if(action.type === NEW_REQUEST){
     return Object.assign({}, state, {
-      loading: true
+      loading: true,
+      newPost: null,
+      websites: []
+    });
+  } else if(action.type === NEW_POST_SUCCESS){
+    // console.log(action.foods);
+    return Object.assign({}, state, {
+      newPost: action.website,
     });
 
   } else if(action.type === NEW_SUCCESS){
@@ -55,29 +62,12 @@ export const foodsReducer = (state=initialState, action) => {
     return Object.assign({}, state, {
       loading: false, error: action.error
     });
-
-  } else if(action.type === NEW_ALLERGEN_SUCCESS){
-    return Object.assign({}, state, {
-      allergens: [...action.allergy],
-      zero: false
-    });
   
   } else if(action.type === FETCH_FOODS_ZERO){
     return Object.assign({}, state, {
       zero: true, error: null
     });
-  
-  } else if(action.type === POST_COMMENT_SUCCESS){
 
-    return Object.assign({}, state, {
-      foods:  action.newFoods
-      // foods: state.foods.map(item => {
-      //   (item.id === action.content.id) ? 
-      //     [...state.foods.slice(0,state.foods.findIndex(item.id===action.content.id)),
-      //       ...state.foods.slice(state.foods.findIndex(item.id===action.content.id) + 1, state.foods.length), 
-      //       action.content ] : state.foods; 
-      // })
-    });
   } 
   return state;
 };

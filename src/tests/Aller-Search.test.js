@@ -6,7 +6,7 @@ import {Provider} from 'react-redux';
 
 import {AllergyForm} from '../components/aller-search-form';
 import {SearchResults} from '../components/search-results';
-import {fetchFoods, toggleFoodsList} from '../actions/foods';
+import {fetchFoods, toggleFoodsList} from '../actions/hooks';
 
 
 describe('<AllergyForm/>', () => {

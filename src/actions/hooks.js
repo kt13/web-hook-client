@@ -13,7 +13,7 @@ export const fetchFoodsSuccess = foods => ({
 });
 
 export const NEW_ERROR = 'NEW_ERROR';
-export const fetchFoodsError = error => ({
+export const fetchHooksError = error => ({
   type: NEW_ERROR,
   error
 });
@@ -25,10 +25,9 @@ export const toggleFoodsList = listHide => ({
 });
 
 export const NEW_POST_SUCCESS = 'NEW_POST_SUCCESS';
-export const postFoodsSuccess = (name, ingredient) => ({
+export const postHooksSuccess = website => ({
   type: NEW_POST_SUCCESS,
-  name,
-  ingredient
+  website,
 });
 
 export const EXPAND_RESULT = 'EXPAND_RESULT';
@@ -69,18 +68,18 @@ export const fetchFoods = food => dispatch => {
       
     })
     .catch(err => {
-      dispatch(fetchFoodsError(err));
+      dispatch(fetchHooksError(err));
     });
 };
 
 export const postNewHook = (web) => dispatch => {
-  dispatch(fetchFoodsRequest());
+  // dispatch(fetchFoodsRequest());
   // console.log('I\'m making a post request to the back-end');
   // console.log(JSON.stringify({
   //   'name': nme1,
   //   'ingredients': ing2,
   // }), nme1, ing2);
-  return fetch(`${API_BASE_URL}/newhook`,
+  return fetch('http://localhost:8080/webhook',
     {
       method: 'POST',
       headers:{
@@ -94,10 +93,11 @@ export const postNewHook = (web) => dispatch => {
     //   console.log(res, 'test console posting');
     //   return res.json();
     }).then(res => {
-    // console.log(res);
-    dispatch(postFoodsSuccess(res));
+    console.log(res);
+    dispatch(postHooksSuccess(res));
   })
     .catch(err => {
-      dispatch(fetchFoodsError(err));
+      console.log(err);
+      dispatch(fetchHooksError(err));
     });
 };
