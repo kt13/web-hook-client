@@ -64,6 +64,16 @@ export const updateSuccess = web => ({
   web
 });
 
+export const DETAILS_CLEAR = 'DETAILS_CLEAR';
+export const detailsClear = () => ({
+  type: DETAILS_CLEAR,
+});
+
+export const UPDATE_CLEAR = 'UPDATE_CLEAR';
+export const updateClear = () => ({
+  type: UPDATE_CLEAR,
+});
+
 export const fetchAHook = id => dispatch => {
   dispatch(detailsReq());
   const url = 'http://localhost:8080/webhook/'+id;
@@ -146,7 +156,7 @@ export const fetchHooks = () => dispatch => {
 
 
 export const updateHook = (obj, id) => dispatch => {
-  const url = 'http://localhost:8080/webhook'+id;
+  const url = 'http://localhost:8080/webhook/'+id;
   return fetch(url,
     {
       method: 'PUT',

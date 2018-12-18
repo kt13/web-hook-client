@@ -2,14 +2,12 @@ import {
   NEW_REQUEST, 
   NEW_FETCH_SUCCESS, 
   NEW_ERROR, 
-  EXPAND_RESULT, 
-  NEW_FOOD_SEARCH,
   NEW_POST_SUCCESS,
-  NEW_SEARCH_TERM,
-  FETCH_FOODS_ZERO,
   DETAILS_HOOK,
   DETAILS_REQUEST,
-  UPD_HOOK_SUCCESS} from '../actions/hooks';
+  UPD_HOOK_SUCCESS,
+  DETAILS_CLEAR,
+  UPDATE_CLEAR} from '../actions/hooks';
 
 const initialState = {
   websites: [],
@@ -61,6 +59,18 @@ export const websitesReducer = (state=initialState, action) => {
   } else if(action.type === UPD_HOOK_SUCCESS){
     return Object.assign({}, state, {
       update: action.web,
+      error: null
+    });
+
+  } else if(action.type === DETAILS_CLEAR){
+    return Object.assign({}, state, {
+      details: [],
+      error: null
+    });
+
+  } else if(action.type === UPDATE_CLEAR){
+    return Object.assign({}, state, {
+      update: null,
       error: null
     });
 

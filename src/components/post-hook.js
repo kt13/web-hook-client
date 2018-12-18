@@ -10,6 +10,14 @@ import {postNewHook} from '../actions/hooks';
 
 export class PostHook extends React.Component{
 
+  constructor(props){
+    super(props);
+    this.state = {
+      clicked: false,
+      i: 0
+    }
+  }
+
   uxText(newH){
     if(newH){
       return(
@@ -18,6 +26,29 @@ export class PostHook extends React.Component{
         </div>
       );
       // console.log(newH);
+    }
+  }
+
+  additionalForm(i){
+    let val = 'val'+i;
+    let nam = 'nam'+i;
+    if(this.state.clicked === true){
+      return(
+        <div>
+          <div className='input'>
+              <label>Name of Parameter</label><br />
+              <input type='text'
+                className={nam}
+                name={nam}></input>
+          </div>
+          <div className='input'>
+              <label>Value of Parameter</label><br />
+              <input type='text'
+                className={val}
+                name={val}></input>
+          </div>
+        </div>
+      );
     }
   }
 
@@ -33,13 +64,28 @@ export class PostHook extends React.Component{
             // console.log(e.target.elements.ingredients.value,
             //   e.target.ingredients.value.split(' '),  '---');
             const el = e.target.elements;
+            console.log(el);
+            if(this.state.i > 0 ){
+              console.log(el);
             this.props.dispatch(postNewHook(
-              el.website.value, el.firname.value, el.lasname.value, el.key.value));}}>
+              el.website.value, 
+              el.first.value, 
+              el.last.value, 
+              el.key.value))
+              }
+              else{
+                this.props.dispatch(postNewHook(
+                  el.website.value, 
+                  el.first.value, 
+                  el.last.value, 
+                  el.key.value))
+              };
+              }}>
 
             <div className='input'>
               <label>Website Name</label><br />
               <input type='text' 
-                className='name' 
+                className='website' 
                 name='website'
                 aria-labelledby='Add a Parameter to track'></input>
 
@@ -48,8 +94,8 @@ export class PostHook extends React.Component{
             <div className='input'>
               <label>First Name</label><br />
               <input type='text' 
-                className='name' 
-                name='firname'
+                className='first' 
+                name='first'
                 aria-labelledby='Add a Parameter to Track'></input>
 
             </div>
@@ -57,8 +103,8 @@ export class PostHook extends React.Component{
             <div className='input'>
               <label>Last Name</label><br />
               <input type='text' 
-                className='name' 
-                name='lasname'
+                className='last' 
+                name='last'
                 aria-labelledby='Add a Parameter to Track'></input>
 
             </div>
@@ -66,14 +112,18 @@ export class PostHook extends React.Component{
             <div className='input'>
               <label>Key</label><br />
               <input type='text' 
-                className='name' 
+                className='key' 
                 name='key'
                 aria-labelledby='Add a Parameter to Track'></input>
 
             </div>
 
-            {/* <button onClick={() => {}}></button> */}
-
+            <button onClick={() => {
+              this.setState({
+              clicked: !this.state.clicked, 
+              i: this.state.i++})}}>Add another Parameter</button>
+            
+            {this.additionalForm(this.state.i)}
             <input 
               type='submit' 
               id='postButton' 

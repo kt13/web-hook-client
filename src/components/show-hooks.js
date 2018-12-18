@@ -5,7 +5,9 @@ import '../css/aller-search.css';
 import {Link} from 'react-router-dom';
 import PostFood from './post-hook';
 
-import {toggleFoodsList, fetchHooks, fetchAHook, updateHook/* newSearchTerm */} from '../actions/hooks';
+import {fetchHooks, 
+  fetchAHook, updateHook, detailsClear, 
+  updateClear} from '../actions/hooks';
 
 export class ShowHooks extends React.Component {
 
@@ -13,11 +15,14 @@ export class ShowHooks extends React.Component {
     super(props);
     this.state = {
       clicked: false,
+      updateId: 0,
     };
   }
 
   componentDidMount(){
     this.props.dispatch(fetchHooks());
+    this.props.dispatch(detailsClear());
+    this.props.dispatch(updateClear());
   }
 
   // componentDidUpdate(){
@@ -51,7 +56,7 @@ export class ShowHooks extends React.Component {
 
   updateForm(id){
     let detailsUpdate;
-    if(this.state.clicked === true){
+    if(this.state.clicked === true && id.length > 0){
       console.log(id);
       this.props.list.map(item => {
         if(item._id === id){
@@ -65,18 +70,13 @@ export class ShowHooks extends React.Component {
       if(detailsUpdate){
       return(
         <div>
-           <form onSubmit={e => {
+           <form 
+            key={id}
+            onSubmit={e => {
             e.preventDefault();
             let obj = {};
-            // console.log(e.target.elements.ingredients.value,
-            //   e.target.ingredients.value.split(' '),  '---');
             const el = e.target.elements;
             console.log(el);
-            // let vals = {};
-            // el.map(item => {
-            //   vals[item.name] = item.name.value;
-            // });
-            // console.log(vals);
             arrKeys.map(item => {
               return obj[item] = el[item].value;
             });
@@ -86,18 +86,19 @@ export class ShowHooks extends React.Component {
             
             this.props.dispatch(updateHook(obj, id));}} >
 
-            {arrKeys.map(key => {
+            {arrKeys.map(keyI => {
               return(
-                <div className='input'>
-                <label>{key}</label><br />
+                <div className='input' key={keyI}>
+                <label>{keyI}</label><br />
                 <input type='text' 
-                className={key}
-                name={key}
+                className={keyI}
+                name={keyI}
                 aria-labelledby='Add a parameter to Track'></input>
                 </div>
                 );
               })
             }
+
 
             <input 
               type='submit' 
@@ -113,31 +114,49 @@ export class ShowHooks extends React.Component {
   }
   }
 
+  updateUx(){
+    if(this.props.update){
+      return(
+        <div>
+          <p>Updated to {this.props.update}.</p>
+        </div>
+      );
+    }
+  }
+
   results(){
     if(this.props.list){
       return(
         <div>
           <ul>
-          {this.props.list.map(item => {
+          {this.props.list.map((item,i) => {
             return(
-              <div>
-              <div>
-                <li key={item._id}>{item.details.website}</li>
+              <div key={i}>
+              <div >
+                <li key={item}>{item.details.website}</li>
                 {/* <p>First Name: {item.details.first}</p>
                 <p>Last Name: {item.details.last}</p>
                 <p>Key: {item.details.key}</p> */}
-              </div>
-              <button onClick={() => {
-                this.setState({clicked: !this.state.clicked}),
+              <button 
+              onClick={() => {
+                console.log(item._id),
+                this.setState({clicked: !this.state.clicked,
+                  updateId: item._id
+                }),
                 console.log('update');}}>Update</button>
-              <button onClick={() => {
+              <button 
+              onClick={() => {
                 this.props.dispatch(fetchAHook(item._id)),
                 console.log('test');}}>Test</button>
-              {this.updateForm(item._id)}
-              {this.uXGetText()}
+              </div>
+             
+              
               </div>
             );  
           })}
+          {this.updateForm(this.state.updateId)}
+          {this.updateUx()}
+          {this.uXGetText()}
           </ul>
         </div>
       );
@@ -173,7 +192,8 @@ export class ShowHooks extends React.Component {
 const mapStateToProps = (state, props) => ({
   // zero: state.websitesR.zero
   list: state.websitesR.websites,
-  details: state.websitesR.details
+  details: state.websitesR.details,
+  update: state.websitesR.update
 });
 
 export default connect(mapStateToProps)(ShowHooks);
