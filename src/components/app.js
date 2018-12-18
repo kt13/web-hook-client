@@ -17,10 +17,10 @@ export default function App (props) {
           <button className="tablinks">
            View all Hooks</button> </Link>
 
-        <Link to='/listening'>
+        {/* <Link to='/listening'>
           <button className="tablinks">
              Listeners </button>
-        </Link>
+        </Link> */}
 
         
 

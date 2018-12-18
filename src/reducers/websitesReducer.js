@@ -7,19 +7,17 @@ import {
   NEW_POST_SUCCESS,
   NEW_SEARCH_TERM,
   FETCH_FOODS_ZERO,
-  DELETE_HOOK} from '../actions/hooks';
+  DETAILS_HOOK,
+  DETAILS_REQUEST,
+  UPD_HOOK_SUCCESS} from '../actions/hooks';
 
 const initialState = {
   websites: [],
   newPost: null,
   loading: false,
   error: null,
-  expandFood: false,
-  searchListHide: true,
-  allergens: [],
-  searchTerm: null,
-  zero: false,
-  deletes: []
+  details: [],
+  update: null
 };  
 
 export const websitesReducer = (state=initialState, action) => {
@@ -27,7 +25,7 @@ export const websitesReducer = (state=initialState, action) => {
     return Object.assign({}, state, {
       loading: true,
       newPost: null,
-      websites: []
+      websites: [],
     });
   } else if(action.type === NEW_POST_SUCCESS){
     // console.log(action.foods);
@@ -42,36 +40,27 @@ export const websitesReducer = (state=initialState, action) => {
     });
           
     // action.data.map(item => state.foods[item])]});
-  } else if(action.type === NEW_FOOD_SEARCH){
-    return Object.assign({}, state, {
-      searchListHide: action.listHide,
-      zero: false
-    });
-  
-  } else if(action.type === NEW_SEARCH_TERM){
-    return Object.assign({}, state, {
-      searchTerm: action.search,
-      zero: false
-    });
-
-  } else if(action.type === EXPAND_RESULT){
-    return Object.assign({}, state, {
-      expandFood: action.torf
-    });
 
   } else if(action.type === NEW_ERROR){
     return Object.assign({}, state, {
       loading: false, error: action.error
     });
-  
-  } else if(action.type === FETCH_FOODS_ZERO){
+
+  } else if(action.type === DETAILS_REQUEST){
     return Object.assign({}, state, {
-      zero: true, error: null
+      details: [], 
+      error: null
     });
 
-  } else if(action.type === DELETE_HOOK){
+  } else if(action.type === DETAILS_HOOK){
     return Object.assign({}, state, {
-      deletes: [...state.deletes, action.deleted], 
+      details: [action.details], 
+      error: null
+    });
+
+  } else if(action.type === UPD_HOOK_SUCCESS){
+    return Object.assign({}, state, {
+      update: action.web,
       error: null
     });
 

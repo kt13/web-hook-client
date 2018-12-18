@@ -35,6 +35,10 @@
   text-decoration: none;
 }
 
+.deets {
+  border: 2px solid black;
+}
+
 @media only screen and (max-width: 640px) {
 
   .allergyImg {

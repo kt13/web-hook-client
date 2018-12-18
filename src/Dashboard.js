@@ -9,7 +9,7 @@ import {connect} from 'react-redux';
 import App from './components/app';
 import DisplayHooks from './components/show-hooks';
 import AddListing from './components/post-hook';
-import Listening from './components/listening';
+// import Listening from './components/listening';
 import './Dashboard.css';
 // import { stayLoggedIn } from './actions/jwtauth';
 
@@ -37,11 +37,11 @@ export class Dashboard extends React.Component {
                 component={DisplayHooks}
               />
 
-              <Route
+              {/* <Route
                 exact
                 path="/listening"
                 component={Listening}
-              />
+              /> */}
 
               <Route
                 exact

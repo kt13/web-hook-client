@@ -8,7 +8,7 @@ import {postNewHook} from '../actions/hooks';
 // import { setReduxTokenFrmLocalStore } from '../actions/jwtauth';
 // import jwtDecode from 'jwt-decode';
 
-export class PostFood extends React.Component{
+export class PostHook extends React.Component{
 
   uxText(newH){
     if(newH){
@@ -34,14 +34,14 @@ export class PostFood extends React.Component{
             //   e.target.ingredients.value.split(' '),  '---');
             const el = e.target.elements;
             this.props.dispatch(postNewHook(
-              el.website.value));}}>
+              el.website.value, el.firname.value, el.lasname.value, el.key.value));}}>
 
             <div className='input'>
               <label>Website Name</label><br />
               <input type='text' 
                 className='name' 
                 name='website'
-                aria-labelledby='Add a Website to Track'></input>
+                aria-labelledby='Add a Parameter to track'></input>
 
             </div>
 
@@ -50,7 +50,7 @@ export class PostFood extends React.Component{
               <input type='text' 
                 className='name' 
                 name='firname'
-                aria-labelledby='Add a Website to Track'></input>
+                aria-labelledby='Add a Parameter to Track'></input>
 
             </div>
 
@@ -59,7 +59,7 @@ export class PostFood extends React.Component{
               <input type='text' 
                 className='name' 
                 name='lasname'
-                aria-labelledby='Add a Website to Track'></input>
+                aria-labelledby='Add a Parameter to Track'></input>
 
             </div>
 
@@ -68,9 +68,11 @@ export class PostFood extends React.Component{
               <input type='text' 
                 className='name' 
                 name='key'
-                aria-labelledby='Add a Website to Track'></input>
+                aria-labelledby='Add a Parameter to Track'></input>
 
             </div>
+
+            {/* <button onClick={() => {}}></button> */}
 
             <input 
               type='submit' 
@@ -94,4 +96,4 @@ const mapStateToProps = (state, props) => ({
   newHook: state.websitesR.newPost
 });
 
-export default withRouter(connect(mapStateToProps)(PostFood));
+export default withRouter(connect(mapStateToProps)(PostHook));

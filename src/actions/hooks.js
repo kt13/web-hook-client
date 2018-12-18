@@ -47,25 +47,42 @@ export const fetchFoodsZero = () => ({
   type: FETCH_FOODS_ZERO,
 });
 
-export const DELETE_HOOK = 'DELETE_HOOK';
-export const deleteHookLog = deleted => ({
-  type: DELETE_HOOK,
-  deleted
+export const DETAILS_HOOK = 'DETAILS_HOOK';
+export const fetchOneHook = details => ({
+  type: DETAILS_HOOK,
+  details
 });
 
-export const deleteHook = id => dispatch => {
-  return fetch('http://localhost:8080/webhook',
-  {
-    method: 'DELETE',
-    headers:{
-      'content-type': 'application/json',
-    },
-  })
+export const DETAILS_REQUEST = 'DETAILS_REQUEST';
+export const detailsReq = () => ({
+  type: DETAILS_REQUEST,
+});
+
+export const UPD_HOOK_SUCCESS = 'UPD_HOOK_SUCCESS';
+export const updateSuccess = web => ({
+  type: UPD_HOOK_SUCCESS,
+  web
+});
+
+export const fetchAHook = id => dispatch => {
+  dispatch(detailsReq());
+  const url = 'http://localhost:8080/webhook/'+id;
+  console.log(url);
+  return fetch(url/* , */
+  // {
+  //   method: 'GET',
+  //   headers:{
+  //     'content-type': 'application/json',
+  //   },
+  /* } */)
   .then(res =>{
-    console.log(res);
-    if(res.status=204){
-      dispatch(deleteHook(res));
+    if(res){
+    return res.json();
     }
+  })
+  .then(res => {
+    console.log(res);
+    dispatch(fetchOneHook(res));
   })
   .catch(err =>{
     dispatch(fetchHooksError(err));
@@ -98,7 +115,66 @@ export const fetchHooks = () => dispatch => {
     });
 };
 
-export const postNewHook = (web) => dispatch => {
+// export const getReqForUpdate = (id, web, first, last, key) => dispatch => {
+//   return fetch('http://localhost:8080/webhook',
+//     {
+//       method: 'PUT',
+//       headers:{
+//         'content-type': 'application/json',
+//       },
+//       body: JSON.stringify({
+//         'details': {
+//           'website': web, 
+//           'first': first, 
+//           'last': last, 
+//           'key': key
+//         }
+//       })
+//     // })
+//     // .then(res => {
+//     //   console.log(res, 'test console posting');
+//     //   return res.json();
+//     }).then(res => {
+//     // console.log(res);
+//     dispatch(postHooksSuccess(web));
+//   })
+//     .catch(err => {
+//       console.log(err);
+//       dispatch(fetchHooksError(err));
+//     });
+// };
+
+
+export const updateHook = (obj, id) => dispatch => {
+  const url = 'http://localhost:8080/webhook'+id;
+  return fetch(url,
+    {
+      method: 'PUT',
+      headers:{
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify({
+        'details': {
+          obj
+        }
+      })
+    // })
+    // .then(res => {
+    //   console.log(res, 'test console posting');
+    //   return res.json();
+    }).then(res => {
+    // console.log(res);
+    if(res){
+    dispatch(updateSuccess(obj.website));
+    }
+  })
+    .catch(err => {
+      console.log(err);
+      dispatch(fetchHooksError(err));
+    });
+};
+
+export const postNewHook = (web, first, last, key) => dispatch => {
   // dispatch(fetchFoodsRequest());
   // console.log('I\'m making a post request to the back-end');
   // console.log(JSON.stringify({
@@ -112,7 +188,12 @@ export const postNewHook = (web) => dispatch => {
         'content-type': 'application/json',
       },
       body: JSON.stringify({
-        'website': web
+        'details': {
+          'website': web, 
+          'first': first, 
+          'last': last, 
+          'key': key
+        }
       })
     // })
     // .then(res => {
