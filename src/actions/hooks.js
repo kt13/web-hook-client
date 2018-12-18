@@ -18,33 +18,10 @@ export const fetchHooksError = error => ({
   error
 });
 
-export const NEW_FOOD_SEARCH = 'NEW_FOOD_SEARCH';
-export const toggleFoodsList = listHide => ({
-  type: NEW_FOOD_SEARCH,
-  listHide
-});
-
 export const NEW_POST_SUCCESS = 'NEW_POST_SUCCESS';
 export const postHooksSuccess = website => ({
   type: NEW_POST_SUCCESS,
   website,
-});
-
-export const EXPAND_RESULT = 'EXPAND_RESULT';
-export const expandResult = torf => ({
-  type: EXPAND_RESULT,
-  torf
-});
-
-export const NEW_SEARCH_TERM = 'NEW_SEARCH_TERM';
-export const newSearchTerm = search => ({
-  type: NEW_SEARCH_TERM,
-  search
-});
-
-export const FETCH_FOODS_ZERO = 'FETCH_FOODS_ZERO';
-export const fetchFoodsZero = () => ({
-  type: FETCH_FOODS_ZERO,
 });
 
 export const DETAILS_HOOK = 'DETAILS_HOOK';
